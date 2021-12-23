@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,34 +16,30 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $admin = Role::create([
+            'name' => 'admin',
+            'display_name' => 'User Administrator'
+        ]);
+
+        $pengguna = Role::create([
+            'name' => 'pengguna',
+            'display_name' => 'User Biasa'
+        ]);
+
+
         $user = new User();
         $user->name = 'Rizky Nurahman';
-        $user->email = 'rizky@gmail.com';
+        $user->email = 'admin@gmail.com';
         $user->password = Hash::make('1');
         $user->save();
 
-        $user = new User();
-        $user->name = 'Rico Achmad';
-        $user->email = 'rico@gmail.com';
-        $user->password = Hash::make('2');
-        $user->save();
+        $pengunjung = new User();
+        $pengunjung->name = 'Rico Achmad';
+        $pengunjung->email = 'pengunjung@gmail.com';
+        $pengunjung->password = Hash::make('2');
+        $pengunjung->save();
 
-        $user = new User();
-        $user->name = 'Zulfan M';
-        $user->email = 'zulfan@gmail.com';
-        $user->password = Hash::make('3');
-        $user->save();
-
-        $user = new User();
-        $user->name = 'Syukur S';
-        $user->email = 'syukur@gmail.com';
-        $user->password = Hash::make('4');
-        $user->save();
-
-        $user = new User();
-        $user->name = 'Aziz TB';
-        $user->email = 'aziz@gmail.com';
-        $user->password = Hash::make('5');
-        $user->save();
+        $user->attachRole($admin);
+        $pengunjung->attachRole($pengguna);
     }
 }
