@@ -16,30 +16,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Role::create([
-            'name' => 'admin',
-            'display_name' => 'User Administrator'
-        ]);
-
-        $pengguna = Role::create([
-            'name' => 'pengguna',
-            'display_name' => 'User Biasa'
-        ]);
+        $admin = new Role();
+        $admin->name = "admin";
+        $admin->display_name = "Administrator";
+        $admin->save();
 
 
-        $user = new User();
-        $user->name = 'Rizky Nurahman';
-        $user->email = 'admin@gmail.com';
-        $user->password = Hash::make('1');
-        $user->save();
-
-        $pengunjung = new User();
-        $pengunjung->name = 'Rico Achmad';
-        $pengunjung->email = 'pengunjung@gmail.com';
-        $pengunjung->password = Hash::make('2');
-        $pengunjung->save();
-
-        $user->attachRole($admin);
-        $pengunjung->attachRole($pengguna);
+        $admin = new User();
+        $admin->name = 'Admin PKL';
+        $admin->email = 'admin@gmail.com';
+        $admin->password = Hash::make('1');
+        $admin->save();
+        $admin->attachRole($admin);
     }
 }

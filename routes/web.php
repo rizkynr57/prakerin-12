@@ -31,14 +31,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
         return 'Halaman Profile Admin';
     });
 });
-
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:pengguna']], function(){
-    Route::get('/', function() {
-        return 'Halaman Pengguna';
-    });
-
-    Route::get('profile', function() {
-        return 'Halaman Profile Pengguna';
-    });
-});
