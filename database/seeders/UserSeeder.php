@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $admin->save();
 
 
-        $admin = new User();
+        $admin = new User;
         $admin->name = 'Admin PKL';
         $admin->email = 'admin@gmail.com';
         $admin->password = Hash::make('1');
