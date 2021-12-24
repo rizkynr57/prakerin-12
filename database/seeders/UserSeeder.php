@@ -21,12 +21,11 @@ class UserSeeder extends Seeder
         $admin->display_name = "Administrator";
         $admin->save();
 
-
-        $admin = new User;
-        $admin->name = 'Admin PKL';
-        $admin->email = 'admin@gmail.com';
-        $admin->password = Hash::make('1');
-        $admin->save();
-        $admin->attachRole($admin);
+        $adminRole = new User;
+        $adminRole->name = 'Rizky Nurahman';
+        $adminRole->email = 'admin@gmail.com';
+        $adminRole->password = Hash::make('1');
+        $adminRole->save();
+        $adminRole->attachRole($admin);
     }
 }
