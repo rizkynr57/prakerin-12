@@ -223,35 +223,52 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
     */
-
+'menu' => [
   [
       'text' => 'blog',
       'url' => 'admin/blog',
       'can' => 'manage-blog',
   ],
   [
-      'text' => 'pages',
+      'text' => 'Pengadaan Barang',
       'url' => 'admin/pages',
       'icon' => 'far fa-fw fa-file',
       'label' => 4,
       'label_color' => 'success',
   ],
   [
-      'text' => 'buku',
-      'url' => 'admin/buku',
-      'icon' => 'far fa-fw fa-file'
+      'text' => 'Data Supplier',
+      'url' => 'admin/supplier',
+      'icon' => 'fas fa-address-book'
   ],
   [
-      'text' => 'pengarang',
-      'url' => 'admin/pengarang',
-      'icon' => 'far fa-fw fa-file'
+      'text' => 'Barang',
+      'url' => 'admin/barang',
+      'icon' => 'fas fa-balance-scale'
   ],
   [
-      'text' => 'menu lainnya',
+      'text' => 'Lainnya...',
       'url' => '#',
-      'icon' => 'far fa-fw fa-file'
+      'icon' => 'far fa-window-restore',
+      'submenu' => [
+          [
+              'text' => 'Satuan Barang',
+              'url' => '#',
+              'icon' => 'fas fa-sort-amount-up-alt'
+          ],
+          [
+              'text' => 'Jenis Barang',
+              'url' => '#',
+              'icon' => 'fas fa-hamburger'
+          ],
+          [
+              'text' => 'Data Barang',
+              'url' => '#',
+              'icon' => 'fas fa-window-maximize'
+          ],
+        ],
+      ],
   ],
-
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
