@@ -21,11 +21,24 @@ class UserSeeder extends Seeder
         $admin->display_name = "Administrator";
         $admin->save();
 
+        $petugas = new Role();
+        $petugas->name = "petugas";
+        $petugas->display_name = "Petugas";
+        $petugas->save();
+
+
         $adminRole = new User;
         $adminRole->name = 'Rizky Nurahman';
         $adminRole->email = 'admin@gmail.com';
         $adminRole->password = Hash::make('1');
         $adminRole->save();
         $adminRole->attachRole($admin);
+
+        $petugasRole = new User;
+        $petugasRole->name = 'petugas 1';
+        $petugasRole->email = 'petugas@gmail.com';
+        $petugasRole->password = Hash::make('2');
+        $petugasRole->save();
+        $petugasRole->attachRole($petugas);
     }
 }

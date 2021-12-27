@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => ' ',
-    'logo_img' => 'vendor/adminlte/dist/img/PB.png',
+    'logo' => '<br>',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -230,8 +230,8 @@ return [
       'can' => 'manage-blog',
   ],
   [
-      'text' => 'Pengadaan Barang Indomart',
-      'url' => 'admin/pages',
+      'text' => 'Pengadaan Barang',
+      'url' => 'admin/home',
       'icon' => 'far fa-fw fa-file',
       'label' => 4,
       'label_color' => 'success',
@@ -245,6 +245,16 @@ return [
       'text' => 'Barang',
       'url' => 'admin/barang',
       'icon' => 'fas fa-balance-scale'
+  ],
+  [
+    'text' => 'Barang Masuk',
+    'url' => 'admin/barang-masuk',
+    'icon' => 'fas fa-address-book'
+   ],
+   [
+    'text' => 'Barang Keluar',
+    'url' => 'admin/barang-keluar',
+    'icon' => 'fas fa-address-book'
   ],
   [
       'text' => 'Lainnya...',

@@ -12,20 +12,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::get('/laravel', function () {
+    return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::get('/', function() {
-        return 'Halaman Admin';
+        return view('auth.login');
     });
     Route::get('profile', function() {
         return 'Halaman Profile Admin';
+    });
+});
+
+Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin|petugas']], function(){
+    Route::get('/', function() {
+        return view('auth.login');
+    });
+    Route::get('profile', function() {
+        return 'Halaman Profile Petugas';
     });
 });
