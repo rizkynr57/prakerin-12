@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\supplier;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -14,7 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $supplier = Supplier::all();
+        return view('supplier.index', compact('supplier'));
     }
 
     /**
@@ -24,7 +25,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        $supplier = Supplier::all();
+        return view('supplier.create', compact('supplier'));
     }
 
     /**
@@ -35,7 +37,24 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+            'nama_supplier' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'nama_perusahaan' => 'required'
+        ]);
+        $supplier = new Supplier();
+        $supplier->nama_supplier = $request->nama;
+        $supplier->alamat = $request->alamat;
+        $supplier->no_telp = $request->no_telp;
+        $supplier->nama_perusahaan = $request->perusahaan;
+        $supplier->save();
+
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Berhasil menyimpan  $supplier->nama_supplier"
+        ]);
+        return redirect()->route('supplier.index');
     }
 
     /**

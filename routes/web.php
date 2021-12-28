@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(
+    [
+        'register' => false
+    ]
+);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -25,16 +30,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('/', function() {
         return view('auth.login');
     });
-    Route::get('profile', function() {
-        return 'Halaman Profile Admin';
-    });
+    Route::resource('supplier', SupplierController::class)->middleware('role:admin');
+    Route::resource('barang', BarangController::class)->middleware('role:admin');
+    Route::resource('barang-keluar', BarangKeluarController::class)->middleware('role:admin');
+    Route::resource('barang-masuk', BarangMasukController::class)->middleware('role:admin');
 });
 
-Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin|petugas']], function(){
-    Route::get('/', function() {
-        return view('auth.login');
-    });
-    Route::get('profile', function() {
-        return 'Halaman Profile Petugas';
-    });
-});
+// Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin|petugas']], function(){
+//     Route::get('/', function() {
+//         return view('auth.login');
+//     });
+//     Route::get('profile', function() {
+//         return 'Halaman Profile Petugas';
+//     });
+// });
