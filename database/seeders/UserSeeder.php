@@ -29,13 +29,23 @@ class UserSeeder extends Seeder
 
         $adminRole = new User;
         $adminRole->name = 'Rizky Nurahman';
+        $adminRole->jenis_kelamin = 'L';
+        $adminRole->agama = 'Islam';
+        $adminRole->alamat = 'Bandung';
+        $adminRole->no_telp = '0894';
+        $adminRole->jabatan = 'Admin';
         $adminRole->email = 'admin@gmail.com';
         $adminRole->password = Hash::make('1');
         $adminRole->save();
         $adminRole->attachRole($admin);
 
         $petugasRole = new User;
-        $petugasRole->name = 'petugas 1';
+        $petugasRole->name = 'petugas';
+        $petugasRole->jenis_kelamin = 'L';
+        $petugasRole->agama = 'Islam';
+        $petugasRole->alamat = 'Bandung';
+        $petugasRole->no_telp = '0894';
+        $petugasRole->jabatan = 'Petugas';
         $petugasRole->email = 'petugas@gmail.com';
         $petugasRole->password = Hash::make('2');
         $petugasRole->save();
