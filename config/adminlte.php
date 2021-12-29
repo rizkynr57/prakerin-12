@@ -231,7 +231,7 @@ return [
   ],
   [
       'text' => 'Pengadaan Barang',
-      'url' => 'admin/home',
+      'url' => 'admin/',
       'icon' => 'far fa-fw fa-file',
       'label' => 4,
       'label_color' => 'success',

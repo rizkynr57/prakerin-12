@@ -14,7 +14,7 @@ use App\Http\Controllers\SupplierController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(
@@ -28,19 +28,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::get('/', function() {
-        return view('auth.login');
+        return view('beranda');
     });
-    Route::resource('supplier', SupplierController::class)->middleware('role:admin');
-    Route::resource('barang', BarangController::class)->middleware('role:admin');
-    Route::resource('barang-keluar', BarangKeluarController::class)->middleware('role:admin');
-    Route::resource('barang-masuk', BarangMasukController::class)->middleware('role:admin');
+    Route::resource('supplier', SupplierController::class);
+    Route::resource('barang', BarangController::class);
+    Route::resource('barang-keluar', BarangKeluarController::class);
+    Route::resource('barang-masuk', BarangMasukController::class);
 });
 
-// Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin|petugas']], function(){
-//     Route::get('/', function() {
-//         return view('auth.login');
-//     });
-//     Route::get('profile', function() {
-//         return 'Halaman Profile Petugas';
-//     });
-// });
+Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin']], function(){
+    Route::get('/', function() {
+        return view('beranda');
+    });
+    Route::resource('supplier', SupplierController::class);
+    Route::resource('barang', BarangController::class);
+    Route::resource('barang-keluar', BarangKeluarController::class);
+    Route::resource('barang-masuk', BarangMasukController::class);
+});
