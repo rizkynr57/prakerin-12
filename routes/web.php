@@ -26,7 +26,7 @@ Auth::routes(
     ]
 );
 
-Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('beranda');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 

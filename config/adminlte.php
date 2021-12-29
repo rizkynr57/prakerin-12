@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Pengadaan Barang Indomaret',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'beranda',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -235,7 +235,7 @@ return [
   ],
   [
       'text' => 'Beranda',
-      'url' => '/beranda',
+      'url' => '/home',
       'icon' => 'far fa-fw fa-file',
       'label' => 100,
       'label_color' => 'success',
