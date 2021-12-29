@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'beranda',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -225,17 +225,43 @@ return [
     */
 'menu' => [
   [
-      'text' => 'blog',
-      'url' => 'admin/blog',
-      'can' => 'manage-blog',
+      'type' => 'navbar-search',
+      'text' => 'search',
+      'topnav_right' => true,
   ],
   [
-      'text' => 'Pengadaan Barang',
-      'url' => 'admin/',
+      'type' => 'fullscreen-widget',
+      'topnav_right' => 'true'
+  ],
+  [
+      'text' => 'Beranda',
+      'url' => '/beranda',
       'icon' => 'far fa-fw fa-file',
-      'label' => 4,
+      'label' => 100,
       'label_color' => 'success',
   ],
+  [
+    'text' => 'Data Master',
+    'url' => '#',
+    'icon' => 'far fa-window-restore',
+    'submenu' => [
+        [
+            'text' => 'Satuan Barang',
+            'url' => '#',
+            'icon' => 'fas fa-sort-amount-up-alt'
+        ],
+        [
+            'text' => 'Jenis Barang',
+            'url' => '#',
+            'icon' => 'fas fa-hamburger'
+        ],
+        [
+            'text' => 'Data Barang',
+            'url' => '#',
+            'icon' => 'fas fa-window-maximize'
+        ],
+      ],
+    ],
   [
       'text' => 'Data Supplier',
       'url' => 'admin/supplier',
@@ -248,36 +274,15 @@ return [
   ],
   [
     'text' => 'Barang Masuk',
-    'url' => 'admin/barang-masuk',
+    'url' => 'petugas/barang-masuk',
     'icon' => 'fas fa-address-book'
    ],
    [
     'text' => 'Barang Keluar',
-    'url' => 'admin/barang-keluar',
+    'url' => 'petugas/barang-keluar',
     'icon' => 'fas fa-address-book'
   ],
-  [
-      'text' => 'Lainnya...',
-      'url' => '#',
-      'icon' => 'far fa-window-restore',
-      'submenu' => [
-          [
-              'text' => 'Satuan Barang',
-              'url' => '#',
-              'icon' => 'fas fa-sort-amount-up-alt'
-          ],
-          [
-              'text' => 'Jenis Barang',
-              'url' => '#',
-              'icon' => 'fas fa-hamburger'
-          ],
-          [
-              'text' => 'Data Barang',
-              'url' => '#',
-              'icon' => 'fas fa-window-maximize'
-          ],
-        ],
-      ],
+
   ],
     /*
     |--------------------------------------------------------------------------

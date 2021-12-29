@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\barang_masuk;
+use App\Models\Barang_masuk;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -14,7 +14,8 @@ class BarangMasukController extends Controller
      */
     public function index()
     {
-        //
+        $masuk = Barang_masuk::all();
+        return view('barang-masuk.index', compact('masuk'));
     }
 
     /**

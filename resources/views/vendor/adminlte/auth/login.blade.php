@@ -61,8 +61,8 @@
             @enderror
         </div>
 
-        {{-- Login field --}}
-        {{-- <div class="row">
+         {{-- Login field --}}
+         {{-- <div class="row">
             <div class="col-7">
                 <div class="icheck-primary" title="{{ __('adminlte::adminlte.remember_me_hint') }}">
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

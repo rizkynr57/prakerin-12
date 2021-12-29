@@ -37,11 +37,11 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
-            'nama_supplier' => 'required',
+        $request->validate([
+            'nama' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'nama_perusahaan' => 'required'
+            'perusahaan' => 'required'
         ]);
         $supplier = new Supplier();
         $supplier->nama_supplier = $request->nama;
@@ -49,11 +49,6 @@ class SupplierController extends Controller
         $supplier->no_telp = $request->no_telp;
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->save();
-
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Berhasil menyimpan  $supplier->nama_supplier"
-        ]);
         return redirect()->route('supplier.index');
     }
 

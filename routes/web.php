@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangKeluarController;
+use App\Http\Controllers\BarangMasukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +26,8 @@ Auth::routes(
     ]
 );
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/beranda', [App\Http\Controllers\HomeController::class, 'index'])->name('beranda');
+
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
@@ -36,12 +40,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('barang-masuk', BarangMasukController::class);
 });
 
-Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:admin']], function(){
+Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:petugas|admin']], function(){
     Route::get('/', function() {
         return view('beranda');
     });
-    Route::resource('supplier', SupplierController::class);
-    Route::resource('barang', BarangController::class);
     Route::resource('barang-keluar', BarangKeluarController::class);
     Route::resource('barang-masuk', BarangMasukController::class);
 });
