@@ -69,9 +69,10 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(supplier $supplier)
+    public function edit($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        return view('supplier.edit', compact('supplier'));
     }
 
     /**
@@ -81,9 +82,21 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $supplier)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'perusahaan' => 'required'
+        ]);
+        $supplier = Supplier::findOrFail($id);
+        $supplier->nama_supplier = $request->nama;
+        $supplier->alamat = $request->alamat;
+        $supplier->no_telp = $request->no_telp;
+        $supplier->nama_perusahaan = $request->perusahaan;
+        $supplier->save();
+        return redirect()->route('supplier.index');
     }
 
     /**
@@ -92,8 +105,9 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(supplier $supplier)
+    public function destroy($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id)->delete();
+        return redirect()->route('supplier.index');
     }
 }
