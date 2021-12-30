@@ -17,8 +17,8 @@
                 <div class="card-header">Data Supplier</div>
                     <a href="{{route('supplier.create')}}" class="btn btn-outline-primary">Tambah Data</a>
                 <div class="card-body">
-                    <div class="table">
-                        <table class="table-responsive" id="example">
+                    <div class="table-responsive">
+                        <table class="table" id="example">
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -45,10 +45,11 @@
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('supplier.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
-                                        <a href="" class="btn btn-outline-warning">Show</a>
+                                        <a href="{{ route('supplier.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         <button type="submit" onclick="return confirm('Apakah anda yakin?')" class="btn btn-outline-danger">
                                             Delete
                                         </button>
+                                        </tbody>
                                         </form>
                                     </td>
                                 </tr>

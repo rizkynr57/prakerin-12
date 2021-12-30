@@ -58,9 +58,10 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show(supplier $supplier)
+    public function show($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        return view('supplier.show', compact('supplier'));
     }
 
     /**
