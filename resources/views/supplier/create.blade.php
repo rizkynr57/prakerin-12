@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header bg-primary">Add Supplier</div>
                 <div class="card-body">
-                    <form action="{{route('supplier.store')}}" method="post">
+                    <form action="{{route('supplier.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="">Nama Supplier</label>

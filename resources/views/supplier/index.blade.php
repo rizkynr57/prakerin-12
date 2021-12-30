@@ -6,7 +6,7 @@
 
 <h2><br></h2>
 
-@stop
+@endsection
 
 @section('content')
 @role('admin')
@@ -17,8 +17,9 @@
                 <div class="card-header">Data Supplier</div>
                     <a href="{{route('supplier.create')}}" class="btn btn-outline-primary">Tambah Data</a>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
+                    <div class="table">
+                        <table class="table-responsive" id="example">
+                            <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Supplier</th>
@@ -27,6 +28,8 @@
                                 <th>Nama Perusahaan</th>
                                 <th>Action</th>
                             </tr>
+                            </thead>
+                        <tbody>
                             @php
                                 $no = 1;
                             @endphp
@@ -61,9 +64,14 @@
 @stop
 
 @section('css')
-
-@stop
+<link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+@endsection
 
 @section('js')
-
-@stop
+<script src="{{ asset('DataTables/datatables.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        $('#example').DataTable();
+    });
+</script>
+@endsection
