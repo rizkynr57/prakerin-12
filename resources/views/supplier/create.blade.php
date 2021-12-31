@@ -1,84 +1,38 @@
-@extends('adminlte::page')
-
-@section('title', 'Data Supplier')
-
-@section('content_header')
-
-<h2><br></h2>
-
-@stop
-
-@section('content')
-@role('admin')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header bg-primary">Add Supplier</div>
-                <div class="card-body">
-                    <form action="{{route('supplier.store')}}" method="post" enctype="multipart/form-data">
-                    @csrf
+<div class="modal fade supplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Supplier</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="text" name="nama" class="form-control @error('nama')
-                            is-invalid
-                        @enderror">
-                        @error('nama')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <input type="text" class="form-control" name="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" name="alamat" class="form-control @error('alamat')
-                            is-invalid
-                        @enderror">
-                        @error('alamat')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control" name="alamat" required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" name="no_telp" class="form-control @error('no_telp')
-                            is-invalid
-                        @enderror">
-                        @error('no_telp')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control" name="no_telp" required>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Perusahaan</label>
-                        <input type="text" name="perusahaan" class="form-control @error('perusahaan')
-                            is-invalid
-                        @enderror">
-                        @error('perusahaan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control" name="perusahaan" required>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-outline-success">Tambah</button>
-                        <button type="reset" class="btn btn-outline-warning">Reset</button>
-                    </div>
-                    </form>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Reset</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-@endrole
-@stop
-
-@section('css')
-
-@stop
-
-@section('js')
-
-@stop

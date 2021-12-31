@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -108,7 +109,13 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        $supplier = Supplier::findOrFail($id)->delete();
-        return redirect()->route('supplier.index');
+       if(!Supplier::destroy($id)){
+           return redirect()->back();
+       }
+       Session::flash("flash_notification", [
+           "level" => "success",
+           "message" => "Data Berhasil Dihapus",
+       ]);
+       return redirect()->route('supplier.index');
     }
 }

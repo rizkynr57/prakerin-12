@@ -18,8 +18,8 @@ class barang_masuk extends Model
     ];
     public $timestamps = true;
 
-    public function barang()
+    public function supplier()
     {
-        return $this->belongsTo('App\Models\barang', 'id_barang');
+        return $this->belongsTo('App\Models\Supplier', 'id_supplier');
     }
 }
