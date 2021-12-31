@@ -231,37 +231,16 @@ return [
   ],
   [
       'type' => 'fullscreen-widget',
-      'topnav_right' => 'true'
+      'topnav_right' => true
   ],
+  ['header' => 'MENU'],
   [
       'text' => 'Beranda',
       'url' => '/home',
-      'icon' => 'far fa-fw fa-file',
+      'icon' => 'fas fa-home',
       'label' => 100,
       'label_color' => 'success',
   ],
-  [
-    'text' => 'Data Master',
-    'url' => '#',
-    'icon' => 'far fa-window-restore',
-    'submenu' => [
-        [
-            'text' => 'Satuan Barang',
-            'url' => '#',
-            'icon' => 'fas fa-sort-amount-up-alt'
-        ],
-        [
-            'text' => 'Jenis Barang',
-            'url' => '#',
-            'icon' => 'fas fa-hamburger'
-        ],
-        [
-            'text' => 'Data Barang',
-            'url' => '#',
-            'icon' => 'fas fa-window-maximize'
-        ],
-      ],
-    ],
   [
       'text' => 'Data Supplier',
       'url' => 'admin/supplier',
@@ -275,12 +254,12 @@ return [
   [
     'text' => 'Barang Masuk',
     'url' => 'petugas/barang-masuk',
-    'icon' => 'fas fa-address-book'
+    'icon' => 'fas fa-people-carry'
    ],
    [
     'text' => 'Barang Keluar',
     'url' => 'petugas/barang-keluar',
-    'icon' => 'fas fa-address-book'
+    'icon' => 'fas fa-truck'
   ],
 
   ],
