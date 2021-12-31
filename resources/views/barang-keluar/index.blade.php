@@ -14,8 +14,11 @@
     <div class="'row">
         <div class="col">
             <div class="card">
-                <div class="card-header">Data Barang Keluar</div>
-                    <a href="{{route('barang-keluar.create')}}" class="btn btn-outline-primary">Tambah Data</a>
+                <div class="card-header">Data Barang Keluar
+                    <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
+                    data-target=".supplier">Tambah Data</a>
+                    @include('barang-keluar.create')
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="example">
@@ -26,6 +29,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jumlah Pengiriman</th>
                                 <th>Tanggal Pengiriman</th>
+                                <th>Tujuan Pengiriman</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -36,10 +40,11 @@
                             @foreach ($keluar as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->id_supplier }}</td>
-                                    <td>{{ $data->id_barang }}</td>
+                                    <td>{{ $data->supplier->nama_supplier }}</td>
+                                    <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jumlah_pengiriman }}</td>
                                     <td>{{ $data->tgl_pengiriman }}</td>                                    <td>
+                                    <td>{{ $data->tujuan }}</td>                                    <td>
                                         <form action="{{ route('barang-keluar.destroy', $data->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')

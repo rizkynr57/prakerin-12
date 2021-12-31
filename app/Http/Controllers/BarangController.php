@@ -15,7 +15,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::with('Barang_masuk');
         return view('barang.index', compact('barang'));
     }
 
@@ -38,19 +38,7 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'nama_barang' => 'required',
-        //     'jenis_barang' => 'required',
-        //     'jumlah_barang' => 'required',
-        //     'satuan' => 'required'
-        // ]);
-        // $barang = Barang::create($request->only('nama_barang', 'jenis_barang', 'jumlah_barang', 'satuan'));
 
-        // Session::flash("flash_notification", [
-        //     "level" => "success",
-        //     "message" => "Berhasil menyimpan  $barang->nama_barang"
-        // ]);
-        // return redirect()->route('barang.index');
     }
 
     /**

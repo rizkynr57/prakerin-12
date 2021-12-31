@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
     Route::get('/', function() {
-        return view('beranda');
+        return view('home');
     });
     Route::resource('supplier', SupplierController::class);
     Route::resource('barang', BarangController::class);
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
 Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:petugas|admin']], function(){
     Route::get('/', function() {
-        return view('beranda');
+        return view('home');
     });
     Route::resource('barang-keluar', BarangKeluarController::class);
     Route::resource('barang-masuk', BarangMasukController::class);

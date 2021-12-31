@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang_masuk;
 use App\Models\Supplier;
+use Session;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
@@ -15,8 +16,9 @@ class BarangMasukController extends Controller
      */
     public function index()
     {
-        $masuk = Barang_masuk::with('Supplier')->get();
-        return view('barang-masuk.index', compact('masuk'));
+        $masuk = Barang_masuk::all();
+        $supplier = Supplier::all();
+        return view('barang-masuk.index', compact('masuk', 'supplier'));
     }
 
     /**
@@ -27,7 +29,7 @@ class BarangMasukController extends Controller
     public function create()
     {
         $supplier = Supplier::all();
-        return view('barang-masuk.create', compact('supplier'));
+        return view('barang-keluar.create', compact('supplier'));
     }
 
     /**
@@ -52,6 +54,10 @@ class BarangMasukController extends Controller
             $masuk->id_supplier = $request->id_supplier;
             $masuk->tgl_masuk = $request->tgl_masuk;
             $masuk->save();
+            Session::flash("flash_notification", [
+                "level" => "success",
+                "message" => "Data berhasil disimpan",
+            ]);
             return redirect()->route('barang-masuk.index');
     }
 
@@ -102,6 +108,10 @@ class BarangMasukController extends Controller
         $masuk->id_supplier = $request->id_supplier;
         $masuk->tgl_masuk = $request->tgl_masuk;
         $masuk->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil disimpan",
+        ]);
         return redirect()->route('barang-masuk.index');
     }
 

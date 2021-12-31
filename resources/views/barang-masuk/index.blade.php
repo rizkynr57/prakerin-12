@@ -10,21 +10,26 @@
 
 @section('content')
 @role('admin')
+@include('layouts._flash')
 <div class="container">
     <div class="'row">
         <div class="col">
             <div class="card">
-                <div class="card-header">Data Barang Masuk</div>
-                    <a href="{{route('barang-masuk.create')}}" class="btn btn-outline-primary">Tambah Data</a>
+                <div class="card-header">Data Barang Masuk
+                    <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
+                    data-target=".supplier">Tambah Data</a>
+                    @include('barang-masuk.create')
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="example">
+                        <table class="table" id="supplier">
                             <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
                                 <th>Jumlah Barang</th>
+                                <th>Satuan</th>
                                 <th>Nama Supplier</th>
                                 <th>Tanggal Masuk Barang</th>
                                 <th>Action</th>
@@ -40,7 +45,8 @@
                                     <td>{{ $data->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
                                     <td>{{ $data->jumlah_barang }}</td>
-                                    <td>{{ $data->supplier->id_supplier }}</td>
+                                    <td>{{ $data->satuan }}</td>
+                                    <td>{{ $data->supplier->nama_supplier }}</td>
                                     <td>{{ $data->tgl_masuk }}</td>
                                     <td>
                                         <form action="{{ route('barang-masuk.destroy', $data->id) }}" method="post">
@@ -74,7 +80,7 @@
 <script src="{{ asset('DataTables/datatables.min.js')}}"></script>
 <script>
     $(document).ready(function(){
-        $('#example').DataTable();
+        $('#supplier').DataTable();
     });
 </script>
 @endsection

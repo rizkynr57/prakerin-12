@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
-use Illuminate\Contracts\Session\Session;
+use Session;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -50,6 +50,10 @@ class SupplierController extends Controller
         $supplier->no_telp = $request->no_telp;
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil disimpan",
+        ]);
         return redirect()->route('supplier.index');
     }
 
@@ -98,6 +102,10 @@ class SupplierController extends Controller
         $supplier->no_telp = $request->no_telp;
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil disimpan",
+        ]);
         return redirect()->route('supplier.index');
     }
 

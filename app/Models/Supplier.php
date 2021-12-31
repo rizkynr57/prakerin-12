@@ -29,10 +29,10 @@ class Supplier extends Model
     {
         parent::boot();
         self::deleting(function ($supplier) {
-            if ($supplier->Barang_masuk->count() > 0) {
+            if ($supplier->masuk->count() > 0) {
                 $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
                 $msg .= '<ul>';
-                foreach ($supplier->Barang_masuk as $data) {
+                foreach ($supplier->masuk as $data) {
                     $msg .= "<li>$data->nama_barang</li>";
                 }
                 $msg .= '</ul>';

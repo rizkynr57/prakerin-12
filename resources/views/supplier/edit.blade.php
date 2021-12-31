@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="text" name="nama" value="{{ $supplier->nama_perusahaan }}" class="form-control"
+                        <input type="text" name="nama" value="{{ $supplier->nama_supplier }}" class="form-control"
                         @error('fistname')
                         is-invalid
                         @enderror>

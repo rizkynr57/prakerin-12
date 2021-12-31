@@ -28,4 +28,5 @@ class barang extends Model
         return $this->hasMany('App\Models\Barang_keluar', 'id_barang');
     }
 
+    
 }

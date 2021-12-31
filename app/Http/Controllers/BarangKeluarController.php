@@ -16,8 +16,10 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $keluar = Barang_keluar::all();
-        return view('barang-keluar.index', compact('keluar'));
+        return view('barang-keluar.index', compact('keluar', 'supplier', 'barang'));
     }
 
     /**
@@ -27,8 +29,9 @@ class BarangKeluarController extends Controller
      */
     public function create()
     {
-        $suppbarang = Barang::with('Supplier');
-        return view('barang-keluar.create', compact('suppbarang'));
+        $supplier = Supplier::all();
+        $barang = Barang::all();
+        return view('barang-keluar.create', compact('supplier', 'barang'));
     }
 
     /**
@@ -39,7 +42,26 @@ class BarangKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $request->validate([
+                'id_supplier' => 'required',
+                'id_barang' => 'required',
+                'jumlah' => 'required',
+                'tgl_pengiriman' => 'required',
+                'tujuan' => 'required',
+            ]);
+            $keluar = new Barang_keluar();
+            $keluar->id_supplier = $request->id_supplier;
+            $keluar->id_barang = $request->id_barang;
+            $keluar->jumlah_pengiriman = $request->jumlah;
+            $keluar->tgl_pengiriman = $request->tgl_pengiriman;
+            $keluar->tujuan = $request->tujuan;
+            $keluar->save();
+            Session::flash("flash_notification", [
+                "level" => "success",
+                "message" => "Data berhasil disimpan",
+            ]);
+            return redirect()->route('barang-keluar.index');
     }
 
     /**
