@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang_keluar;
+use App\Models\Supplier;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class BarangKeluarController extends Controller
@@ -25,7 +27,8 @@ class BarangKeluarController extends Controller
      */
     public function create()
     {
-        //
+        $suppbarang = Barang::with('Supplier');
+        return view('barang-keluar.create', compact('suppbarang'));
     }
 
     /**
