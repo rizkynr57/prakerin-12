@@ -23,6 +23,10 @@
                         <label for="">Satuan Barang</label>
                         <input type="text" class="form-control" name="satuan">
                     </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Masuk Barang</label>
+                        <input type="text" class="form-control" name="tgl_masuk">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Reset</button>
