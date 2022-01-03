@@ -121,7 +121,7 @@ class BarangMasukController extends Controller
     public function destroy($id)
     {
         if (!Barang_masuk::destroy($id)){
-         return redirect->back();
+         return redirect()->back();
         }
        Session::flash("flash_notification", [
             "level" => "success",
