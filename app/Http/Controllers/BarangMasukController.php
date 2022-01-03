@@ -28,8 +28,8 @@ class BarangMasukController extends Controller
      */
     public function create()
     {
-        $supplier = Supplier::all();
-        return view('barang-keluar.create', compact('supplier'));
+        
+        
     }
 
     /**
@@ -41,19 +41,19 @@ class BarangMasukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'id_supplier' => 'required',
+            'id_barang' => 'required',
             'jenis' => 'required',
             'jumlah' => 'required',
-            'id_supplier' => 'required',
+
             'tgl_masuk' => 'required'
         ]);
-            $masuk = new Barang_masuk();
-            $masuk->nama_barang = $request->nama;
-            $masuk->jenis_barang = $request->jenis;
-            $masuk->jumlah_barang = $request->jumlah;
-            $masuk->id_supplier = $request->id_supplier;
-            $masuk->tgl_masuk = $request->tgl_masuk;
-            $masuk->save();
+            Barang_masuk::create($request->all());
+            
+            $barang = Barang::where('id', $request->id_barang)->get()->value('jumlah_barang');
+            $barang->jumlah_barang += $request->jumlah;
+            $barang->save();
+            
             Session::flash("flash_notification", [
                 "level" => "success",
                 "message" => "Data berhasil disimpan",
@@ -96,21 +96,21 @@ class BarangMasukController extends Controller
     public function update(Request $request,$id)
     {
         $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'no_telp' => 'required',
-            'perusahaan' => 'required'
+            'id_supplier' => 'required',
+            'id_barang' => 'required',
+            'jenis' => 'required',
+            'jumlah' => 'required',
+            'tgl_masuk' => 'required'
         ]);
-        $masuk = Barang_masuk::findOrFail($id);
-        $masuk->nama_barang = $request->nama;
-        $masuk->jenis_barang = $request->jenis;
-        $masuk->jumlah_barang = $request->jumlah;
-        $masuk->id_supplier = $request->id_supplier;
-        $masuk->tgl_masuk = $request->tgl_masuk;
-        $masuk->save();
+        Barang_masuk::create($request->all());
+        
+        $barang = Barang::where('id', $id)->get()->value('jumlah_barang');
+        $barang->jumlah_barang += $request->jumlah;
+        $barang->update();
+        
         Session::flash("flash_notification", [
             "level" => "success",
-            "message" => "Data berhasil disimpan",
+            "message" => "Data berhasil diedit",
         ]);
         return redirect()->route('barang-masuk.index');
     }
