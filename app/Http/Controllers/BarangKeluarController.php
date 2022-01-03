@@ -25,10 +25,10 @@ class BarangKeluarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function laporanBarangKeluar()
     {
-        
-        
+        $barangKeluar = Barang_keluar::with('barang')->get();
+        $return view('barang-keluar.cetaklaporan', compact('barangKeluar'));
         
      }
 
