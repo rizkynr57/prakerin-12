@@ -18,14 +18,6 @@
                             <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
                             @endforeach
                         </select>
-                        <div class="form-group">
-                            <label for="">Nama Supplier</label>
-                            <select name="id_supplier" id="" class="form-control">
-                                @foreach ($supplier as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_supplier }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
