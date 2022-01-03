@@ -20,7 +20,7 @@ class barang extends Model
 
     public function masuk()
     {
-        return $this->hasMany('App\Models\Barang_masuk', 'id_barang');
+        return $this->belongsTo('App\Models\Barang_masuk', 'id_barang');
     }
 
     public function keluar()
