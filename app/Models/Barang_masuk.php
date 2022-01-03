@@ -14,25 +14,29 @@ class barang_masuk extends Model
         'id_barang',
         'id_supplier',
         'jenis_barang',
-        'jumlah_penerimaan',
+        'jumlah_barang',
         'tgl_masuk'
     ];
     public $timestamps = true;
 
+    public function barang()
+    {
+        return $this->belongsTo('App\Models\Barang', 'id_barang');
+    }
     public function supplier()
     {
-        return $this->belongsTo('App\Models\Supplier', 'id_supplier');
-    }
+        return $this->belongsTo('app\Models\Supplier', 'id_supplier');
+
 
     public static function boot()
     {
         parent::boot();
-        self::deleting(function ($supplier) {
-            if ($supplier->supplier->count() > 0) {
+        self::deleting(function ($barang) {
+            if ($supplier->barang->count() > 0) {
                 $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
                 $msg .= '<ul>';
-                foreach ($supplier->supplier as $data) {
-                    $msg .= "<li>$data->nama_supplier</li>";
+                foreach ($barang->barang as $data) {
+                    $msg .= "<li>$data->nama_barang</li>";
                 }
                 $msg .= '</ul>';
                 Session::flash("flash_notification", [
