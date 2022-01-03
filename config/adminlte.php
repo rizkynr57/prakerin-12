@@ -233,6 +233,10 @@ return [
       'type' => 'fullscreen-widget',
       'topnav_right' => true
   ],
+  [
+      'type' => 'sidebar-menu-search',
+      'text' => 'search',
+  ],
   ['header' => 'MENU'],
   [
       'text' => 'Beranda',
@@ -261,6 +265,9 @@ return [
     'url' => 'petugas/barang-keluar',
     'icon' => 'fas fa-truck'
   ],
+  
+
+
 
   ],
     /*
