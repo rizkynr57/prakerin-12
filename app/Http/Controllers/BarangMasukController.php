@@ -45,12 +45,9 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jenis' => 'required',
-            'jumlah' => 'required',
-
-            'tgl_masuk' => 'required'
+            'jumlah' => 'required'
         ]);
-            Barang_masuk::create($request->all());
-            
+            Barang_masuk::create($request->all());          
             $barang = Barang::where('id', $request->id_barang)->get()->value('jumlah_barang');
             $barang->jumlah_barang += $request->jumlah;
             $barang->save();
@@ -100,8 +97,7 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jenis' => 'required',
-            'jumlah' => 'required',
-            'tgl_masuk' => 'required'
+            'jumlah' => 'required'
         ]);
         Barang_masuk::create($request->all());
         
@@ -124,7 +120,13 @@ class BarangMasukController extends Controller
      */
     public function destroy($id)
     {
-        $masuk = Barang_masuk::findOrFail($id)->delete();
+        if (!Barang_masuk::destroy($id)){
+         return redirect->back();
+        }
+       Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil dihapus",
+        ]);
         return redirect()->route('barang-masuk.index');
     }
 }
