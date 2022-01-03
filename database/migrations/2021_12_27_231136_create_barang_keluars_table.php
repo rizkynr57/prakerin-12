@@ -15,8 +15,8 @@ class CreateBarangKeluarsTable extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_supplier')->unsigned();
-            $table->foreign('id_supplier')->references('id')->on('suppliers');
+            
+            
             $table->bigInteger('id_barang')->unsigned();
             $table->foreign('id_barang')->references('id')->on('barangs');
             $table->integer('jumlah_pengiriman');
