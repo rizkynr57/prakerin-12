@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang_keluar;
-use App\Models\Supplier;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
@@ -16,10 +15,9 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::all();
         $barang = Barang::all();
         $keluar = Barang_keluar::all();
-        return view('barang-keluar.index', compact('keluar', 'supplier', 'barang'));
+        return view('barang-keluar.index', compact('keluar', 'barang'));
     }
 
     /**
@@ -44,7 +42,6 @@ class BarangKeluarController extends Controller
     {
 
             $request->validate([
-                
                 'id_barang' => 'required',
                 'jumlah' => 'required',
                 'tgl_pengiriman' => 'required',
@@ -124,8 +121,15 @@ class BarangKeluarController extends Controller
      * @param  \App\Models\barang_keluar  $barang_keluar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang_keluar $barang_keluar)
+    public function destroy($id)
     {
-        //
+        if (!Barang_keluar::destroy($id)) {
+            return redirect()->back();
+           }
+                Session::flash("flash_notification", [
+                "level" => "success",
+                "message" => "Data berhasil dihapus",
+            ]);
+             return redirect()->route('barang-keluar');
     }
 }
