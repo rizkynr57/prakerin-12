@@ -23,8 +23,5 @@ class barang_keluar extends Model
         return $this->belongsTo('App\Models\barang', 'id_barang');
     }
 
-    public function supplier()
-    {
-        return $this->belongsTo('App\Models\Supplier', 'id_supplier');
-    }
+
 }
