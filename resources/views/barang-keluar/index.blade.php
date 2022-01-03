@@ -16,12 +16,12 @@
             <div class="card">
                 <div class="card-header">Data Barang Keluar
                     <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                    data-target=".supplier">Tambah Data</a>
+                    data-target=".barangKeluar">Tambah Data</a>
                     @include('barang-keluar.create')
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="example">
+                        <table class="table" id="barangKeluar">
                             <thead>
                             <tr>
                                 <th>No</th>
@@ -76,7 +76,7 @@
 <script src="{{ asset('DataTables/datatables.min.js')}}"></script>
 <script>
     $(document).ready(function(){
-        $('#example').DataTable();
+        $('#barangKeluar').DataTable();
     });
 </script>
 @endsection
