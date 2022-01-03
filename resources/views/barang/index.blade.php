@@ -15,6 +15,9 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">Data Barang
+                    <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
+                    data-target=".barang">Tambah Data</a>
+                    @include('barang.create')
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -22,7 +25,6 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>ID Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
                                 <th>Jumlah Barang</th>
@@ -37,7 +39,6 @@
                             @foreach ($barang as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->barang_masuk->id }}</td>
                                     <td>{{ $data->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
                                     <td>{{ $data->jumlah_barang }}</td>                                    <td>
@@ -73,7 +74,7 @@
 <script src="{{ asset('DataTables/datatables.min.js')}}"></script>
 <script>
     $(document).ready(function(){
-        $('#example').DataTable();
+        $('#barang').DataTable();
     });
 </script>
 @endsection
