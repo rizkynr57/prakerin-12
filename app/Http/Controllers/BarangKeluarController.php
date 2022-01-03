@@ -29,10 +29,10 @@ class BarangKeluarController extends Controller
      */
     public function create()
     {
-        $supplier = Supplier::all();
-        $barang = Barang::all();
-        return view('barang-keluar.create', compact('supplier', 'barang'));
-    }
+        
+        
+        
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -44,19 +44,19 @@ class BarangKeluarController extends Controller
     {
 
             $request->validate([
-                'id_supplier' => 'required',
+                
                 'id_barang' => 'required',
                 'jumlah' => 'required',
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
-            $keluar = new Barang_keluar();
-            $keluar->id_supplier = $request->id_supplier;
-            $keluar->id_barang = $request->id_barang;
-            $keluar->jumlah_pengiriman = $request->jumlah;
-            $keluar->tgl_pengiriman = $request->tgl_pengiriman;
-            $keluar->tujuan = $request->tujuan;
-            $keluar->save();
+        
+             Barang_keluar::create($request->all());
+            
+             $barang = Barang::where($request->id_barang)->get()->value('jumlah_barang');
+             $barang->jumlah_barang -= $request->jumlah;
+             $barang->save();
+        
             Session::flash("flash_notification", [
                 "level" => "success",
                 "message" => "Data berhasil disimpan",
@@ -70,9 +70,10 @@ class BarangKeluarController extends Controller
      * @param  \App\Models\barang_keluar  $barang_keluar
      * @return \Illuminate\Http\Response
      */
-    public function show(barang_keluar $barang_keluar)
+    public function show($id)
     {
-        //
+        $barangKeluar = Barang_keluar::findOrFail($id);
+        return view('barang-keluar.show', compact('barangKeluar'));
     }
 
     /**
@@ -81,9 +82,11 @@ class BarangKeluarController extends Controller
      * @param  \App\Models\barang_keluar  $barang_keluar
      * @return \Illuminate\Http\Response
      */
-    public function edit(barang_keluar $barang_keluar)
+    public function edit($id)
     {
-        //
+        $barang = Barang::all();
+        $barangKeluar = Barang_keluar::findOrFail($id);
+        return view('barang-keluar.edit', compact('barang', 'barangKeluar'));
     }
 
     /**
@@ -93,9 +96,26 @@ class BarangKeluarController extends Controller
      * @param  \App\Models\barang_keluar  $barang_keluar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, barang_keluar $barang_keluar)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+                
+                'id_barang' => 'required',
+                'jumlah' => 'required',
+                'tgl_pengiriman' => 'required',
+                'tujuan' => 'required',
+            ]);
+        $barangKeluar = Barang_keluar::findOrFail($id);
+        $barangKeluar->update($request->all());
+        
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->jumlah_barang -= $request->jumlah;
+        $barang->save();
+        Session::flash("flash_notification", [
+                "level" => "success",
+                "message" => "Data berhasil diedit",
+            ]);
+            return redirect()->route('barang-keluar.edit');
     }
 
     /**
