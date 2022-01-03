@@ -26,11 +26,12 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nama Supplier</th>
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
                                 <th>Jumlah Barang</th>
                                 <th>Satuan</th>
-                                <th>Nama Supplier</th>
+                       
                                 <th>Tanggal Masuk Barang</th>
                                 <th>Action</th>
                             </tr>
@@ -42,11 +43,11 @@
                             @foreach ($masuk as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->nama_barang }}</td>
+                                    <td>{{ $data->supplier->nama_supplier }}</td>
+                                    <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
                                     <td>{{ $data->jumlah_barang }}</td>
                                     <td>{{ $data->satuan }}</td>
-                                    <td>{{ $data->supplier->nama_supplier }}</td>
                                     <td>{{ $data->tgl_masuk }}</td>
                                     <td>
                                         <form action="{{ route('barang-masuk.destroy', $data->id) }}" method="post">
