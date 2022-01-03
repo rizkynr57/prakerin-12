@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang_masuk;
+use App\Models\Barang;
 use App\Models\Supplier;
 use Session;
 use Illuminate\Http\Request;
