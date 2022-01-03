@@ -76,9 +76,10 @@ class BarangController extends Controller
      * @param  \App\Models\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(barang $barang)
+    public function edit($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        return view('barang.edit', compact('barang'));
     }
 
     /**
