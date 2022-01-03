@@ -27,10 +27,10 @@ class BarangMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function laporanBarangMasuk()
     {
-        
-        
+        $barangMasuk = Barang_masuk::with('Barang', 'Supplier')->get();
+        return view('barang-masuk.cetaklaporan', compact('barangMasuk');
     }
 
     /**
