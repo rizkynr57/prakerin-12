@@ -18,11 +18,11 @@ class BarangKeluarController extends Controller
     public function index()
     {
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
-                         ->pluck('nama_supplier', 'id');
+                         ->pluck('nama_barang', 'id');
 
 
-        $keluar = Barang_keluar::all();
-        return view('barang-keluar.index', compact('keluar', 'barang'));
+        $barangKeluarkeluar = Barang_keluar::all();
+        return view('barang-keluar.index', compact('barangKeluar', 'barang'));
     }
 
     /**
@@ -32,16 +32,22 @@ class BarangKeluarController extends Controller
      */
     public function laporanBarangKeluar()
     {
-        $barangKeluar = Barang_keluar::with('barang')->get();
-        return view('barang-keluar.cetaklaporan', compact('barangKeluar'));
+        $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
+                         ->pluck('nama_barang', 'id');
+
+        $barangKeluar = Barang_keluar::all();
+        return view('barang-keluar.cetaklaporan', compact('barangKeluar', 'barang'));
         
      }
 
     public function cetakPDF()
     {
-        $data = Barang_keluar::with('barang')->get();
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data'));
-        return $pdf->download('laporan-pengiriman-barang-pdf');
+        $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
+                         ->pluck('nama_barang', 'id');
+
+        $data = Barang_keluar::all();
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2'));
+        return $pdf->download('laporan-pengiriman-barang.pdf');
     /**
      * Store a newly created resource in storage.
      *
@@ -50,10 +56,9 @@ class BarangKeluarController extends Controller
      */
     public function store(Request $request)
     {
-
             $request->validate([
                 'id_barang' => 'required',
-                'jumlah' => 'required',
+                'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
@@ -103,7 +108,7 @@ class BarangKeluarController extends Controller
         $request->validate([
                 
                 'id_barang' => 'required',
-                'jumlah' => 'required',
+                'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
