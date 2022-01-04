@@ -24,7 +24,6 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Supplier</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Pengiriman</th>
                                 <th>Tanggal Pengiriman</th>
@@ -36,10 +35,9 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($keluar as $data)
+                            @foreach ($barangKeluar as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->supplier->nama_supplier }}</td>
                                     <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jumlah_pengiriman }}</td>
                                     <td>{{ $data->tgl_pengiriman }}</td>                                    <td>
