@@ -5,6 +5,7 @@
 			position: relative;
 			border: 1px solid $543535
 		}
+         </style>
 </head>
 <body>
 	<div class="form-group">
@@ -18,7 +19,7 @@
 				<th>Jenis Barang</th>
 				<th>Jumlah Barang</th>
 				<th>Satuan</th>
-				
+		          </tr>
 				@foreach($barangMasuk as $data)
 				       <tr>
 					          <td>{{ $no++ }}</td>
@@ -29,7 +30,6 @@
 					          <td>{{ $data->satuan }}</td>
 					</tr>
 				@endforeach
-				</tr>
 		    </table>
 		</div>
 </body>
