@@ -67,8 +67,8 @@ class BarangMasukController extends Controller
      */
     public function show($id)
     {
-        $masuk = Barang_masuk::findOrFail($id);
-        return view('barang-masuk.show', compact('masuk'));
+        $barangMasuk = Barang_masuk::findOrFail($id);
+        return view('barang-masuk.show', compact('barangMasuk'));
     }
 
     /**
