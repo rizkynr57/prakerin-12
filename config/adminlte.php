@@ -268,16 +268,17 @@ return [
   [
     'text' => 'Laporan Barang',
     'url' => '#',
+    'icon' => 'fas fa-book',
     'submenu' => [
       [
          'text' => 'Laporan Pemasukan Barang',
          'url' => 'admin/laporangBarangMasuk',
-         'icon' => 'fas fa-file'
+         'icon' => 'fas fa-sticky-note'
       ],
       [
          'text' => 'Laporan Pengeluaran Barang',
          'url' => 'admin/laporangBarangKeluar',
-         'icon' => 'fas fa-file'
+         'icon' => 'far fa-sticky-note'
       ],
   ],
   ],
