@@ -58,12 +58,8 @@ class BarangMasukController extends Controller
             $barang = Barang::where('id', $request->id_barang)->get()->value('jumlah_barang');
             $barang->jumlah_barang += $request->jumlah;
             $barang->save();
-            
-            Session::flash("flash_notification", [
-                "level" => "success",
-                "message" => "Data berhasil disimpan",
-            ]);
-            return redirect()->route('barang-masuk.index');
+
+            return redirect('barang-masuk')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -111,12 +107,8 @@ class BarangMasukController extends Controller
         $barang = Barang::where('id', $id)->get()->value('jumlah_barang');
         $barang->jumlah_barang += $request->jumlah;
         $barang->update();
-        
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil diedit",
-        ]);
-        return redirect()->route('barang-masuk.index');
+  
+        return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
     }
 
     /**
