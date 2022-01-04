@@ -66,8 +66,8 @@
         </div>
     </div>
 </div>
-@endrole
-@stop
+@include('sweetalert::alert')
+@endsection
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
