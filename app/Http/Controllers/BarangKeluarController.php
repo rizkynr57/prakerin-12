@@ -55,7 +55,7 @@ class BarangKeluarController extends Controller
         
              Barang_keluar::create($request->all());
             
-             $barang = Barang::where('id', $request->id_barang)->get()->value('jumlah_barang');
+             $barang = Barang::where('id', '=', $request->id_barang)->first();
              $barang->jumlah_barang -= $request->jumlah;
              $barang->save();
         
