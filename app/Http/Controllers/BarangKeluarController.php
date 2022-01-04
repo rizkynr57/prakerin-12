@@ -28,7 +28,7 @@ class BarangKeluarController extends Controller
     public function laporanBarangKeluar()
     {
         $barangKeluar = Barang_keluar::with('barang')->get();
-        $return view('barang-keluar.cetaklaporan', compact('barangKeluar'));
+        return view('barang-keluar.cetaklaporan', compact('barangKeluar'));
         
      }
 
