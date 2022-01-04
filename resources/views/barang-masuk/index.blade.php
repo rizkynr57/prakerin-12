@@ -38,7 +38,7 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($masuk as $data)
+                            @foreach ($barangMasuk as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $data->supplier->nama_supplier }}</td>
