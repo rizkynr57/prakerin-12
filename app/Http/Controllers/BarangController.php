@@ -49,12 +49,7 @@ class BarangController extends Controller
          $barang->jumlah_barang = 0;
          $barang->satuan = $request->satuan;
          $barang->save();
-
-         Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil disimpan",
-        ]);
-         return redirect()->route('barang');
+         return redirect('barang')->with('success', 'Data berhasil disimpan!');
         
     }
 
@@ -101,12 +96,7 @@ class BarangController extends Controller
         $barang->jenis_barang = $request->jenis;
         $barang->satuan = $request->satuan;
         $barang->update();
-
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil diedit",
-        ]);
-        return redirect()->route('barang');
+        return redirect('barang')->with('success', 'Data berhasil diedit!');
     }
 
     /**
