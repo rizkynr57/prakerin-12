@@ -36,7 +36,7 @@ class BarangMasukController extends Controller
 
     public function cetakPDF()
     {
-        $data = Barang_masuk::with('Barang', 'Supplier)->get();
+        $data = Barang_masuk::with('Barang', 'Supplier')->get();
         $pdf = PDF::loadview('barang-masuk.cetaklaporan, compact('data'));
         return $pdf->download('laporan-pemasukan-barang-pdf');
     }
