@@ -6,6 +6,7 @@ use App\Models\Barang_masuk;
 use App\Models\Barang;
 use App\Models\Supplier;
 use Session;
+use PDF;
 use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
