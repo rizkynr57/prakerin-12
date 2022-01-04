@@ -9,7 +9,6 @@
 @stop
 
 @section('content')
-@role('admin')
 <div class="container">
     <div class="row">
         <div class="col">
@@ -78,8 +77,7 @@
         </div>
     </div>
 </div>
-@endrole
-@stop
+@endsection
 
 @section('css')
 
