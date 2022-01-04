@@ -32,6 +32,11 @@ class BarangKeluarController extends Controller
         
      }
 
+    public function cetakPDF()
+    {
+        $data = Barang_keluar::with('barang')->get();
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data'));
+        return $pdf->download('laporan-pengiriman-barang-pdf');
     /**
      * Store a newly created resource in storage.
      *
