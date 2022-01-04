@@ -18,23 +18,23 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="">ID Barang</label>
-                        <input type="text" name="alamat" class="form-control" value="{{ $barangMasuk->id_barang }}" readonly>
+                        <input type="number" name="alamat" class="form-control" value="{{ $barangKeluar->id_barang }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
-                        <input type="text" name="jumlah" class="form-control" value="{{ $barangMasuk->jumlah_pengiriman }}">
+                        <input type="number" name="jumlah" class="form-control" value="{{ $barangKeluar->jumlah_pengiriman }}">
                     </div>
                     <div class="form-group">
                         <label for="">Tujuan</label>
-                        <input type="text" name="tujuan" class="form-control" value="{{ $barangMasuk->tujuan }}">
+                        <input type="text" name="tujuan" class="form-control" value="{{ $barangKeluar->tujuan }}">
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Pengiriman Barang</label>
-                        <input type="text" name="tgl_pengiriman" class="form-control" value="{{ $barangMasuk->tgl_pengiriman }}">
+                        <input type="date" name="tgl_pengiriman" class="form-control" value="{{ $barangKeluar->tgl_pengiriman }}">
                     </div>
                     <div class="form-group">
                         <br>
-                        <a href="{{ route('barang-masuk.index') }}" class="btn btn-outline-primary">Kembali</a>
+                        <a href="{{ route('barang-keluar.index') }}" class="btn btn-outline-primary">Kembali</a>
                     </div>
                 </div>
             </div>
