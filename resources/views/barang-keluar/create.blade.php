@@ -13,11 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <select name="id_barang" id="" class="form-control">
-                            @foreach ($barang as $item)
-                            <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
-                            @endforeach
-                        </select>
+                        {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'required']) !!}
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
