@@ -59,11 +59,7 @@ class BarangKeluarController extends Controller
              $barang->jumlah_barang -= $request->jumlah;
              $barang->save();
         
-            Session::flash("flash_notification", [
-                "level" => "success",
-                "message" => "Data berhasil disimpan",
-            ]);
-            return redirect()->route('barang-keluar.index');
+             return redirect('barang-keluar')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -113,11 +109,8 @@ class BarangKeluarController extends Controller
         $barang = Barang::findOrFail($request->id_barang);
         $barang->jumlah_barang -= $request->jumlah;
         $barang->save();
-        Session::flash("flash_notification", [
-                "level" => "success",
-                "message" => "Data berhasil diedit",
-            ]);
-            return redirect()->route('barang-keluar.edit');
+
+        return redirect('barang-keluar')->with('success', 'Data berhasil diedit!');
     }
 
     /**
