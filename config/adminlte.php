@@ -241,9 +241,7 @@ return [
   [
       'text' => 'Beranda',
       'url' => '/home',
-      'icon' => 'fas fa-home',
-      'label' => 100,
-      'label_color' => 'success',
+      'icon' => 'fas fa-home'
   ],
   [
       'text' => 'Data Supplier',
