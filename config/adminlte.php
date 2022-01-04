@@ -265,10 +265,21 @@ return [
     'url' => 'petugas/barang-keluar',
     'icon' => 'fas fa-truck'
   ],
-  
-
-
-
+  [
+    'text' => 'Laporan Barang',
+    'url' => '#',
+    'submenu' => [
+      [
+         'text' => 'Laporan Pemasukan Barang',
+         'url' => 'admin/laporangBarangMasuk',
+         'icon' => 'fas fa-file'
+      ],
+      [
+         'text' => 'Laporan Pengeluaran Barang',
+         'url' => 'admin/laporangBarangKeluar',
+         'icon' => 'fas fa-file'
+      ],
+  ],
   ],
     /*
     |--------------------------------------------------------------------------
