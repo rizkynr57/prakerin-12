@@ -12,8 +12,12 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="">Nama Supplier</label>
+                        {!! Form::select('id_supplier', $supplier, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Supplier --', 'id' => 'id_supplier', 'required']) !!}
+                    </div>
+                    <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama" required>
+                        {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'required']) !!}
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
@@ -22,14 +26,6 @@
                     <div class="form-group">
                         <label for="">Jumlah Barang</label>
                         <input type="text" class="form-control" name="jumlah" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Nama Supplier</label>
-                       <select name="id_supplier" class="form-control">
-                           @foreach ($supplier as $data)
-                                <option value="{{ $data->id }}">{{ $data->nama_supplier }}</option>
-                           @endforeach
-                       </select>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Barang Masuk</label>
