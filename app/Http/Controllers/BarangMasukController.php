@@ -101,9 +101,8 @@ class BarangMasukController extends Controller
      */
     public function edit($id)
     {
-        $masuk = Barang_masuk::findOrFail($id);
-        $supplier = Supplier::all();
-        return view('barang-masuk.edit', compact('masuk', 'supplier'));
+        $barangMasuk = Barang_masuk::findOrFail($id);
+        return view('barang-masuk.edit', compact('barangMasuk', 'supplier'));
     }
 
     /**
