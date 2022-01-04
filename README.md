@@ -1,2 +1,2 @@
-# prakerinn
+# prakerin
 Praktik Kerja Lapangan Internal
