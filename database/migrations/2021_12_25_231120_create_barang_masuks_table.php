@@ -21,8 +21,6 @@ class CreateBarangMasuksTable extends Migration
             $table->foreign('id_barang')->references('id')->on('barangs');
             $table->string('jenis_barang');
             $table->integer('jumlah_barang');
-            
-            
             $table->date('tgl_masuk');
             $table->timestamps();
         });
