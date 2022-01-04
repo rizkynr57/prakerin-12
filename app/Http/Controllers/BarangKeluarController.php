@@ -21,7 +21,7 @@ class BarangKeluarController extends Controller
                          ->pluck('nama_barang', 'id');
 
 
-        $barangKeluarkeluar = Barang_keluar::all();
+        $barangKeluar = Barang_keluar::all();
         return view('barang-keluar.index', compact('barangKeluar', 'barang'));
     }
 
