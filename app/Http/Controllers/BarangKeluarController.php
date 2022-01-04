@@ -17,7 +17,10 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
+                         ->pluck('nama_supplier', 'id');
+
+
         $keluar = Barang_keluar::all();
         return view('barang-keluar.index', compact('keluar', 'barang'));
     }
@@ -108,7 +111,7 @@ class BarangKeluarController extends Controller
         $barangKeluar = Barang_keluar::findOrFail($id);
         $barangKeluar->update($request->all());
         
-        $barang = Barang::findOrFail($request->id_barang);
+        $barang = Barang::where('id', '=', $request->id_barang)->first();
         $barang->jumlah_barang -= $request->jumlah;
         $barang->save();
 
