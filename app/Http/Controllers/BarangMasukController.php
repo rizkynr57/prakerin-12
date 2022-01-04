@@ -54,8 +54,9 @@ class BarangMasukController extends Controller
             'jenis' => 'required',
             'jumlah' => 'required'
         ]);
-            Barang_masuk::create($request->all());          
-            $barang = Barang::where('id', $request->id_barang)->get()->value('jumlah_barang');
+            Barang_masuk::create($request->all()); 
+         
+            $barang = Barang::where('id', '=', $request->id_barang)->first();
             $barang->jumlah_barang += $request->jumlah;
             $barang->save();
 
@@ -104,7 +105,7 @@ class BarangMasukController extends Controller
         ]);
         Barang_masuk::create($request->all());
         
-        $barang = Barang::where('id', $id)->get()->value('jumlah_barang');
+        $barang = Barang::where('id', '=', $id)->get()->first();
         $barang->jumlah_barang += $request->jumlah;
         $barang->update();
   
