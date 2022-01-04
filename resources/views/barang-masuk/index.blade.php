@@ -9,8 +9,6 @@
 @endsection
 
 @section('content')
-@role('admin')
-@include('layouts._flash')
 <div class="container">
     <div class="'row">
         <div class="col">
@@ -70,7 +68,7 @@
         </div>
     </div>
 </div>
-@endrole
+@include('sweetalert::alert')
 @endsection
 
 @section('css')
