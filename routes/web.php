@@ -33,16 +33,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function(){
    
     Route::resource('supplier', SupplierController::class);
-    Route::post('/cetak-supplier', SupplierController@cetakSupplierPDF)->name('exportPDF.suppliersAll');
+    Route::get('/cetak-supplier', SupplierController@cetakSupplierPDF)->name('exportPDF.suppliersAll');
 
     Route::resource('barang', BarangController::class);
 
     Route::resource('barang-keluar', BarangKeluarController::class);
-    Route::get('/laporan-barangkeluar', BarangKeluarController@laporanBarangKeluar);
+    Route::get('/laporan-barangkeluar', BarangKeluarController@laporanBarangKeluar)->name('laporanBarangKeluar');
     Route::get('/cetak-pdf', BarangKeluarController@cetakPDF)->name('exportPDF.barangKeluarAll');
 
     Route::resource('barang-masuk', BarangMasukController::class);
-    Route::get('/laporan-barangmasuk', BarangKeluarController@laporanBarangMasuk);
+    Route::get('/laporan-barangmasuk', BarangKeluarController@laporanBarangMasuk)->name('laporanBarangMasuk');
     Route::get('/cetak-pdf', BarangKeluarController@cetakPDF)->name('exportPDF.barangMasukAll');
 });
 
