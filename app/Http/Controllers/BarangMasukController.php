@@ -28,11 +28,6 @@ class BarangMasukController extends Controller
         return view('barang-masuk.index', compact('barangMasuk', 'supplier', 'barang'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function laporanBarangMasuk()
     {
         $barang = Barang::orderBy('nama_barang', 'ASC')->get()
@@ -58,12 +53,6 @@ class BarangMasukController extends Controller
         return $pdf->download('laporan-pemasukan-barang.pdf');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -81,37 +70,18 @@ class BarangMasukController extends Controller
             return redirect('barang-masuk')->with('success', 'Data berhasil disimpan!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\barang_masuk  $barang_masuk
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $barangMasuk = Barang_masuk::findOrFail($id);
         return view('barang-masuk.show', compact('barangMasuk'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\barang_masuk  $barang_masuk
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $barangMasuk = Barang_masuk::findOrFail($id);
         return view('barang-masuk.edit', compact('barangMasuk', 'supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\barang_masuk  $barang_masuk
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
         $request->validate([
@@ -129,12 +99,6 @@ class BarangMasukController extends Controller
         return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\barang_masuk  $barang_masuk
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         if (!Barang_masuk::destroy($id)){
