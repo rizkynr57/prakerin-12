@@ -63,7 +63,7 @@ class BarangMasukController extends Controller
         ]);
             Barang_masuk::create($request->all()); 
          
-            $barang = Barang::where('id', '=', $request->id_barang)->first();
+            $barang = Barang::where('id', $request->id_barang)->first();
             $barang->jumlah_barang += $request->jumlah;
             $barang->save();
 
@@ -90,9 +90,11 @@ class BarangMasukController extends Controller
             'jenis' => 'required',
             'jumlah' => 'required'
         ]);
-        Barang_masuk::create($request->all());
+
+        $barangMasuk = Barang_masuk::findOrFail($id);
+        Barang_masuk::update($request->all());
         
-        $barang = Barang::where('id', '=', $id)->get()->first();
+        $barang = Barang::where('id', $request->id_barang)->first();
         $barang->jumlah_barang += $request->jumlah;
         $barang->update();
   
