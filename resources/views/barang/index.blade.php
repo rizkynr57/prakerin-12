@@ -19,6 +19,16 @@
                     @include('barang.create')
                 </div>
                 <div class="card-body">
+                    @if ($barang->jumlah_barang < 1) 
+                        @foreach($barang as $item)
+                            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                            <div>
+                               <strong>Peringatan!</strong>stok $item['nama_barang'] telah habis !!!
+                            </div>
+                            </div>
+                        @endforeach
+                     @endif
                     <div class="table-responsive">
                         <table class="table" id="example">
                             <thead>
