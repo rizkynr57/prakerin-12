@@ -30,7 +30,7 @@
                         @endforeach
                      @endif
                     <div class="table-responsive">
-                        <table class="table" id="example">
+                        <table class="table" id="barang">
                             <thead>
                             <tr>
                                 <th>No</th>
