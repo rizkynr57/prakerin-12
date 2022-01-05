@@ -20,6 +20,7 @@
 </style>
 
 <table id="product-keluar" width="100%">
+ <a type="button" href="{{ route('barang-keluar.cetakPDF') }} class="btn btn-success">Export Ke PDF</a>
     <thead>
     <tr>
         <td>No</td>
