@@ -66,7 +66,7 @@ class BarangKeluarController extends Controller
                  $barang->save()
              }
 
-             return redirect('barang-keluar')->with('success', 'Data berhasil disimpan!');
+             return redirect('barang-keluar')->with('success', 'Berhasil, barang sedang dikirim ke tempat tujuan!');
     }
 
     public function show($id)
@@ -102,9 +102,9 @@ class BarangKeluarController extends Controller
               ]);
                } else {
                   $barang->save()
-             }
+               }
 
-        return redirect('barang-keluar')->with('success', 'Data berhasil diedit!');
+               return redirect('barang-keluar')->with('success', 'Berhasil, pengiriman ulang dilakukan!');
     }
 
     public function destroy($id)
