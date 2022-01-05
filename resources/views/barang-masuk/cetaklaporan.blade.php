@@ -3,7 +3,7 @@
 	<style>
 		table.static {
 			position: relative;
-			border: 1px solid $543535
+			border: 1px solid #543535
 		}
          </style>
 </head>
