@@ -60,10 +60,10 @@ class BarangKeluarController extends Controller
                  $barang->save();
                  return redirect()->back();
              } else {
-                 return redirect('barang-keluar')->with('error', 'Gagal, pengiriman tidak boleh melebihi batas stok tersisa!');
+                 return redirect('barang-keluar')->alert()->error('Gagal', 'Pengiriman tidak boleh melebihi batas stok tersisa!');
              }
 
-             return redirect('barang-keluar')->with('success', 'Berhasil, barang sedang dikirim ke tempat tujuan!');
+             return redirect('barang-keluar')->withSuccess('<strong>Berhasil</strong>, barang sedang dikirim ke tempat tujuan!');
     }
 
     public function show($id)
@@ -95,10 +95,10 @@ class BarangKeluarController extends Controller
                   $barang->save();
                   return redirect()->back();
               } else {
-                 return redirect('barang-keluar')->with('error', 'Gagal, pengiriman tidak boleh melebihi batas stok tersisa!');
+                 return redirect('barang-keluar')->alert()->error('Gagal', 'Pengiriman tidak boleh melebihi batas stok tersisa!');
              }
 
-              return redirect('barang-keluar')->with('success', 'Berhasil, pengiriman ulang dilakukan!');
+              return redirect('barang-keluar')->withSuccess('<strong>Berhasil</strong>, pengiriman ulang dilakukan!');
     }
 
     public function destroy($id)
