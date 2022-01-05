@@ -27,25 +27,47 @@ class BarangKeluarController extends Controller
         return view('barang-keluar.index', compact('barangKeluar', 'barang'));
     }
 
-    public function laporanBarangKeluar()
+    public function laporanBarangKeluarAll()
     {
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
         $barangKeluar = Barang_keluar::all();
         $no = 1;
-        return view('barang-keluar.cetaklaporan', compact('barangKeluar', 'barang', 'no'));
+        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 'no'));
+        
+     }
+      
+    public function laporanBarangKeluar($id)
+    {
+        $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
+                         ->pluck('nama_barang', 'id');
+
+        $barangKeluar = Barang_keluar::find($id);
+        $no = 1;
+        return view('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'barang', 'no'));
         
      }
 
-    public function cetakPDF()
+    public function cetakPDF_all()
     {
         $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
         $data = Barang_keluar::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('data', 'data2', 'no'));
+        return $pdf->download('laporan-pengiriman-barang.pdf');
+    }
+
+    public function cetakPDF($id)
+    {
+        $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
+                         ->pluck('nama_barang', 'id');
+
+        $data = Barang_keluar::find($id);
+        $no = 1;
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('data', 'data2', 'no'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
@@ -70,12 +92,6 @@ class BarangKeluarController extends Controller
              }
 
              return redirect('barang-keluar')->withSuccess('<strong>Berhasil</strong>, barang sedang dikirim ke tempat tujuan!');
-    }
-
-    public function show($id)
-    {
-        $barangKeluar = Barang_keluar::findOrFail($id);
-        return view('barang-keluar.show', compact('barangKeluar'));
     }
 
     public function edit($id)
