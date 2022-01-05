@@ -31,7 +31,8 @@ class BarangKeluarController extends Controller
                          ->pluck('nama_barang', 'id');
 
         $barangKeluar = Barang_keluar::all();
-        return view('barang-keluar.cetaklaporan', compact('barangKeluar', 'barang'));
+        $no = 1;
+        return view('barang-keluar.cetaklaporan', compact('barangKeluar', 'barang', 'no'));
         
      }
 
@@ -41,7 +42,8 @@ class BarangKeluarController extends Controller
                          ->pluck('nama_barang', 'id');
 
         $data = Barang_keluar::all();
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2'));
+        $no = 1;
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'no'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
