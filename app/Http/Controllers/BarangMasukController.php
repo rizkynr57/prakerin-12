@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 
 class BarangMasukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $barang = Barang::orderBy('nama_barang', 'ASC')->get()
