@@ -37,7 +37,8 @@ class BarangMasukController extends Controller
                           ->pluck('nama_supplier', 'id');
 
         $barangMasuk = Barang_masuk::all();
-        return view('barang-masuk.cetaklaporan', compact('barangMasuk', 'supplier', 'barang');
+        $no = 1;
+        return view('barang-masuk.cetaklaporan', compact('barangMasuk', 'supplier', 'barang', 'no'));
     }
 
     public function cetakPDF()
@@ -49,7 +50,8 @@ class BarangMasukController extends Controller
                           ->pluck('nama_supplier', 'id');
 
         $data = Barang_masuk::all();
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3'));
+        $no = 1;
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
         return $pdf->download('laporan-pemasukan-barang.pdf');
     }
 
