@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Session;
+use PDF;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -19,23 +20,14 @@ class SupplierController extends Controller
         return view('supplier.index', compact('supplier'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function cetakSupplierPDF()
     {
-        
-
+        $data = Supplier::all();
+        $no = 1;
+        $pdf = PDF::loadview('supplier.cetaksupplier', compact('data', 'no'));
+        return $pdf->download('Data-supplier.pdf');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -53,37 +45,18 @@ class SupplierController extends Controller
         return redirect('supplier')->with('success', 'Data berhasil disimpan!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $supplier = Supplier::findOrFail($id);
         return view('supplier.show', compact('supplier'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $supplier = Supplier::findOrFail($id);
         return view('supplier.edit', compact('supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -101,12 +74,6 @@ class SupplierController extends Controller
         return redirect('supplier')->with('success', 'Data berhasil diedit!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
        if(!Supplier::destroy($id)){
