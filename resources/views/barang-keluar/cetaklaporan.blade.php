@@ -36,7 +36,7 @@
             <td>{{ $data->barang->nama_barang}}</td>
             <td>{{ $data->jumlah_pengiriman}}</td>
             <td>{{ $data->tujuan }}</td>
-            <td>{{ $data->tgl_masuk }}</td>
+            <td>{{ $data->tgl_pengiriman }}</td>
         </tr>
         </tbody>
     @endforeach
