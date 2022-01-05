@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang_keluar;
 use App\Models\Barang;
 use PDF;
+use Alert;
 use Session;
 use Illuminate\Http\Request;
 
