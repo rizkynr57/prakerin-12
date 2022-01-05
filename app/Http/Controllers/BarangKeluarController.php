@@ -56,14 +56,9 @@ class BarangKeluarController extends Controller
             
              $barang = Barang::where('id', $request->id_barang)->first();
              $barang->jumlah_barang -= $request->jumlah;
-
-             if ($barang['jumlah_barang'] < 1) {
-              Session::flash("flash_notification", [
-                "level" => "danger",
-                "message" => "Pengiriman tidak boleh melebihi batas tersisa",
-              ]);
-             } else {
-                 $barang->save()
+             if ($barang['jumlah_barang'] >= 0) {
+                 barang->save();
+                 return redirect()->back();
              }
 
              return redirect('barang-keluar')->with('success', 'Berhasil, barang sedang dikirim ke tempat tujuan!');
@@ -94,17 +89,12 @@ class BarangKeluarController extends Controller
         
               $barang = Barang::where('id', $request->id_barang)->first();
               $barang->jumlah_barang -= $request->jumlah;
+              if ($barang['jumlah_barang'] >= 0) {
+                  barang->save();
+                  return redirect()->back();
+              }
 
-              if ($barang['jumlah_barang'] < 1) {
-                 Session::flash("flash_notification", [
-                   "level" => "danger",
-                   "message" => "Data berhasil dihapus",
-              ]);
-               } else {
-                  $barang->save()
-               }
-
-               return redirect('barang-keluar')->with('success', 'Berhasil, pengiriman ulang dilakukan!');
+              return redirect('barang-keluar')->with('success', 'Berhasil, pengiriman ulang dilakukan!');
     }
 
     public function destroy($id)
