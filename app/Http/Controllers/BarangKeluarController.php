@@ -57,7 +57,7 @@ class BarangKeluarController extends Controller
              $barang = Barang::where('id', $request->id_barang)->first();
              $barang->jumlah_barang -= $request->jumlah;
              if ($barang['jumlah_barang'] >= 0) {
-                 barang->save();
+                 $barang->save();
                  return redirect()->back();
              }
 
@@ -90,7 +90,7 @@ class BarangKeluarController extends Controller
               $barang = Barang::where('id', $request->id_barang)->first();
               $barang->jumlah_barang -= $request->jumlah;
               if ($barang['jumlah_barang'] >= 0) {
-                  barang->save();
+                  $barang->save();
                   return redirect()->back();
               }
 
