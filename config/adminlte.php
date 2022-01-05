@@ -245,22 +245,22 @@ return [
   ],
   [
       'text' => 'Data Supplier',
-      'url' => 'admin/supplier',
+      'url' => 'supplier',
       'icon' => 'fas fa-address-book'
   ],
   [
       'text' => 'Barang',
-      'url' => 'admin/barang',
+      'url' => 'barang',
       'icon' => 'fas fa-balance-scale'
   ],
   [
     'text' => 'Barang Masuk',
-    'url' => 'petugas/barang-masuk',
+    'url' => 'barang-masuk',
     'icon' => 'fas fa-people-carry'
    ],
    [
     'text' => 'Barang Keluar',
-    'url' => 'petugas/barang-keluar',
+    'url' => 'barang-keluar',
     'icon' => 'fas fa-truck'
   ],
   [
@@ -270,12 +270,12 @@ return [
     'submenu' => [
       [
          'text' => 'Laporan Pemasukan Barang',
-         'url' => 'admin/laporangBarangMasuk',
+         'url' => 'laporangBarangMasuk',
          'icon' => 'fas fa-sticky-note'
       ],
       [
          'text' => 'Laporan Pengeluaran Barang',
-         'url' => 'admin/laporangBarangKeluar',
+         'url' => 'laporangBarangKeluar',
          'icon' => 'far fa-sticky-note'
       ],
   ],
