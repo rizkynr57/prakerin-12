@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
 
 class BarangKeluarController extends Controller
 {
-    
+
+    public function __construct()
+    {
+        $this->middleware('role:petugas');
+    }
+
     public function index()
     {
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
