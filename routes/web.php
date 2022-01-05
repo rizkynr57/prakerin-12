@@ -39,10 +39,12 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::resource('barang-keluar', BarangKeluarController::class);
     Route::get('/laporan-barangkeluar', BarangKeluarController@laporanBarangKeluar)->name('laporanBarangKeluar');
-    Route::get('/cetak-pdf', BarangKeluarController@cetakPDF)->name('exportPDF.barangKeluarAll');
+    Route::get('/cetak-pdf_all', BarangKeluarController@cetakPDF_all)->name('exportPDF.barangKeluarAll');
+    Route::get('/cetak-pdf/{id}', 'ProductKeluarController@cetakPDF')->name('exportPDF.barangKeluar');
 
     Route::resource('barang-masuk', BarangMasukController::class);
     Route::get('/laporan-barangmasuk', BarangKeluarController@laporanBarangMasuk)->name('laporanBarangMasuk');
-    Route::get('/cetak-pdf', BarangKeluarController@cetakPDF)->name('exportPDF.barangMasukAll');
+    Route::get('/cetak-pdf_all', BarangMasukController@cetakPDF_all)->name('exportPDF.barangMasukAll');
+    Route::get('/cetak-pdf/{id}', 'BarangMasukController@cetakPDF')->name('exportPDF.barangMasuk');
 });
 
