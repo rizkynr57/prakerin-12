@@ -56,7 +56,7 @@ class BarangKeluarController extends Controller
         
              Barang_keluar::create($request->all());
             
-             $barang = Barang::where('id', '=', $request->id_barang)->first();
+             $barang = Barang::where('id', $request->id_barang)->first();
              $barang->jumlah_barang -= $request->jumlah;
              $barang->save();
         
@@ -77,8 +77,7 @@ class BarangKeluarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-                
+        $request->validate([        
                 'id_barang' => 'required',
                 'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
@@ -87,7 +86,7 @@ class BarangKeluarController extends Controller
         $barangKeluar = Barang_keluar::findOrFail($id);
         $barangKeluar->update($request->all());
         
-        $barang = Barang::where('id', '=', $request->id_barang)->first();
+        $barang = Barang::where('id', $request->id_barang)->first();
         $barang->jumlah_barang -= $request->jumlah;
         $barang->save();
 
