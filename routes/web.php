@@ -42,7 +42,7 @@ Route::group(['prefix', 'middleware' => ['auth']], function(){
     Route::post('/cetak-pdf', BarangKeluarController@cetakPDF);
 
     Route::resource('barang-masuk', BarangMasukController::class);
-    Route::get('/laporan-barangmasuk, BarangKeluarController@laporanBarangMasuk);
+    Route::get('/laporan-barangmasuk', BarangKeluarController@laporanBarangMasuk);
     Route::post('/cetak-pdf', BarangKeluarController@cetakPDF);
 });
 
