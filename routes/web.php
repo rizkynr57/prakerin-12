@@ -38,7 +38,7 @@ Route::group(['prefix', 'middleware' => ['auth']], function(){
     Route::resource('barang', BarangController::class);
 
     Route::resource('barang-keluar', BarangKeluarController::class);
-    Route::get('/laporan-barangkeluar, BarangKeluarController@laporanBarangKeluar);
+    Route::get('/laporan-barangkeluar', BarangKeluarController@laporanBarangKeluar);
     Route::post('/cetak-pdf', BarangKeluarController@cetakPDF);
 
     Route::resource('barang-masuk', BarangMasukController::class);
