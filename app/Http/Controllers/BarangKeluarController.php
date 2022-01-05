@@ -60,7 +60,7 @@ class BarangKeluarController extends Controller
              if ($barang['jumlah_barang'] < 1) {
               Session::flash("flash_notification", [
                 "level" => "danger",
-                "message" => "Data berhasil dihapus",
+                "message" => "Pengiriman tidak boleh melebihi batas tersisa",
               ]);
              } else {
                  $barang->save()
@@ -83,7 +83,7 @@ class BarangKeluarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([        
+             $request->validate([        
                 'id_barang' => 'required',
                 'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
