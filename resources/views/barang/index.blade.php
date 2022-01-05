@@ -19,7 +19,7 @@
                     @include('barang.create')
                 </div>
                 <div class="card-body">
-                    @if ($barang->jumlah_barang < 1) 
+                    @if ($barang['jumlah_barang'] < 1) 
                         @foreach($barang as $item)
                             <div class="alert alert-warning d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
