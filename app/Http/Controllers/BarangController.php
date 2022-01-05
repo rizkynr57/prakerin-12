@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-   
+   public function __construct()
+    {
+        $this->middleware('role:admin');
+    }
+
     public function index()
     {
         $barang = Barang::all();
