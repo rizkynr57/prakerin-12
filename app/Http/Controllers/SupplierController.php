@@ -27,10 +27,10 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|string|unique',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required'
+            'perusahaan' => 'required|unique'
         ]);
         $supplier = new Supplier();
         $supplier->nama_supplier = $request->nama;
@@ -56,10 +56,10 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|string|unique',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required'
+            'perusahaan' => 'required|unique'
         ]);
         $supplier = Supplier::findOrFail($id);
         $supplier->nama_supplier = $request->nama;
@@ -67,7 +67,7 @@ class SupplierController extends Controller
         $supplier->no_telp = $request->no_telp;
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->save();
-        return redirect('supplier')->with('success', 'Data berhasil diedit!');
+        return redirect('supplier')->with('info', 'Data berhasil diubah!');
     }
 
     public function destroy($id)
@@ -79,6 +79,6 @@ class SupplierController extends Controller
            "level" => "success",
            "message" => "Data Berhasil Dihapus",
        ]);
-       return redirect()->route('supplier.index');
+       return redirect()->route('supplier');
     }
 }
