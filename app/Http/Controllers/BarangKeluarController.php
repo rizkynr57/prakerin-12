@@ -56,8 +56,16 @@ class BarangKeluarController extends Controller
             
              $barang = Barang::where('id', $request->id_barang)->first();
              $barang->jumlah_barang -= $request->jumlah;
-             $barang->save();
-        
+
+             if ($barang['jumlah_barang'] < 1) {
+              Session::flash("flash_notification", [
+                "level" => "danger",
+                "message" => "Data berhasil dihapus",
+              ]);
+             } else {
+                 $barang->save()
+             }
+
              return redirect('barang-keluar')->with('success', 'Data berhasil disimpan!');
     }
 
@@ -81,12 +89,20 @@ class BarangKeluarController extends Controller
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
-        $barangKeluar = Barang_keluar::findOrFail($id);
-        $barangKeluar->update($request->all());
+              $barangKeluar = Barang_keluar::findOrFail($id);
+              $barangKeluar->update($request->all());
         
-        $barang = Barang::where('id', $request->id_barang)->first();
-        $barang->jumlah_barang -= $request->jumlah;
-        $barang->save();
+              $barang = Barang::where('id', $request->id_barang)->first();
+              $barang->jumlah_barang -= $request->jumlah;
+
+              if ($barang['jumlah_barang'] < 1) {
+                 Session::flash("flash_notification", [
+                   "level" => "danger",
+                   "message" => "Data berhasil dihapus",
+              ]);
+               } else {
+                  $barang->save()
+             }
 
         return redirect('barang-keluar')->with('success', 'Data berhasil diedit!');
     }
