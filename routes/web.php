@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix', 'middleware' => ['auth']], function(){
    
     Route::resource('supplier', SupplierController::class);
-    Route::get('/cetak-supplier, SupplierController@cetakSupplierPDF);
+    Route::post('/cetak-supplier', SupplierController@cetakSupplierPDF);
 
     Route::resource('barang', BarangController::class);
 
