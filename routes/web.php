@@ -20,7 +20,7 @@ Auth::routes(
 
 Route::get('/home', HomeController@index])->name('home');
 
-// Hak akses admin dan petugas dibatasi melalui controller
+// Hak akses admin dan petugas dibatasi melalui controller langsung!!!
 
 Route::group(['middleware' => ['auth']], function(){
    
