@@ -30,20 +30,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
-    Route::get('/', function() {
-        return view('home');
-    });
+Route::group(['prefix', 'middleware' => ['auth']], function(){
+   
     Route::resource('supplier', SupplierController::class);
+    Route::get('/cetak-supplier, SupplierController@cetakSupplierPDF);
+
     Route::resource('barang', BarangController::class);
+
     Route::resource('barang-keluar', BarangKeluarController::class);
+    Route::get('/laporan-barangkeluar, BarangKeluarController@laporanBarangKeluar);
+    Route::post('/cetak-pdf', BarangKeluarController@cetakPDF);
+
     Route::resource('barang-masuk', BarangMasukController::class);
+    Route::get('/laporan-barangmasuk, BarangKeluarController@laporanBarangMasuk);
+    Route::post('/cetak-pdf', BarangKeluarController@cetakPDF);
 });
 
-Route::group(['prefix' => 'petugas', 'middleware' => ['auth', 'role:petugas|admin']], function(){
-    Route::get('/', function() {
-        return view('home');
-    });
-    Route::resource('barang-keluar', BarangKeluarController::class);
-    Route::resource('barang-masuk', BarangMasukController::class);
-});
