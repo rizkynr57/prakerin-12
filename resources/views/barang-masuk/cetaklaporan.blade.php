@@ -1,16 +1,16 @@
 <style>
-    #product-keluar {
+    #product-masuk {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
-    #product-keluar td, #product-keluar th {
+    #product-masuk td, #product-masuk th {
         border: 1px solid #ddd;
         padding: 8px;
     }
-    #product-keluar tr:nth-child(even){background-color: #f2f2f2;}
-    #product-keluar tr:hover {background-color: #ddd;}
-    #product-keluar th {
+    #product-masuk tr:nth-child(even){background-color: #f2f2f2;}
+    #product-masuk tr:hover {background-color: #ddd;}
+    #product-masuk th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
@@ -19,7 +19,7 @@
     }
 </style>
 
-<table id="product-keluar" width="100%">
+<table id="product-masuk" width="100%">
     <thead>
     <tr>
         <td>No</td>
