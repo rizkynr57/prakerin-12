@@ -6,6 +6,7 @@ use App\Models\Barang_keluar;
 use App\Models\Barang;
 use PDF;
 use Alert;
+use DB;
 use Session;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,11 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $hitungSisa = DB::table('barang')->('id', $request->id)
+                         ->value('jumlah_barang');
 
         $barangKeluar = Barang_keluar::all();
-        return view('barang-keluar.index', compact('barangKeluar', 'barang'));
+        return view('barang-keluar.index', compact('barangKeluar', 'barang', $hitungSisa));
     }
 
     public function laporanBarangKeluarAll()
