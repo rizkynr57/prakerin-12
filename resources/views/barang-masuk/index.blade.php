@@ -52,7 +52,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('barang-masuk.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
-                                        <a href="{{ route('barang-masuk.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
+                                        <a href="{{ route('laporanBarangMasuk', $data->id) }}" class="btn btn-outline-warning">Print</a>
                                         <button type="submit" onclick="return confirm('Apakah anda yakin?')" class="btn btn-outline-danger">
                                             Delete
                                         </button>
