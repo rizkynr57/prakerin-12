@@ -87,7 +87,7 @@ class BarangKeluarController extends Controller
                  $barang->save();
                  return redirect('barang-keluar')
                                  ->withSuccess('<strong>Berhasil</strong>, 
-                                                        barang sedang dikirim ke tempat tujuan!');
+                                                barang sedang dikirim ke tempat tujuan!');
              } else {
                  return redirect('barang-keluar')
                            ->alert()
