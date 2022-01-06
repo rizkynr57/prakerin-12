@@ -21,7 +21,6 @@
 </style>
 
 <table id="supplier" width="100%">
-<a type="button" href="{{ route('exportPDF.SuppliersAll') }} class="btn btn-success">Cetak dan Export Ke PDF</a>
     <thead>
     <tr>
         <td>No</td>
