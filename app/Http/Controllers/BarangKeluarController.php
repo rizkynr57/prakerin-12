@@ -85,9 +85,14 @@ class BarangKeluarController extends Controller
              $barang->jumlah_barang -= $request->jumlah;
              if ($barang['jumlah_barang'] >= 0) {
                  $barang->save();
-                 return redirect('barang-keluar')->withSuccess('<strong>Berhasil</strong>, barang sedang dikirim ke tempat tujuan!');
+                 return redirect('barang-keluar')
+                                 ->withSuccess('<strong>Berhasil</strong>, 
+                                                        barang sedang dikirim ke tempat tujuan!');
              } else {
-                 return redirect('barang-keluar')->alert()->error('Gagal', 'Pengiriman tidak boleh melebihi batas stok tersisa!');
+                 return redirect('barang-keluar')
+                           ->alert()
+                           ->error('Gagal', 'Pengiriman tidak boleh 
+                                    melebihi batas stok tersisa!');
              }           
     }
 
