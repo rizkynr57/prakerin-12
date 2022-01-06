@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class barang_keluar extends Model
+class Barang_keluar extends Model
 {
     use HasFactory;
 
@@ -20,8 +20,12 @@ class barang_keluar extends Model
 
     public function barang()
     {
-        return $this->belongsTo('App\Models\barang', 'id_barang');
+        return $this->belongsTo('App\Models\Barang', 'id_barang');
     }
-
+    
+    public function home()
+    {
+        return $this->belongsTo('App\Models\Home');
+    }
 
 }
