@@ -31,7 +31,7 @@
         <td>Tanggal Pemasukan Barang</td>
     </tr>
     </thead>
-    @foreach(barangMasuk as $data)
+    @foreach($barangMasuk as $data)
         <tbody>
         <tr>
             <td>{{ $no++ }}</td>
