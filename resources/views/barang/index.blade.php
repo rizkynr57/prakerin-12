@@ -36,7 +36,7 @@
                                 <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
-                                <th>Jumlah Barang</th>
+                                <th>Stok Barang</th>
                                 <th>Satuan</th>
                                 <th>Action</th>
                             </tr>
