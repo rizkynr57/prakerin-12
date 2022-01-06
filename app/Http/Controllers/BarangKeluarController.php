@@ -23,7 +23,7 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $hitungSisa = DB::table('barang')->('id', $request->id)
+        $hitungSisa = DB::table('barang')->('id', $request->id_barang)
                          ->value('jumlah_barang');
 
         $barangKeluar = Barang_keluar::all();
