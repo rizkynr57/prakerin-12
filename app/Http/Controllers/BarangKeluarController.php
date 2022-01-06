@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Barang_keluar;
 use App\Models\Barang;
 use PDF;
-use Alert;
 use Session;
 use Illuminate\Http\Request;
 
@@ -90,9 +89,8 @@ class BarangKeluarController extends Controller
                                                 barang sedang dikirim ke tempat tujuan!');
              } else {
                  return redirect('barang-keluar')
-                           ->alert()
-                           ->error('Gagal', 'Pengiriman tidak boleh 
-                                    melebihi batas stok tersisa!');
+                                 ->withError('Gagal', 'Pengiriman tidak boleh 
+                                             melebihi batas stok tersisa!');
              }           
     }
 
