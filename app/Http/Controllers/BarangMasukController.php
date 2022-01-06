@@ -29,7 +29,7 @@ class BarangMasukController extends Controller
         return view('barang-masuk.index', compact('barangMasuk', 'supplier', 'barang'));
     }
 
-    public function laporanBarangMasuk()
+    public function laporanBarangMasukAll()
     {
         $barang = Barang::orderBy('nama_barang', 'ASC')->get()
                           ->pluck('nama_barang', 'id');
@@ -39,10 +39,23 @@ class BarangMasukController extends Controller
 
         $barangMasuk = Barang_masuk::all();
         $no = 1;
-        return view('barang-masuk.cetaklaporan', compact('barangMasuk', 'supplier', 'barang', 'no'));
+        return view('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
     }
 
-    public function cetakPDF()
+    public function laporanBarangMasuk($id)
+    {
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                          ->pluck('nama_barang', 'id');
+
+        $supplier = Supplier::orderBy('nama_supplier', 'ASC')->get()
+                          ->pluck('nama_supplier', 'id');
+
+        $barangMasuk = Barang_masuk::find($id);
+        $no = 1;
+        return view('barang-masuk.laporanBarangMasuk', compact('barangMasuk', 'supplier', 'barang', 'no'));
+    }
+
+    public function cetakPDF_all()
     {
         $data3 = Barang::orderBy('nama_barang', 'ASC')->get()
                           ->pluck('nama_barang', 'id');
@@ -53,7 +66,21 @@ class BarangMasukController extends Controller
         $data = Barang_masuk::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
-        return $pdf->download('laporan-pemasukan-barang.pdf');
+        return $pdf->download('laporan-pemasukan-barang-semua.pdf');
+    }
+
+    public function cetakPDF($id)
+    {
+        $data3 = Barang::orderBy('nama_barang', 'ASC')->get()
+                          ->pluck('nama_barang', 'id');
+
+        $data2 = Supplier::orderBy('nama_supplier', 'ASC')->get()
+                          ->pluck('nama_supplier', 'id');
+
+        $data = Barang_masuk::find($id);
+        $no = 1;
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
+        return $pdf->download('laporan-pemasukan-barang-satuan.pdf');
     }
 
     public function store(Request $request)
@@ -71,12 +98,6 @@ class BarangMasukController extends Controller
             $barang->save();
 
             return redirect('barang-masuk')->with('success', 'Data berhasil disimpan!');
-    }
-
-    public function show($id)
-    {
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        return view('barang-masuk.show', compact('barangMasuk'));
     }
 
     public function edit($id)
