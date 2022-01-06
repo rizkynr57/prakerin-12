@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="supplier">
-                           <a type="button" href="{{ route('exportPDF.SuppliersAll') }} class="btn btn-success">
+                           <a type="button" href="{{ route('exportPDF.SuppliersAll') }}" class="btn btn-success">
                                <i class="fas fa-file-export">Cetak data dan Export PDF</i>
                            </a>
                             <thead>
