@@ -1,16 +1,16 @@
 <style>
-    #product-masuk {
+    #barang-masuk {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
-    #product-masuk td, #product-masuk th {
+    #barang-masuk td, #barang-masuk th {
         border: 1px solid #ddd;
         padding: 8px;
     }
-    #product-masuk tr:nth-child(even){background-color: #f2f2f2;}
-    #product-masuk tr:hover {background-color: #ddd;}
-    #product-masuk th {
+    #barang-masuk tr:nth-child(even){background-color: #f2f2f2;}
+    #barang-masuk tr:hover {background-color: #ddd;}
+    #barang-masuk th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
@@ -19,8 +19,8 @@
     }
 </style>
 
-<table id="product-masuk" width="100%">
-   <a type="button" href="{{ route('barang-masuk.cetakPDF') }} class="btn btn-success">Export Ke PDF</a>
+<table id="barang-masuk" width="100%">
+   <a type="button" href="{{ route('exportPDF.barangMasuk') }} class="btn btn-success">Export Ke PDF</a>
     <thead>
     <tr>
         <td>No</td>
