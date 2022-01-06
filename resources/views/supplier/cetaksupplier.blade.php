@@ -27,7 +27,7 @@
         <td>No</td>
         <td>Nama</td>
         <td>Alamat</td>
-        <td>Nomor Telepor</td>
+        <td>Nomor Telepon</td>
         <td>Nama Perusahaan</td>
     </tr>
     </thead>
