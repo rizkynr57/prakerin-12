@@ -16,6 +16,6 @@ class Home extends Model
     }
     public function BarangKeluar()
     {
-        return $this->hasMany('app\Models\Barang_keluar');
+        return $this->hasMany('App\Models\Barang_keluar');
     }
 }
