@@ -35,7 +35,6 @@ class BarangController extends Controller
          $barang = new Barang;
          $barang->nama_barang = $required->nama,
          $barang->jenis_barang = $required->jenis,
-         $barang->jumlah_barang = 0;
          $barang->satuan = $request->satuan;
          $barang->save();
          return redirect('barang')->with('success', 'Data berhasil disimpan!');
