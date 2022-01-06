@@ -270,12 +270,12 @@ return [
     'submenu' => [
       [
          'text' => 'Laporan Pemasukan Barang',
-         'url' => 'laporangBarangMasuk',
+         'url' => 'laporangBarangMasukAll',
          'icon' => 'fas fa-sticky-note'
       ],
       [
          'text' => 'Laporan Pengeluaran Barang',
-         'url' => 'laporangBarangKeluar',
+         'url' => 'laporangBarangKeluarAll',
          'icon' => 'far fa-sticky-note'
       ],
   ],
