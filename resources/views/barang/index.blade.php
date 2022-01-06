@@ -24,7 +24,7 @@
                             <div class="alert alert-warning d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                             <div>
-                               <strong>Peringatan!</strong>stok $item['nama_barang'] telah habis !!!
+                               <p style="color: red">PERINGATAN! </p>stok <b>$item['nama_barang']</b> kosong!!!
                             </div>
                             </div>
                         @endforeach
@@ -50,8 +50,8 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $data->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
-                                    <td>{{ $data->jumlah_barang }}</td>                                    <td>
-                                    <td>{{ $data->satuan }}</td>                                    <td>
+                                    <td>{{ $data->jumlah_barang }}</td>                                    
+                                    <td>{{ $data->satuan }}</td>                                    
                                         <form action="{{ route('barang.destroy', $data->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
