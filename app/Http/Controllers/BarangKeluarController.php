@@ -73,7 +73,7 @@ class BarangKeluarController extends Controller
     {
             $this->validate($request, [
                 'id_barang' => 'required',
-                'jumlah' => 'required|numeric',
+                'jumlah' => 'required|numeric|min:0|max:100',
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
