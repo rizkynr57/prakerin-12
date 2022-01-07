@@ -18,11 +18,6 @@ class Barang extends Model
 
     public $timestamps = true;
 
-    public function barangMasuk()
-    {
-        return $this->belongsTo('App\Models\Barang_masuk', 'id_barang');
-    }
-
     public function barangKeluar()
     {
         return $this->hasMany('App\Models\Barang_keluar', 'id_barang');
