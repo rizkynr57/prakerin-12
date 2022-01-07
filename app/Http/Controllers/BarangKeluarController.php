@@ -71,7 +71,7 @@ class BarangKeluarController extends Controller
 
     public function store(Request $request)
     {
-            $request->validate([
+            $this->validate($request, [
                 'id_barang' => 'required',
                 'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
