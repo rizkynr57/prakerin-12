@@ -22,7 +22,7 @@ Route::get('/home', HomeController@index)->name('home');
 
 // Hak akses admin dan petugas dibatasi melalui controller langsung!!!
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => 'auth'], function(){
    
     Route::resource('supplier', SupplierController::class);
     Route::get('/cetak-supplier', SupplierController@cetakSupplierPDF)->name('exportPDF.suppliersAll');
