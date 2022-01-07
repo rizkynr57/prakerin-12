@@ -26,17 +26,14 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request, [
            'nama' => 'required|unique:barangs',
            'jenis' => 'required',
            'satuan' => 'required'
        ]);
 
-         $barang = new Barang;
-         $barang->nama_barang = $required->nama,
-         $barang->jenis_barang = $required->jenis,
-         $barang->satuan = $request->satuan;
-         $barang->save();
+         Barang::create($request->all());
+
          return redirect('barang')->with('success', 'Data berhasil disimpan!');
         
     }
@@ -55,16 +52,15 @@ class BarangController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
           'nama' => 'required|unique',
           'jenis' => 'required',
           'satuan' => 'required'
         ]);
+
         $barang = Barang::findOrFail($id);
-        $barang->nama_barang = $request->nama;
-        $barang->jenis_barang = $request->jenis;
-        $barang->satuan = $request->satuan;
-        $barang->update();
+        $barang->update($request->all());
+
         return redirect('barang')->with('success', 'Data berhasil diedit!');
     }
 
