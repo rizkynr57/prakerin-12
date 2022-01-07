@@ -47,9 +47,7 @@
                                         @method('DELETE')
                                         <a href="{{ route('barang-keluar.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('laporanBarangKeluar', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin?')" class="btn btn-outline-danger">
-                                            Delete
-                                        </button>
+                                        @include('barang-keluar.delete')
                                         </tbody>
                                         </form>
                                     </td>
