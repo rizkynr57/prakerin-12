@@ -11,10 +11,10 @@ class Barang_masuk extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_barang',
         'id_supplier',
+        'id_barang',
         'jenis_barang',
-        'jumlah_barang',
+        'jumlah_pemasukan',
         'tgl_masuk'
     ];
 
@@ -28,10 +28,5 @@ class Barang_masuk extends Model
     public function supplier()
     {
         return $this->belongsTo('App\Models\Supplier', 'id_supplier');
-    }
-
-    public function home()
-    {
-        return $this->belongsTo('App\Models\Home');
     }
 }
