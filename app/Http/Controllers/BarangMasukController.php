@@ -85,7 +85,7 @@ class BarangMasukController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request, [
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jenis' => 'required',
