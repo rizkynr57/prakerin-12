@@ -108,7 +108,7 @@ class BarangMasukController extends Controller
 
     public function update(Request $request,$id)
     {
-        $request->validate([
+        $this->validate($request, [
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jenis' => 'required',
