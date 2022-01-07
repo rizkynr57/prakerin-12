@@ -22,10 +22,4 @@ class Barang_keluar extends Model
     {
         return $this->belongsTo('App\Models\Barang', 'id_barang');
     }
-    
-    public function home()
-    {
-        return $this->belongsTo('App\Models\Home');
-    }
-
 }
