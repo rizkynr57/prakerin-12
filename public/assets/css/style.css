@@ -1,0 +1,170 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	background: rgb(38, 45, 63);
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 60px;
+	position: relative;
+	background: rgb(255, 255, 255);
+	border-radius: 10px;
+	overflow: hidden;
+}
+.delete-btn {
+	position: absolute;
+	width: 210px;
+	height: 68px;
+	font-size: 25px;
+	color : rgb(51, 45, 45);
+	background: rgb(255, 168, 29);
+	border-radius: 5px;
+}
+.delete-btn:hover {
+	background: rgb(243, 150, 0);
+}
+.delete-btn .far {
+	margin-right: 10px;
+}
+h3 {
+	position: absolute;
+	top: 12%;
+	font-size: 35px;
+	transform: translate(-100px);
+	opacity: 0;
+	user-select: none;
+}
+.sub-heading {
+	position: absolute;
+	top: 25%;
+	width: 60%;
+	text-align: center;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.493);
+	font-weight: 600;
+	line-height:20px;
+	letter-spacing: 1px;
+	transform: translate(-100px);
+	opacity: 0;
+}
+p {
+	user-select: none;
+}
+.warning {
+	position: relative;
+	top: 5%;
+	width: 80%;
+	height: 120px;
+	border-radius: 10px;
+	background: rgba(255, 143, 116, 0.116);
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	opacity: 0;
+}
+.warning .fas {
+	position: absolute;
+	left: 15%;
+	font-size: 40px;
+	color: rgb(255, 87, 87);
+	opacity: 0;
+}
+.warn-para {
+	position: absolute;
+	right: 0;
+	font-size: 20px;
+	padding: 20px;
+	width: 75%;
+	color: rgb(92, 92, 92);
+	opacity : 0;
+}
+.cancel {
+	position : absolute;
+	bottom: 10%;
+	left: 10%;
+	width: 150px;
+	height: 50px;
+	border: 2px solid rgb(87, 89, 119);
+	background: transparent;
+	border-radius: 5px;
+	color: rgb(87, 89, 117);
+	transform: translateY(100px);
+	opacity: 0;
+}
+.yes-delete {
+	position: absolute;
+	botton: 10%;
+	right: 10%;
+	width: 220px;
+	height: 60px;
+	border-radius: 5px;
+	background: rgb(255, 94, 94);
+	transform: translateY(100px);
+	opacity: 0;
+}
+button {
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	user-select: none;
+}
+#allclose {
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	color: rgba(87, 89, 117, 0.294);
+	cursor: pointer;
+}
+#allclose:hover {
+	color: rgb(66, 66, 66);
+}
+.container.active {
+	width: 500px;
+	height: 450px;
+	transition: .1s;
+}
+.container.active .yes-delete {
+	opacity: 1;
+	transform: translateY(0);
+	transition: 1s;
+	transition-delay: .3s;
+}
+.container.active .cancel {
+	opacity: 1;
+	transform: translateY(0);
+	transition: 1s;
+	transition-delay: .3s;
+}
+.container.active h3 {
+	transition: 1s;
+	opacity: 1;
+	transform: translateY(0);
+}
+.container.active .sub-heading {
+	opacity: 1;
+	transform: translateY(0);
+	transition: 1s;
+	transition-delay: .3s;
+}
+.container.active .warning {
+	opacity: 1;
+	transition: 1s;
+	transition-delay: .6s;
+}
+.container.active .warn-para {
+	opacity: 1;
+}
+.container.active .fas {
+	opacity: 1;
+}
