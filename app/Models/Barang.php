@@ -18,15 +18,34 @@ class barang extends Model
 
     public $timestamps = true;
 
-    public function masuk()
+    public function barangMasuk()
     {
         return $this->belongsTo('App\Models\Barang_masuk', 'id_barang');
     }
 
-    public function keluar()
+    public function barangKeluar()
     {
         return $this->hasMany('App\Models\Barang_keluar', 'id_barang');
     }
-
+    
+    public static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($barang) {
+            if ($barang->barangKeluar->count() > 0) {
+                $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
+                $msg .= '<ul>';
+                foreach ($barang->barangKeluar as $data) {
+                    $msg .= "<li>$data->nama_barang</li>";
+                }
+                $msg .= '</ul>';
+                Session::flash("flash_notification", [
+                    "level" => "danger",
+                    "message" => $msg,
+                ]);
+                return false;
+            }
+        });
+    }
     
 }
