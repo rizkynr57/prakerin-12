@@ -51,9 +51,7 @@
                                         @method('DELETE')
                                         <a href="{{ route('supplier.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('supplier.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
-                                        <button type="submit" onclick="return confirm('Apakah anda yakin?')" class="btn btn-outline-danger">
-                                            Delete
-                                        </button>
+                                        @include('supplier.delete')
                                         </tbody>
                                         </form>
                                     </td>
