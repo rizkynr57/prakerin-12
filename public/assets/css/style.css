@@ -1,3 +1,15 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 60px;
+	position: relative;
+	background: rgb(255, 255, 255);
+	border-radius: 10px;
+	overflow: hidden;
+}
 .delete-btn {
 	position: absolute;
 	width: 210px;
