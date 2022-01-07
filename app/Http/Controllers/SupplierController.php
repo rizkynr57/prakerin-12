@@ -31,18 +31,15 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request, [
             'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
             'perusahaan' => 'required|unique:suppliers'
         ]);
-        $supplier = new Supplier();
-        $supplier->nama_supplier = $request->nama;
-        $supplier->alamat = $request->alamat;
-        $supplier->no_telp = $request->no_telp;
-        $supplier->nama_perusahaan = $request->perusahaan;
-        $supplier->save();
+        
+        Supplier::create($request->all());
+
         return redirect('supplier')->with('success', 'Data berhasil disimpan!');
     }
 
@@ -60,18 +57,16 @@ class SupplierController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
             'nama' => 'required|string|unique',
             'alamat' => 'required',
             'no_telp' => 'required',
             'perusahaan' => 'required|unique'
         ]);
+
         $supplier = Supplier::findOrFail($id);
-        $supplier->nama_supplier = $request->nama;
-        $supplier->alamat = $request->alamat;
-        $supplier->no_telp = $request->no_telp;
-        $supplier->nama_perusahaan = $request->perusahaan;
-        $supplier->save();
+        $supplier->update($request->all());
+
         return redirect('supplier')->with('info', 'Data berhasil diubah!');
     }
 
