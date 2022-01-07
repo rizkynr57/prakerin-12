@@ -32,10 +32,10 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|unique',
+            'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required|unique'
+            'perusahaan' => 'required|unique:suppliers'
         ]);
         $supplier = new Supplier();
         $supplier->nama_supplier = $request->nama;
