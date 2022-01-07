@@ -34,24 +34,4 @@ class Barang_masuk extends Model
     {
         return $this->belongsTo('App\Models\Home');
     }
-
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function ($barang) {
-            if ($supplier->barang->count() > 0) {
-                $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
-                $msg .= '<ul>';
-                foreach ($barang->barang as $data) {
-                    $msg .= "<li>$data->nama_barang</li>";
-                }
-                $msg .= '</ul>';
-                Session::flash("flash_notification", [
-                    "level" => "danger",
-                    "message" => $msg,
-                ]);
-                return false;
-            }
-        });
-    }
 }
