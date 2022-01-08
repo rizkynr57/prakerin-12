@@ -47,14 +47,12 @@
                                     <td>{{ $data->satuan }}</td>
                                     <td>{{ $data->tgl_masuk }}</td>
                                     <td>
-                                        <form action="{{ route('barang-masuk.destroy', $data->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
+                                        
                                         <a href="{{ route('barang-masuk.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('laporanBarangMasuk', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
                                         @include('barang-masuk.delete')
                                         </tbody>
-                                        </form>
+                                        
                                     </td>
                                 </tr>
                             @endforeach
