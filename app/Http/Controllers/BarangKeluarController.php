@@ -79,12 +79,13 @@ class BarangKeluarController extends Controller
             ]);
             
              Barang_keluar::create($request->all());
+             $idStuff = $request->id_barang;
              $qtySend = $request->jumlah;
             
-             $barang = Barang::where('id', $request->id_barang)->first();
+             $barang = Barang::where('id', $idStuff)->first();
              $barang->jumlah_barang -= $qtySend;
 
-             $totalHarga = Barang::where('id', $request->id_barang)->first();
+             $totalHarga = Barang::where('id', $idStuff)->first();
              $totalHarga->harga *= $qtySend;
              $totalHarga->save();
 
