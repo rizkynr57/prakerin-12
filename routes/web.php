@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
@@ -26,6 +27,9 @@ Route::group(['middleware' => 'auth'], function(){
    
     Route::resource('supplier', SupplierController::class);
     Route::get('/cetak-supplier', SupplierController@cetakSupplierPDF)->name('exportPDF.suppliersAll');
+
+    Route::resource('customer', CustomerController::class);
+    Route::get('/cetak-customer', CustomerController@cetakCustomerPDF)->name('exportPDF.customersAll');
 
     Route::resource('barang', BarangController::class);
 
