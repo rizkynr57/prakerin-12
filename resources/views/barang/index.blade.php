@@ -19,7 +19,7 @@
                     @include('barang.create')
                 </div>
                 <div class="card-body">
-                    @if ($barang['jumlah_barang'] < 1) 
+                    @if ($barang['stok_barang'] < 1) 
                         @foreach($barang as $item)
                             <div class="alert alert-warning d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
@@ -37,6 +37,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
                                 <th>Stok Barang</th>
+                                <th>Harga</th>
                                 <th>Satuan</th>
                                 <th>Action</th>
                             </tr>
@@ -50,7 +51,8 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $data->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
-                                    <td>{{ $data->jumlah_barang }}</td>                                    
+                                    <td>{{ $data->stok_barang }}</td>
+                                    <td>{{ $data->harga }}</td>                                    
                                     <td>{{ $data->satuan }}</td>                                    
                                         <form action="{{ route('barang.destroy', $data->id) }}" method="post">
                                         @csrf
