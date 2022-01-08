@@ -102,7 +102,14 @@ class BarangKeluarController extends Controller
             
              $barang = Barang::where('id', $idStuff)->first();
              $barang['stok_barang'] -= $qtySend;
-
+             $if ($barang['stock_barang'] < 1) {
+                  return redirect('barang_keluar')
+                                    ->withError('<strong>Gagal</strong>', 
+                                            'Pengiriman tidak boleh 
+                                             melebihi batas stok tersisa!');
+             } 
+             $barang->save();
+        
              $priceCount = Barang::where('id', $idStuff)->first();
              $priceCount['harga'] *= $qtySend;
              $priceCount->save();
@@ -110,18 +117,11 @@ class BarangKeluarController extends Controller
              $direct = new Barang_keluar();
              $direct->total = $priceCount;
              $direct->save();
-
-             if ($barang['stok_barang'] >= 0) {
-                 $barang->save();
-                 return redirect('barang-keluar')
+              
+             return redirect('barang-keluar')
                                  ->withSuccess('<strong>Berhasil</strong>, 
                                                 Barang sedang dikirim ke tempat tujuan!');
-             } else {
-                 return redirect('barang-keluar')
-                                 ->withError('<strong>Gagal</strong>', 
-                                            'Pengiriman tidak boleh 
-                                             melebihi batas stok tersisa!');
-             }           
+                
     }
 
     public function edit($id)
