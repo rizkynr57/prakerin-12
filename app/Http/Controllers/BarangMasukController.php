@@ -88,8 +88,8 @@ class BarangMasukController extends Controller
         $this->validate($request, [
             'id_supplier' => 'required',
             'id_barang' => 'required',
-            'jenis' => 'required',
-            'jumlah' => 'required|numeric|min:0|max:150'
+            'jumlah' => 'required|numeric|min:0|max:150',
+            'tgl_masuk' => 'required
         ]);
             Barang_masuk::create($request->all()); 
          
