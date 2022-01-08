@@ -27,8 +27,8 @@ class HomeController extends Controller
     {
         $totalMasuk = DB::table('barang_masuk')->get()->sum('jumlah_pemasukan');
         $totalKeluar = DB::table('barang_keluar')->get()->sum('jumlah_pengiriman');
-        $earning = DB::table('barang_keluar')->get()->sum('total_harga');
-        return view('home')->with('jumlah_pemasukan', 'jumlah_pengiriman', 'total_harga',
+        $earning = DB::table('barang_keluar')->get()->sum('total');
+        return view('home')->with('jumlah_pemasukan', 'jumlah_pengiriman', 'total',
                                               $totalMasuk, $totalKeluar, $earning);
     }
 }
