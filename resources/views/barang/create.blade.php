@@ -20,6 +20,10 @@
                         <input type="text" class="form-control" name="jenis">
                     </div>
                     <div class="form-group">
+                        <label for="">Harga</label>
+                        <input type="text" class="form-control" name="harga">
+                    </div>
+                    <div class="form-group">
                         <label for="">Satuan Barang</label>
                         <input type="text" class="form-control" name="satuan">
                     </div>
