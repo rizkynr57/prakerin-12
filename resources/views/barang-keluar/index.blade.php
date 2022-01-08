@@ -44,14 +44,12 @@
                                     <td>{{ $data->total }}</td>
                                     <td>{{ $data->tgl_pengiriman }}</td>
                                     <td>{{ $data->tujuan }}</td>
-                                        <form action="{{ route('barang-keluar.destroy', $data->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
+                                        
                                         <a href="{{ route('barang-keluar.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('laporanBarangKeluar', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
                                         @include('barang-keluar.delete')
                                         </tbody>
-                                        </form>
+                                       
                                     </td>
                                 </tr>
                             @endforeach
