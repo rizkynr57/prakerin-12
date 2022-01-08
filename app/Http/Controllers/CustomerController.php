@@ -25,7 +25,7 @@ class CustomerController extends Controller
     {
         $data = Customer::all();
         $no = 1;
-        $pdf = PDF::loadview('supplier.cetakcustomer', compact('data', 'no'));
+        $pdf = PDF::loadview('customer.cetakcustomer', compact('data', 'no'));
         return $pdf->download('Data-customer.pdf');
     }
 
