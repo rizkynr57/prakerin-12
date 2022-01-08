@@ -24,7 +24,7 @@
                         <input type="text" class="form-control" name="harga">
                     </div>
                     <div class="form-group">
-                        <label for="">Satuan Barang</label>
+                        <label for="">Satuan</label>
                         <input type="text" class="form-control" name="satuan">
                     </div>
                 </div>
