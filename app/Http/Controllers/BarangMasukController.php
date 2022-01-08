@@ -89,7 +89,7 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required|numeric|min:0|max:150',
-            'tgl_masuk' => 'required
+            'tgl_masuk' => 'required'
         ]);
             Barang_masuk::create($request->all()); 
          
