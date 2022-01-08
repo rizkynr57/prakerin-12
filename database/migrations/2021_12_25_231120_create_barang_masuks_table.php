@@ -19,7 +19,6 @@ class CreateBarangMasuksTable extends Migration
             $table->foreign('id_supplier')->references('id')->on('suppliers');
             $table->bigInteger('id_barang')->unsigned();
             $table->foreign('id_barang')->references('id')->on('barangs');
-            $table->string('jenis_barang');
             $table->integer('jumlah_pemasukan');
             $table->date('tgl_masuk');
             $table->timestamps();
