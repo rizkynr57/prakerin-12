@@ -249,6 +249,11 @@ return [
       'icon' => 'fas fa-address-book'
   ],
   [
+      'text' => 'Data Customer',
+      'url' => 'customer',
+      'icon' => 'fas fa-users'
+  ],
+  [
       'text' => 'Barang',
       'url' => 'barang',
       'icon' => 'fas fa-balance-scale'
