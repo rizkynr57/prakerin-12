@@ -21,8 +21,11 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $customer = Customer::OrderBy('nama', 'ASC')->get()
+                         ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::all();
-        return view('barang-keluar.index', compact('barangKeluar', 'barang', $hitungSisa));
+        return view('barang-keluar.index', compact('barangKeluar', 'barang', 'customer'));
     }
 
     public function laporanBarangKeluarAll()
@@ -30,9 +33,12 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $customer = Customer::OrderBy('nama', 'ASC')->get()
+                         ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::all();
         $no = 1;
-        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 'no'));
+        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 'no', 'customer'));
         
      }
       
@@ -41,9 +47,12 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $customer = Customer::OrderBy('nama', 'ASC')->get()
+                         ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::find($id);
         $no = 1;
-        return view('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'barang', 'no'));
+        return view('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'barang', 'no', 'customer'));
         
      }
 
@@ -52,9 +61,13 @@ class BarangKeluarController extends Controller
         $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $data3 = Customer::OrderBy('nama', 'ASC')->get()
+                          ->pluck('nama', 'id');
+
+
         $data = Barang_keluar::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('data', 'data2', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('data', 'data2', 'no', 'data3'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
@@ -63,19 +76,23 @@ class BarangKeluarController extends Controller
         $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
+        $data3 = Customer::OrderBy('nama', 'ASC')->get()
+                         ->pluck('nama', 'id');
+
         $data = Barang_keluar::find($id);
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('data', 'data2', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('data', 'data2', 'no', 'data3'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
     public function store(Request $request)
     {
             $this->validate($request, [
+                'id_customer' => 'required',
                 'id_barang' => 'required',
                 'jumlah' => 'required|numeric|min:0|max:100',
                 'tgl_pengiriman' => 'required',
-                'tujuan' => 'required',
+                'tujuan' => 'required'
             ]);
             
              Barang_keluar::create($request->all());
@@ -110,11 +127,12 @@ class BarangKeluarController extends Controller
 
     public function update(Request $request, $id)
     {
-             $this->validate($request, [        
+             $this->validate($request, [     
+                'id_customer' => 'required',   
                 'id_barang' => 'required',
                 'jumlah' => 'required|numeric',
                 'tgl_pengiriman' => 'required',
-                'tujuan' => 'required',
+                'tujuan' => 'required'
             ]);
               $barangKeluar = Barang_keluar::findOrFail($id);
               $barangKeluar->update($request->all());
