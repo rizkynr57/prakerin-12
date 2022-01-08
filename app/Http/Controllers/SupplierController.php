@@ -58,10 +58,10 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required|string|unique',
+            'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required|unique'
+            'perusahaan' => 'required|unique:suppliers'
         ]);
 
         $supplier = Supplier::findOrFail($id);
