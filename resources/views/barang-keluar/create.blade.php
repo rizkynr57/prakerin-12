@@ -12,6 +12,10 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="">Nama Customer</label>
+                        {!! Form::select('id_customer', $customer, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Customer --', 'id' => 'id_customer', 'required']) !!}
+                    </div>
+                    <div class="form-group">
                         <label for="">Nama Barang</label>
                         {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'required']) !!}
                     </div>
