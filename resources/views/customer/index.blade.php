@@ -46,14 +46,12 @@
                                     <td>{{ $data->email }}</td>
                                     <td>{{ $data->no_telp }}</td>
                                     <td>
-                                        <form action="{{ route('customer.destroy', $data->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
+                                        
                                         <a href="{{ route('customer.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('customer.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         @include('customer.delete')
                                         </tbody>
-                                        </form>
+                                        
                                     </td>
                                 </tr>
                             @endforeach
