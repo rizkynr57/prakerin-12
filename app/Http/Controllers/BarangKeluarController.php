@@ -103,9 +103,13 @@ class BarangKeluarController extends Controller
              $barang = Barang::where('id', $idStuff)->first();
              $barang['stok_barang'] -= $qtySend;
 
-             $totalHarga = Barang::where('id', $idStuff)->first();
-             $totalHarga['harga'] *= $qtySend;
-             $totalHarga->save();
+             $priceCount = Barang::where('id', $idStuff)->first();
+             $priceCount['harga'] *= $qtySend;
+             $priceCount->save();
+              
+             $direct = new Barang_keluar();
+             $direct->total = $priceCount;
+             $direct->save();
 
              if ($barang['stok_barang'] >= 0) {
                  $barang->save();
