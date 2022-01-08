@@ -12,12 +12,22 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    Selamat Datang <b>{{Auth::user()->name}}</b>
-                </div>
-            </div>
+          <div class="card" style="width: 18rem;">
+               <img src="{{ asset('assets/img/supplier.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Total Data Diri Supplier</h5>
+             <p class="card-text"> ..... </h3>
+            <a href="{{ url('supplier') }}" class="btn btn-primary">Lihat Selengkapnya..</a>
+          </div>
+         </div>
+          <div class="card" style="width: 18rem;">
+               <img src="{{ asset('assets/img/customer.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Total Data Diri Customer</h5>
+             <p class="card-text"> ..... </h3>
+            <a href="{{ url('customer') }}" class="btn btn-primary">Lihat Selengkapnya..</a>
+          </div>
+         </div>
         </div>
     </div>
 </div>
