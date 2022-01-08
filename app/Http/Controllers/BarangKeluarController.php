@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\Customer;
 use PDF;
 use Session;
+use Redirect;
 use Illuminate\Http\Request;
 
 class BarangKeluarController extends Controller
@@ -103,9 +104,9 @@ class BarangKeluarController extends Controller
              $barang = Barang::where('id', $idStuff)->first();
              $barang['stok_barang'] -= $qtySend;
              $if ($barang['stock_barang'] < 1) {
-                  return back()->withError('<strong>Gagal</strong>', 
-                                            'Pengiriman tidak boleh 
-                                             melebihi batas stok tersisa!');
+                  return Redirect::back()->withError('<strong>Gagal</strong>', 
+                                                     'Pengiriman tidak boleh 
+                                                      melebihi batas stok tersisa!');
              } 
              $barang->save();
         
