@@ -3,6 +3,9 @@
 </head>
 
 <body>
+       <form action="{{ route('barang-masuk.destroy', $barangMasuk->id) }}" method="post">
+        @csrf
+        @method('DELETE')
 	<div id="container" class="container">
 		<i  id="allclose" class="fas fa-times" onclick="closeCont()"></i>
 		<h3>Apakah Anda Yakin??</h3>
@@ -16,7 +19,7 @@
 		
 		<button class="delete-btn" id="delete"> 
 			<i class="far fa-trash-alt></i>Delete</button>
-			
+	</form>
 <script type="text/javascript" src="{{ asset('assets/js/style.js') }}"></script>
 
 </body>
