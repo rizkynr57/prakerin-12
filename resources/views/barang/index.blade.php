@@ -54,14 +54,12 @@
                                     <td>{{ $data->stok_barang }}</td>
                                     <td>{{ $data->harga }}</td>                                    
                                     <td>{{ $data->satuan }}</td>                                    
-                                        <form action="{{ route('barang.destroy', $data->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
+                                        
                                         <a href="{{ route('barang.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('barang.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         @include('barang.delete')
                                         </tbody>
-                                        </form>
+                                     
                                     </td>
                                 </tr>
                             @endforeach
