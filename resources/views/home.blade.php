@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col">
           <div class="card" style="width: 18rem;">
-               <img src="{{ asset('assets/img/supplier.jpg') }}" class="card-img-top" alt="...">
+               <img src="{{ asset('assets/img/supplier.jpeg') }}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">Total Data Diri Supplier</h5>
              <p class="card-text"> ..... </h3>
@@ -21,7 +21,7 @@
           </div>
          </div>
           <div class="card" style="width: 18rem;">
-               <img src="{{ asset('assets/img/customer.jpg') }}" class="card-img-top" alt="...">
+               <img src="{{ asset('assets/img/customer.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">Total Data Diri Customer</h5>
              <p class="card-text"> ..... </h3>
