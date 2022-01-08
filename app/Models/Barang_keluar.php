@@ -22,4 +22,9 @@ class Barang_keluar extends Model
     {
         return $this->belongsTo('App\Models\Barang', 'id_barang');
     }
+
+    public function customer()
+    {
+        return $this->belongsTo('App\Models\Customer', 'id_customer');
+    }
 }
