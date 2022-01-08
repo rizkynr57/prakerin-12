@@ -26,6 +26,7 @@
                                 <th>No</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Pengiriman</th>
+                                <th>Total Harga</th>
                                 <th>Tanggal Pengiriman</th>
                                 <th>Tujuan Pengiriman</th>
                                 <th>Action</th>
@@ -40,6 +41,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jumlah_pengiriman }}</td>
+                                    <td>{{ $totalHarga }}</td>
                                     <td>{{ $data->tgl_pengiriman }}</td>
                                     <td>{{ $data->tujuan }}</td>
                                         <form action="{{ route('barang-keluar.destroy', $data->id) }}" method="post">
