@@ -34,7 +34,7 @@
         <tbody>
         <tr>
             <td>{{ $no++ }}</td>
-            <td>{{ $data->barang->nama_supplier}}</td>
+            <td>{{ $data->nama_supplier}}</td>
             <td>{{ $data->alamat}}</td>
             <td>{{ $data->no_telp }}</td>
             <td>{{ $data->nama_perusahaan }}</td>
