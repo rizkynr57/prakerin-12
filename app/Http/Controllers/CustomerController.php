@@ -58,7 +58,7 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            nama' => 'required|string|unique:customer',
+            'nama' => 'required|string|unique:customer',
             'alamat' => 'required',
             'email' => 'required|email|unique:customer',
             'no_telp' => 'required'
