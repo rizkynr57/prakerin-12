@@ -29,6 +29,7 @@ class BarangController extends Controller
         $this->validate($request, [
            'nama' => 'required|unique:barangs',
            'jenis' => 'required',
+           'harga' => 'required',
            'satuan' => 'required'
        ]);
 
@@ -53,8 +54,9 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-          'nama' => 'required|unique',
+          'nama' => 'required|unique:barangs',
           'jenis' => 'required',
+          'harga' => 'required',
           'satuan' => 'required'
         ]);
 
