@@ -38,7 +38,7 @@ class CustomerController extends Controller
             'no_telp' => 'required'
         ]);
         
-        customer::create($request->all());
+        Customer::create($request->all());
 
         return redirect('customer')->with('success', 'Data berhasil disimpan!');
     }
