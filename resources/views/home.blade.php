@@ -46,7 +46,7 @@
           <div class="card mb-4" style="width: 18rem;">
                <img src="{{ asset('assets/img/supplier.jpeg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h5 class="card-title">Total Data Diri Supplier</h5>
+            <h5 class="card-title">Total Barang Yang Diterima</h5>
              <p class="card-text"> ..... </h3>
             <a href="{{ url('supplier') }}" class="btn btn-primary">Lihat Selengkapnya..</a>
           </div>
@@ -56,7 +56,7 @@
           <div class="card mb-4" style="width: 18rem;">
                <img src="{{ asset('assets/img/customer.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h5 class="card-title">Total Data Diri Customer</h5>
+            <h5 class="card-title">Total Barang Yang Terkirim</h5>
              <p class="card-text"> ..... </h3>
             <a href="{{ url('customer') }}" class="btn btn-primary">Lihat Selengkapnya..</a>
           </div>
