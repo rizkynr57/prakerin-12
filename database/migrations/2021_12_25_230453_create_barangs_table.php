@@ -17,7 +17,8 @@ class CreateBarangsTable extends Migration
             $table->id();     
             $table->string('nama_barang');
             $table->string('jenis_barang');
-            $table->integer('jumlah_barang')->default(0);
+            $table->integer('stok_barang')->default(0);
+            $table->integer('harga');
             $table->string('satuan');
             $table->timestamps();
         });
