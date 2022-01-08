@@ -3,9 +3,13 @@
 @section('title', 'Beranda')
 
 @section('content_header')
+@role('admin')
+<h2>Admin</h2>
+@endrole
 
-<h2><br></h2>
-
+@role('petugas')
+<h2>Petugas</h2>
+@endrole
 @endsection
 
 @section('content')
