@@ -14,7 +14,9 @@ class CreateBarangKeluarsTable extends Migration
     public function up()
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
-            $table->id();           
+            $table->id();
+            $table->bigInteger('id_customer')->unsigned();
+            $table->foreign('id_customer')->references('id')->on('customers');
             $table->bigInteger('id_barang')->unsigned();
             $table->foreign('id_barang')->references('id')->on('barangs');
             $table->integer('jumlah_pengiriman');
