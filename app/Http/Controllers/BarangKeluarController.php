@@ -77,11 +77,17 @@ class BarangKeluarController extends Controller
                 'tgl_pengiriman' => 'required',
                 'tujuan' => 'required',
             ]);
-        
+            
              Barang_keluar::create($request->all());
+             $qtySend = $request->jumlah;
             
              $barang = Barang::where('id', $request->id_barang)->first();
-             $barang->jumlah_barang -= $request->jumlah;
+             $barang->jumlah_barang -= $qtySend;
+
+             $totalHarga = Barang::where('id', $request->id_barang)->first();
+             $totalHarga->harga *= $qtySend;
+             $totalHarga->save();
+
              if ($barang['jumlah_barang'] >= 0) {
                  $barang->save();
                  return redirect('barang-keluar')
