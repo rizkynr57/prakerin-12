@@ -53,6 +53,7 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'kode' => 'required',
             'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
