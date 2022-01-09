@@ -15,10 +15,31 @@ class CustomerController extends Controller
         $this->middleware('role:admin,petugas');
     }
 
+    public function code()
+    {
+    	$generateCode = Supplier::all()->get()->max('kode');
+    	$addZero = '';
+    	$generateCode = str_replace("PGJ", "", $generateCode);
+    	$generateCode = (int) $generateCode + 1;
+        $addictionalCode = $generateCode;
+
+    	if (strlen($generateCode) == 1) {
+    		$addZero = "000";
+    	} elseif (strlen($generateCode) == 2) {
+    		$addZero = "00";
+    	} elseif (strlen($generateCode == 3)) {
+    		$addZero = "0";
+    	}
+
+    	$newCode = "PRN".$addZero.$addictionalCode;
+    	return $newCode;
+    }
+
     public function index()
     {
         $customer = Customer::all();
-        return view('customer.index', compact('customer'));
+        $code = Customer::code();
+        return view('customer.index', compact('customer', 'code'));
     }
 
     public function cetakCustomerPDF()
