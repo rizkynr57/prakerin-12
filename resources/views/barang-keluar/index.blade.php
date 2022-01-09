@@ -44,14 +44,17 @@
                                     <td>{{ $data->total }}</td>
                                     <td>{{ $data->tgl_pengiriman }}</td>
                                     <td>{{ $data->tujuan }}</td>
-                                        
-                                        @include('barang-keluar.edit')
+                                        <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".barangKeluar-edit-{{ $data->id }}">Edit
+                                                    </a>
                                         <a href="{{ route('laporanBarangKeluar', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
                                         @include('barang-keluar.delete')
                                         </tbody>
                                        
                                     </td>
                                 </tr>
+                            @include('barang-keluar.edit')
                             @endforeach
                         </table>
                     </div>
