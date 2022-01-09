@@ -23,8 +23,8 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $customer = Customer::OrderBy('nama', 'ASC')->get()
-                         ->pluck('nama', 'id');
+        $customer = Customer::OrderBy('kode', 'ASC')->get()
+                         ->pluck('kode', 'id');
 
         $barangKeluar = Barang_keluar::all();
         return view('barang-keluar.index', compact('barangKeluar', 'barang', 'customer'));
@@ -35,8 +35,8 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $customer = Customer::OrderBy('nama', 'ASC')->get()
-                         ->pluck('nama', 'id');
+        $customer = Customer::OrderBy('kode', 'ASC')->get()
+                         ->pluck('kode', 'id');
 
         $netIncome = Barang_keluar::all()->get()->sum('total');
         $barangKeluar = Barang_keluar::all();
@@ -51,8 +51,8 @@ class BarangKeluarController extends Controller
         $barang = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $customer = Customer::OrderBy('nama', 'ASC')->get()
-                         ->pluck('nama', 'id');
+        $customer = Customer::OrderBy('kode', 'ASC')->get()
+                         ->pluck('kode', 'id');
 
         $barangKeluar = Barang_keluar::find($id);
         $no = 1;
@@ -65,8 +65,8 @@ class BarangKeluarController extends Controller
         $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $data3 = Customer::OrderBy('nama', 'ASC')->get()
-                          ->pluck('nama', 'id');
+        $data3 = Customer::OrderBy('kode', 'ASC')->get()
+                          ->pluck('kode', 'id');
 
         $netIncome = Barang_keluar::all()->get()->sum('total');
         $data = Barang_keluar::all();
@@ -80,8 +80,8 @@ class BarangKeluarController extends Controller
         $data2 = Barang::OrderBy('nama_barang', 'ASC')->get()
                          ->pluck('nama_barang', 'id');
 
-        $data3 = Customer::OrderBy('nama', 'ASC')->get()
-                         ->pluck('nama', 'id');
+        $data3 = Customer::OrderBy('kode', 'ASC')->get()
+                         ->pluck('kode', 'id');
 
         $data = Barang_keluar::find($id);
         $no = 1;
