@@ -10,6 +10,7 @@
             </div>
             <form action="{{ route('barang-keluar.update', $barangKeluar->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Customer</label>
