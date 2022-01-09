@@ -12,6 +12,10 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="">Kode Customer</label>
+                        <input type="text" class="form-control boxed" name="kode" value{{ $code }} readonly>
+                    </div>
+                    <div class="form-group">
                         <label for="">Nama Customer</label>
                         <input type="text" class="form-control" name="nama" required>
                     </div>
