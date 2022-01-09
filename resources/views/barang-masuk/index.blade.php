@@ -48,7 +48,7 @@
                                     <td>{{ $data->tgl_masuk }}</td>
                                     <td>
                                         
-                                        <a href="{{ route('barang-masuk.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
+                                        @include('barang-masuk.edit')
                                         <a href="{{ route('laporanBarangMasuk', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
                                         @include('barang-masuk.delete')
                                         </tbody>
