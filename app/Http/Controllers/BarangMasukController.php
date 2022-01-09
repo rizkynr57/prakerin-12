@@ -22,8 +22,8 @@ class BarangMasukController extends Controller
         $barang = Barang::orderBy('nama_barang', 'ASC')->get()
                           ->pluck('nama_barang', 'id');
 
-        $supplier = Supplier::orderBy('nama_supplier','ASC')->get()
-                     ->pluck('nama_supplier','id');
+        $supplier = Supplier::orderBy('kode','ASC')->get()
+                     ->pluck('kode','id');
 
         $barangMasuk = Barang_masuk::all();
         return view('barang-masuk.index', compact('barangMasuk', 'supplier', 'barang'));
