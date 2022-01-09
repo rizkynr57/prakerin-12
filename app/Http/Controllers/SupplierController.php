@@ -15,10 +15,31 @@ class SupplierController extends Controller
         $this->middleware('role:admin');
     }
 
+    public function code()
+    {
+    	$generateCode = Supplier::all()->get()->max('kode');
+    	$addZero = '';
+    	$generateCode = str_replace("PGJ", "", $generateCode);
+    	$generateCode = (int) $generateCode + 1;
+        $addictionalCode = $generateCode;
+
+    	if (strlen($generateCode) == 1) {
+    		$addZero = "000";
+    	} elseif (strlen($generateCode) == 2) {
+    		$addZero = "00";
+    	} elseif (strlen($generateCode == 3)) {
+    		$addZero = "0";
+    	}
+
+    	$newCode = "PRN".$addZero.$addictionalCode;
+    	return $newCode;
+    }
+
     public function index()
     {
         $supplier = Supplier::all();
-        return view('supplier.index', compact('supplier'));
+        $code = Supplier::code();
+        return view('supplier.index', compact('supplier', 'code'));
     }
 
     public function cetakSupplierPDF()
