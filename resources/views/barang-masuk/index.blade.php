@@ -47,14 +47,16 @@
                                     <td>{{ $data->satuan }}</td>
                                     <td>{{ $data->tgl_masuk }}</td>
                                     <td>
-                                        
-                                        @include('barang-masuk.edit')
+                                        <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".barangMasuk-edit-{{ $data->id }}">Edit
+                                                    </a>
                                         <a href="{{ route('laporanBarangMasuk', $data->id) }}" class="btn btn-outline-warning" target="_blank">Print</a>
                                         @include('barang-masuk.delete')
-                                        </tbody>
-                                        
+                                        </tbody>                                   
                                     </td>
                                 </tr>
+                            @include('barang-masuk.edit')
                             @endforeach
                         </table>
                     </div>
