@@ -37,9 +37,11 @@ class BarangMasukController extends Controller
         $supplier = Supplier::orderBy('nama_supplier', 'ASC')->get()
                           ->pluck('nama_supplier', 'id');
 
+        $amount = Barang_masuk::all()->get()->sum('jumlah_pemasukan');
         $barangMasuk = Barang_masuk::all();
         $no = 1;
-        return view('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
+        return view('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 
+                                                                   'no', $amount));
     }
 
     public function laporanBarangMasuk($id)
@@ -63,9 +65,10 @@ class BarangMasukController extends Controller
         $data2 = Supplier::orderBy('nama_supplier', 'ASC')->get()
                           ->pluck('nama_supplier', 'id');
 
+        $amount = Barang_masuk::all()->get()->sum('jumlah_pemasukan');
         $data = Barang_masuk::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
+        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no', $amount));
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
     }
 
