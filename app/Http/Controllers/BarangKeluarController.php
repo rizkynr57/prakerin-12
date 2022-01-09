@@ -38,9 +38,12 @@ class BarangKeluarController extends Controller
         $customer = Customer::OrderBy('nama', 'ASC')->get()
                          ->pluck('nama', 'id');
 
+        $netIncome = Barang_keluar::all()->get()->sum('total');
+
         $barangKeluar = Barang_keluar::all();
         $no = 1;
-        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 'no', 'customer'));
+        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 
+                                                                  'no', 'customer', $netIncome));
         
      }
       
