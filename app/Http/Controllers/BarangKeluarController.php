@@ -103,7 +103,7 @@ class BarangKeluarController extends Controller
             
              $barang = Barang::where('id', $idStuff)->first();
              $barang['stok_barang'] -= $qtySend;
-             if (count($barang['stock_barang']) < 1) {
+             if ($barang['stock_barang'] < 1) {
                   return Redirect::back()->withError('<strong>Gagal</strong>', 
                                                      'Pengiriman tidak boleh 
                                                       melebihi batas stok tersisa!');
