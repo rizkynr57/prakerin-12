@@ -13,11 +13,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        {!! Form::select('id_supplier', $supplier, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Supplier --', 'id' => 'id_supplier', 'readonly']) !!}
+                        <input type="number" name="id_supplier" class="form-control" value="{{ $barangMasuk->id_supplier }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'readonly']) !!}
+                        <input type="number" name="id_barang" class="form-control" value="{{ $barangMasuk->id_barang }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
