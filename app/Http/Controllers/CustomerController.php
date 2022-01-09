@@ -19,7 +19,7 @@ class CustomerController extends Controller
     {
     	$generateCode = Supplier::all()->get()->max('kode');
     	$addZero = '';
-    	$generateCode = str_replace("PGJ", "", $generateCode);
+    	$generateCode = str_replace("GTJ", "", $generateCode);
     	$generateCode = (int) $generateCode + 1;
         $addictionalCode = $generateCode;
 
@@ -31,7 +31,7 @@ class CustomerController extends Controller
     		$addZero = "0";
     	}
 
-    	$newCode = "PRN".$addZero.$addictionalCode;
+    	$newCode = "CTR".$addZero.$addictionalCode;
     	return $newCode;
     }
 
@@ -53,6 +53,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'kode' => 'required',
             'nama' => 'required|string|unique:customers',
             'alamat' => 'required',
             'email' => 'required|email|unique:customers',
