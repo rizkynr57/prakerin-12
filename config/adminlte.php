@@ -246,26 +246,31 @@ return [
   [
       'text' => 'Data Supplier',
       'url' => 'supplier',
+      'can' => 'AksesAdmin',
       'icon' => 'fas fa-address-book'
   ],
   [
       'text' => 'Data Customer',
       'url' => 'customer',
+      'can' => ['AksesAdmin, 'AksesPetugas'],
       'icon' => 'fas fa-users'
   ],
   [
       'text' => 'Barang',
       'url' => 'barang',
+      'can' => ['AksesAdmin', 'AksesPetugas'],
       'icon' => 'fas fa-balance-scale'
   ],
   [
     'text' => 'Barang Masuk',
     'url' => 'barang-masuk',
+    'can' => ['AksesAdmin', 'AksesPetugas'],
     'icon' => 'fas fa-people-carry'
    ],
    [
     'text' => 'Barang Keluar',
     'url' => 'barang-keluar',
+    'can' => '['AksesAdmin', 'AksesPetugas'],
     'icon' => 'fas fa-truck'
   ],
   [
@@ -276,11 +281,13 @@ return [
       [
          'text' => 'Laporan Pemasukan Barang',
          'url' => '/laporan-barangmasuk-all',
+         'can' => 'AksesAdmin',
          'icon' => 'fas fa-sticky-note'
       ],
       [
          'text' => 'Laporan Pengeluaran Barang',
          'url' => '/laporan-barangkeluar-all ',
+         'can' => 'AksesAdmin',
          'icon' => 'far fa-sticky-note'
       ],
   ],
