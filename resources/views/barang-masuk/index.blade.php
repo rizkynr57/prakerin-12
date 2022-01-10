@@ -24,7 +24,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Supplier</th>
+                                <th>Supplier</th>
                                 <th>Nama Barang</th>
                                 <th>Jenis Barang</th>
                                 <th>Jumlah Barang</th>
