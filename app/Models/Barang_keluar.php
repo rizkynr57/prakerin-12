@@ -18,6 +18,11 @@ class Barang_keluar extends Model
 
     public $timestamps = true;
 
+    public function home()
+    {
+        return $this->hasMany(Home::class);
+    }
+
     public function barang()
     {
         return $this->belongsTo('App\Models\Barang', 'id_barang');
