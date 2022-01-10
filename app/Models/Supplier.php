@@ -25,6 +25,26 @@ class Supplier extends Model
         return $this->hasMany('App\Models\Barang_masuk', 'id_supplier');
     }
 
+    public function code()
+    {
+        $generateCode = Supplier::all()->get()->max('code');
+        $addZero = '';
+        $generateCode = str_replace("GTJ", "", $generateCode);
+        $generateCode = (int) $generateCode + 1;
+        $addictionalCode = $generateCode;
+
+        if (strlen($generateCode) == 1) {
+            $addZero = "000";
+        } elseif (strlen($generateCode) == 2) {
+            $addZero = "00";
+        } elseif (strlen($generateCode == 3)) {
+            $addZero = "0";
+        }
+
+        $newCode = "CTR" . $addZero . $addictionalCode;
+        return $newCode;
+    }
+
     public static function boot()
     {
         parent::boot();
