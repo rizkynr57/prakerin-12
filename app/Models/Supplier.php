@@ -27,7 +27,7 @@ class Supplier extends Model
 
     public function code()
     {
-        $generateCode = DB::table('barang_masuks')->max('kode');
+        $generateCode = DB::table('suppliers')->max('kode');
         $addZero = '';
         $generateCode = str_replace("GTJ", "", $generateCode);
         $generateCode = (int) $generateCode + 1;
