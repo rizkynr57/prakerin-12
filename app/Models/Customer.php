@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Session;
+use DB;
 
 class Customer extends Model
 {
@@ -26,7 +27,7 @@ class Customer extends Model
 
     public function code()
     {
-        $generateCode = Supplier::all()->get()->max('code');
+        $generateCode = DB::table('customers')->max('kode');
         $addZero = '';
         $generateCode = str_replace("GTJ", "", $generateCode);
         $generateCode = (int) $generateCode + 1;
