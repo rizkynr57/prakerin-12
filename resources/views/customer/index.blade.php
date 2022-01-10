@@ -46,14 +46,17 @@
                                     <td>{{ $data->email }}</td>
                                     <td>{{ $data->no_telp }}</td>
                                     <td>
-                                        
-                                        <a href="{{ route('customer.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".customer-edit-{{ $data->id }}">Edit
+                                                    </a>
                                         <a href="{{ route('customer.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         @include('customer.delete')
                                         </tbody>
                                         
                                     </td>
                                 </tr>
+                            @include('customer.edit')
                             @endforeach
                         </table>
                     </div>
