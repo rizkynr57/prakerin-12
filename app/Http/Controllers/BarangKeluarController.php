@@ -123,7 +123,7 @@ class BarangKeluarController extends Controller
              $priceCount['harga'] *= $qtySend;
               
              $direct = new Barang_keluar();
-             $direct->total = $priceCount;
+             $direct->total_harga = $priceCount;
              $direct->save();
               
              return redirect('barang-keluar')
