@@ -19,7 +19,7 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::all();
         $code = Supplier::code();
-        return view('supplier.index', compact('supplier'));
+        return view('supplier.index', compact('supplier', 'code'));
     }
 
     public function cetakSupplierPDF()
