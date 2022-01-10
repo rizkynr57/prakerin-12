@@ -109,9 +109,16 @@ class BarangKeluarController extends Controller
                   return Redirect::back()->withError('<strong>Gagal</strong>', 
                                                      'Pengiriman tidak boleh 
                                                       melebihi batas stok tersisa!');
-             } 
+          } else {
              $barang->save();
-        
+
+             $price = Barang::where('id', $idStuff)->first();
+             $price['harga'];
+
+             $unitPrice = Barang_keluar::where('id', $idStuff)->first();
+             $unitPrice['harga_satuan'] = $price['harga'];
+             $unitPrice->save();
+
              $priceCount = Barang::where('id', $idStuff)->first();
              $priceCount['harga'] *= $qtySend;
               
@@ -121,7 +128,8 @@ class BarangKeluarController extends Controller
               
              return redirect('barang-keluar')
                                  ->withSuccess('<strong>Berhasil</strong>, 
-                                                Barang sedang dikirim ke tempat tujuan!');
+                                            Barang sedang dikirim ke tempat tujuan!');
+           }
                 
     }
 
