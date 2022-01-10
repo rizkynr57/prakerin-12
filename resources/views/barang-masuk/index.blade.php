@@ -40,7 +40,7 @@
                             @foreach ($barangMasuk as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $data->supplier->nama_supplier }}</td>
+                                    <td>{{ $data->supplier->kode }}</td>
                                     <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jenis_barang }}</td>
                                     <td>{{ $data->jumlah_barang }}</td>
