@@ -54,14 +54,17 @@
                                     <td>{{ $data->stok_barang }}</td>
                                     <td>{{ $data->harga }}</td>                                    
                                     <td>{{ $data->satuan }}</td>                                    
-                                        
-                                        <a href="{{ route('barang.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".barang-edit-{{ $data->id }}">Edit
+                                                    </a>
                                         <a href="{{ route('barang.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         @include('barang.delete')
                                         </tbody>
                                      
                                     </td>
                                 </tr>
+                            @include('barang.edit')
                             @endforeach
                         </table>
                     </div>
