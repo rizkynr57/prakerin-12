@@ -18,8 +18,8 @@ class CustomerController extends Controller
     public function index()
     {
         $customer = Customer::all();
-        // $code = Customer::code();
-        return view('customer.index', compact('customer'));
+        $code = Customer::code();
+        return view('customer.index', compact('customer', 'code'));
     }
 
     public function cetakCustomerPDF()
