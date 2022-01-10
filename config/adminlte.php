@@ -246,7 +246,7 @@ return [
         [
             'text' => 'Data Supplier',
             'url' => 'supplier',
-            'can' => 'AksesAdmin',
+            'can' => ['AksesAdmin', 'AksePetugas'],
             'icon' => 'fas fa-address-book',
         ],
         [
@@ -277,6 +277,7 @@ return [
             'text' => 'Laporan Barang',
             'url' => '#',
             'icon' => 'fas fa-book',
+            'can' => 'AksesAdmin',
             'submenu' => [
                 [
                     'text' => 'Laporan Pemasukan Barang',
