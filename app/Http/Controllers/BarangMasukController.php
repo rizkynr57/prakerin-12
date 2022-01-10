@@ -37,7 +37,7 @@ class BarangMasukController extends Controller
         $supplier = Supplier::orderBy('nama_supplier', 'ASC')->get()
                           ->pluck('nama_supplier', 'id');
 
-        $amount = Barang_masuk::all()->get()->sum('jumlah_pemasukan');
+        $amount = Barang_masuk::withCount('barang_masuks', 'jumlah_pemasukan')->get();
         $barangMasuk = Barang_masuk::all();
         $no = 1;
         return view('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 
@@ -65,7 +65,7 @@ class BarangMasukController extends Controller
         $data2 = Supplier::orderBy('nama_supplier', 'ASC')->get()
                           ->pluck('nama_supplier', 'id');
 
-        $amount = Barang_masuk::all()->get()->sum('jumlah_pemasukan');
+        $amount = Barang_masuk::withCount('barang_masuks', 'jumlah_pemasukan')->get();
         $data = Barang_masuk::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no', $amount));
