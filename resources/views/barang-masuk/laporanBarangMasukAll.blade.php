@@ -92,7 +92,7 @@
                     <div class="text-95 text-secondary-d3">
                         <div class="row mb-2 mb-sm-0 py-25">
                             <div class="d-none d-sm-block col-1">{{ $no++ }}</div>
-                            <div class="col-9 col-sm-5">{{ $data->supplier->kode }}</div>
+                            <div class="col-9 col-sm-5">{{ $data->supplier->nama_supplier }}</div>
                             <div class="d-none d-sm-block col-2">{{ $data->barang->nama_barang }}</div>
                             <div class="d-none d-sm-block col-2 text-95">{{ $data->jumlah_pemasukan }}</div>
                             <div class="col-2 text-secondary-d2">{{ $data->tgl_masuk }}</div>
