@@ -38,7 +38,7 @@ class BarangKeluarController extends Controller
         $customer = Customer::OrderBy('nama', 'ASC')->get()
                          ->pluck('nama', 'id');
 
-        $netIncome = Barang_keluar::withSum('barang_keluars', 'total')->get();
+        $netIncome = Barang_keluar::withSum('barang_keluars', 'total_harga')->get();
         $barangKeluar = Barang_keluar::all();
         $no = 1;
         return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang', 
@@ -68,7 +68,7 @@ class BarangKeluarController extends Controller
         $data3 = Customer::OrderBy('nama', 'ASC')->get()
                           ->pluck('nama', 'id');
 
-        $netIncome = Barang_keluar::all()->get()->sum('total');
+        $netIncome = Barang_keluar::withSum('barang_keluars', 'total_harga')->get();
         $data = Barang_keluar::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('data', 'data2', 'no', 'data3', $netIncome));
