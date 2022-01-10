@@ -83,19 +83,19 @@
                 <div class="mt-4">
                     <div class="row text-600 text-white bgc-default-tp1 py-25">
                         <div class="d-none d-sm-block col-1">No</div>
-                        <div class="col-9 col-sm-5">Nama Barang</div>
-                        <div class="d-none d-sm-block col-4 col-sm-2">Jumlah Pengiriman</div>
-                        <div class="d-none d-sm-block col-sm-2">Pendapatan</div>
-                        <div class="col-2">Tujuan</div>
+                        <div class="col-9 col-sm-5">Supplier</div>
+                        <div class="d-none d-sm-block col-4 col-sm-2">Nama Barang</div>
+                        <div class="d-none d-sm-block col-sm-2">Jumlah Pemasukan</div>
+                        <div class="col-2">Tanggal Masuk</div>
                     </div>
-   @foreach($barangKeluar as $data)
+   @foreach($barangMasuk as $data)
                     <div class="text-95 text-secondary-d3">
                         <div class="row mb-2 mb-sm-0 py-25">
                             <div class="d-none d-sm-block col-1">{{ no++ }}</div>
-                            <div class="col-9 col-sm-5">{{ $data->barang->nama_barang</div>
-                            <div class="d-none d-sm-block col-2">{{ $data->jumlah_pengiriman }}</div>
-                            <div class="d-none d-sm-block col-2 text-95">{{ $data->total }}</div>
-                            <div class="col-2 text-secondary-d2">{{ $data->tujuan }}</div>
+                            <div class="col-9 col-sm-5">{{ $data->supplier->kode</div>
+                            <div class="d-none d-sm-block col-2">{{ $data->barang->nama_barang }}</div>
+                            <div class="d-none d-sm-block col-2 text-95">{{ $data->jumlah_pemasukan }}</div>
+                            <div class="col-2 text-secondary-d2">{{ $data->tgl_masuk }}</div>
                         </div>
                     </div>
        @endforeach
