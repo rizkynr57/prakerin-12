@@ -24,6 +24,7 @@
                             <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Customer</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Pengiriman</th>
                                 <th>Total Harga</th>
@@ -39,6 +40,7 @@
                             @foreach ($barangKeluar as $data)
                                 <tr>
                                     <td>{{ $no++ }}</td>
+                                    <td>{{ $data->customer->kode }}
                                     <td>{{ $data->barang->nama_barang }}</td>
                                     <td>{{ $data->jumlah_pengiriman }}</td>
                                     <td>{{ $data->total }}</td>
