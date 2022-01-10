@@ -20,7 +20,7 @@ class Supplier extends Model
 
     public $timestamps = true;
 
-    public function masuk()
+    public function barangMasuk()
     {
         return $this->hasMany('App\Models\Barang_masuk', 'id_supplier');
     }
