@@ -21,9 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $totalMasuk = DB::table('barang_masuk')->get()->sum('jumlah_pemasukan');
-        // $totalKeluar = DB::table('barang_keluar')->get()->sum('jumlah_pengiriman');
-        // $earning = DB::table('barang_keluar')->get()->sum('total');
         return view('home');
     }
 }
