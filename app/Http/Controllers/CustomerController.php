@@ -15,26 +15,6 @@ class CustomerController extends Controller
         $this->middleware('role:admin,petugas');
     }
 
-    public function code()
-    {
-        $generateCode = Supplier::all()->get()->max('code');
-        $addZero = '';
-        $generateCode = str_replace("GTJ", "", $generateCode);
-        $generateCode = (int) $generateCode + 1;
-        $addictionalCode = $generateCode;
-
-        if (strlen($generateCode) == 1) {
-            $addZero = "000";
-        } elseif (strlen($generateCode) == 2) {
-            $addZero = "00";
-        } elseif (strlen($generateCode == 3)) {
-            $addZero = "0";
-        }
-
-        $newCode = "CTR" . $addZero . $addictionalCode;
-        return $newCode;
-    }
-
     public function index()
     {
         $customer = Customer::all();
