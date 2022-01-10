@@ -10,11 +10,15 @@ class Home extends Model
 {
     use HasFactory;
 
-    public function InOut()
+    public function In()
     {
-        return $this->hasManyThrough(related:Barang_masuk::class, related:Barang_keluar::class);
+        return $this->belongsTo(Barang_masuk::class);
     }
 
+    public function Out()
+    {
+        return $this->belongsTo(Barang_keluar::class);
+    }
     
 }
 
