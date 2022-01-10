@@ -46,14 +46,17 @@
                                     <td>{{ $data->no_telp }}</td>
                                     <td>{{ $data->nama_perusahaan }}</td>
                                     <td>
-                                        
-                                        <a href="{{ route('supplier.edit', $data->id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".supplier-edit-{{ $data->id }}">Edit
+                                                    </a>
                                         <a href="{{ route('supplier.show', $data->id) }}" class="btn btn-outline-warning">Show</a>
                                         @include('supplier.delete')
                                         </tbody>
                                         
                                     </td>
                                 </tr>
+                            @include('supplier.edit')
                             @endforeach
                         </table>
                     </div>
