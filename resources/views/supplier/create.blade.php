@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kode Supplier</label>
-                        <input type="text" class="form-control" name="kode" value="{{ $code }} readonly>
+                        <input type="text" class="form-control" name="kode" value="{{ $code }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
