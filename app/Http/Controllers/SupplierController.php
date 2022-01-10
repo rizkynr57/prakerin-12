@@ -14,6 +14,13 @@ class SupplierController extends Controller
     {
         $this->middleware('role:admin');
     }
+    
+    public function index()
+    {
+        $supplier = Supplier::all();
+        // $code = Supplier::code();
+        return view('supplier.index', compact('supplier'));
+    }
 
     public function cetakSupplierPDF()
     {
