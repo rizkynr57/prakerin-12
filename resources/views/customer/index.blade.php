@@ -49,9 +49,7 @@
                                             <td>{{ $data->email }}</td>
                                             <td>{{ $data->telepon }}</td>
                                             <td>
-                                                <form action="{{ route('customer.destroy', $data->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
+                                                
                                                     <a class="btn btn-outline btn-sm btn-outline-warning"
                                                         data-toggle="modal"
                                                         data-target=".customer-edit-{{ $data->id }}">Edit
@@ -59,8 +57,8 @@
                                                     <a href="{{ route('customer.show', $data->id) }}"
                                                         class="btn btn-warning">show</a>
                                                     <a type="submit" class="btn btn-danger delete"
-                                                        data-id="{{ $data->id }}">Delete</button>
-                                                </form>
+                                                        data-id="{{ $data->id }}">Delete</a>
+                                                
                                 </tbody>
 
                                 </td>
