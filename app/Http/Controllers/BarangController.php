@@ -38,6 +38,16 @@ class BarangController extends Controller
         $barang->jenis_barang = $request->jenis_barang;
         $barang->stok_barang = 0;
         $barang->harga = $request->harga;
+        if($barang['harga'] >= 100000) {
+             $profit = 0.3; // 30%
+        } else if ($barang['harga'] >= 70000) {
+             $profit = 0.25; // 25%
+        } else if ($barang['harga'] >= 50000) {
+             $profit = 0.2; // 20%
+        } else {
+             $profit = 0.1; // 10%
+        }
+        $barang->harga_jual = $request->harga * $profit;
         $barang->satuan = $request->satuan;
         $barang->save();
         return redirect('barang')->with('success', 'Data disimpan');
