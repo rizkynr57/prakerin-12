@@ -100,8 +100,8 @@ class BarangKeluarController extends Controller
         $priceCount->total = $priceCount['harga_jual'] * $qtySend;
         $priceCount->save();
 
-        $direct = new Barang_keluar();
         $totalHarga = Barang::findOrFail($idStuff);
+        $direct = new Barang_keluar();  
         $direct->total_harga = $totalHarga['total'];
         $direct->save();
 
