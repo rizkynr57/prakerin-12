@@ -48,17 +48,16 @@
                                             <td>{{ $data->no_telp }}</td>
                                             <td>{{ $data->nama_perusahaan }}</td>
                                             <td>
-                                                <form action="{{ route('supplier.destroy', $data->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
+                                                
                                                     <a class="btn btn-outline btn-sm btn-outline-warning"
                                                         data-toggle="modal"
                                                         data-target=".supplier-edit-{{ $data->id }}">Edit
                                                     </a>
                                                     <a href="{{ route('supplier.show', $data->id) }}"
                                                         class="btn btn-warning">Show</a>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
+                                                    <a href="#" class="btn btn-danger delete"
+                                                         data-id="{{ $data->id }}">Delete</button>
+                                                
                                 </tbody>
 
                                 </td>
@@ -86,4 +85,35 @@
             $('#supplier').DataTable();
         });
     </script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+         integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+        crossorigin="anonymous">
+  </script>
+
+
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+    $('.delete').click(function () {
+       var $supplierid = $(this).attr('data-id');
+       swal({
+          title: "Apakah Anda Yakin?",
+          text: "Jika data ini dihapus, maka anda tidak bisa mengembalikan!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+       })
+         .then((willDelete) => {
+         if (willDelete) {
+           swal("Data Terhapus!", {
+           icon: "success",
+       });
+      } else {
+           swal("Penghapusan Data Dibatalkan!");
+        }
+       });
+     });
+</script>
 @endsection
