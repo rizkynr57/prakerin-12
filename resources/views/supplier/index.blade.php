@@ -56,7 +56,7 @@
                                                     <a href="{{ route('supplier.show', $data->id) }}"
                                                         class="btn btn-warning">Show</a>
                                                     <a href="#" class="btn btn-danger delete"
-                                                         data-id="{{ $data->id }}">Delete</button>
+                                                         data-id="{{ $data->id }}">Delete</a>
                                                 
                                 </tbody>
 
