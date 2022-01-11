@@ -97,7 +97,7 @@
 
     <script>
     $('.delete').click(function () {
-       var $supplierid = $(this).attr('data-id');
+       var supplierid = $(this).attr('data-id');
        swal({
           title: "Apakah Anda Yakin?",
           text: "Jika data ini dihapus, maka anda tidak bisa mengembalikan!",
@@ -107,7 +107,7 @@
        })
          .then((willDelete) => {
           if (willDelete) {
-             window.location = "/delete/"+$supplierid+""
+             window.location = "/delete/"+supplierid+""
              swal("Data Terhapus!", {
              icon: "success",
        });
