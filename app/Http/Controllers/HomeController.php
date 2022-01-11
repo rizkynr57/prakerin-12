@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Home;
-use DB;
-
 class HomeController extends Controller
 {
     /**
@@ -25,10 +21,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalMasuk = DB::table('barang_masuk')->get()->sum('jumlah_pemasukan');
-        $totalKeluar = DB::table('barang_keluar')->get()->sum('jumlah_pengiriman');
-        $earning = DB::table('barang_keluar')->get()->sum('total');
-        return view('home')->with('jumlah_pemasukan', 'jumlah_pengiriman', 'total',
-                                              $totalMasuk, $totalKeluar, $earning);
+        // $totalMasuk = DB::table('barang_masuk')->get()->sum('jumlah_pemasukan');
+        // $totalKeluar = DB::table('barang_keluar')->get()->sum('jumlah_pengiriman');
+        // $earning = DB::table('barang_keluar')->get()->sum('total');
+        return view('home');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Supplier;
-use Session;
-use PDF;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use PDF;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -17,29 +17,29 @@ class CustomerController extends Controller
 
     public function code()
     {
-    	$generateCode = Supplier::all()->get()->max('kode');
-    	$addZero = '';
-    	$generateCode = str_replace("GTJ", "", $generateCode);
-    	$generateCode = (int) $generateCode + 1;
+        $generateCode = Supplier::all()->get()->max('code');
+        $addZero = '';
+        $generateCode = str_replace("GTJ", "", $generateCode);
+        $generateCode = (int) $generateCode + 1;
         $addictionalCode = $generateCode;
 
-    	if (strlen($generateCode) == 1) {
-    		$addZero = "000";
-    	} elseif (strlen($generateCode) == 2) {
-    		$addZero = "00";
-    	} elseif (strlen($generateCode == 3)) {
-    		$addZero = "0";
-    	}
+        if (strlen($generateCode) == 1) {
+            $addZero = "000";
+        } elseif (strlen($generateCode) == 2) {
+            $addZero = "00";
+        } elseif (strlen($generateCode == 3)) {
+            $addZero = "0";
+        }
 
-    	$newCode = "CTR".$addZero.$addictionalCode;
-    	return $newCode;
+        $newCode = "CTR" . $addZero . $addictionalCode;
+        return $newCode;
     }
 
     public function index()
     {
         $customer = Customer::all();
-        $code = Customer::code();
-        return view('customer.index', compact('customer', 'code'));
+        // $code = Customer::code();
+        return view('customer.index', compact('customer'));
     }
 
     public function cetakCustomerPDF()
@@ -57,9 +57,9 @@ class CustomerController extends Controller
             'nama' => 'required|string|unique:customers',
             'alamat' => 'required',
             'email' => 'required|email|unique:customers',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
         ]);
-        
+
         Customer::create($request->all());
 
         return redirect('customer')->with('success', 'Data berhasil disimpan!');
@@ -83,7 +83,7 @@ class CustomerController extends Controller
             'nama' => 'required|string|unique:customer',
             'alamat' => 'required',
             'email' => 'required|email|unique:customer',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
         ]);
 
         $customer = Customer::findOrFail($id);
@@ -94,13 +94,13 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-       if(!Customer::destroy($id)){
-           return redirect()->back();
-       }
-       Session::flash("flash_notification", [
-           "level" => "success",
-           "message" => "Data Berhasil Dihapus",
-       ]);
-       return redirect()->route('customer.index');
+        if (!Customer::destroy($id)) {
+            return redirect()->back();
+        }
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data Berhasil Dihapus",
+        ]);
+        return redirect()->route('customer.index');
     }
 }

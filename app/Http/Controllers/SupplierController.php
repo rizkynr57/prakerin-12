@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
-use Session;
-use PDF;
 use Illuminate\Http\Request;
+use PDF;
+use Session;
 
 class SupplierController extends Controller
 {
@@ -17,29 +17,29 @@ class SupplierController extends Controller
 
     public function code()
     {
-    	$generateCode = Supplier::all()->get()->max('kode');
-    	$addZero = '';
-    	$generateCode = str_replace("PGJ", "", $generateCode);
-    	$generateCode = (int) $generateCode + 1;
+        $generateCode = Supplier::all()->get()->max('kode');
+        $addZero = '';
+        $generateCode = str_replace("PGJ", "", $generateCode);
+        $generateCode = (int) $generateCode + 1;
         $addictionalCode = $generateCode;
 
-    	if (strlen($generateCode) == 1) {
-    		$addZero = "000";
-    	} elseif (strlen($generateCode) == 2) {
-    		$addZero = "00";
-    	} elseif (strlen($generateCode == 3)) {
-    		$addZero = "0";
-    	}
+        if (strlen($generateCode) == 1) {
+            $addZero = "000";
+        } elseif (strlen($generateCode) == 2) {
+            $addZero = "00";
+        } elseif (strlen($generateCode == 3)) {
+            $addZero = "0";
+        }
 
-    	$newCode = "PRN".$addZero.$addictionalCode;
-    	return $newCode;
+        $newCode = "PRN" . $addZero . $addictionalCode;
+        return $newCode;
     }
 
     public function index()
     {
         $supplier = Supplier::all();
-        $code = Supplier::code();
-        return view('supplier.index', compact('supplier', 'code'));
+        // $code = Supplier::code();
+        return view('supplier.index', compact('supplier'));
     }
 
     public function cetakSupplierPDF()
@@ -57,9 +57,9 @@ class SupplierController extends Controller
             'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required|unique:suppliers'
+            'perusahaan' => 'required|unique:suppliers',
         ]);
-        
+
         Supplier::create($request->all());
 
         return redirect('supplier')->with('success', 'Data berhasil disimpan!');
@@ -83,7 +83,7 @@ class SupplierController extends Controller
             'nama' => 'required|string|unique:suppliers',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required|unique:suppliers'
+            'perusahaan' => 'required|unique:suppliers',
         ]);
 
         $supplier = Supplier::findOrFail($id);
@@ -94,13 +94,13 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
-       if(!Supplier::destroy($id)){
-           return redirect()->back();
-       }
-       Session::flash("flash_notification", [
-           "level" => "success",
-           "message" => "Data Berhasil Dihapus",
-       ]);
-       return redirect()->route('supplier');
+        if (!Supplier::destroy($id)) {
+            return redirect()->back();
+        }
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data Berhasil Dihapus",
+        ]);
+        return redirect()->route('supplier');
     }
 }
