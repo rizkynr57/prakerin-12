@@ -51,8 +51,10 @@
                                                 <form action="{{ route('supplier.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('supplier.edit', $data->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                    <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".supplier-edit-{{ $data->id }}">Edit
+                                                    </a>
                                                     <a href="{{ route('supplier.show', $data->id) }}"
                                                         class="btn btn-warning">Show</a>
                                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -61,7 +63,7 @@
 
                                 </td>
                                 </tr>
-                                {{-- @include('supplier.edit') --}}
+                                @include('supplier.edit')
                                 @endforeach
                             </table>
                         </div>
