@@ -51,7 +51,7 @@
                                                         data-toggle="modal"
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">Edit
                                                     </a>
-                                                    <a href="{{ route('laporanBarangMasuk', $data->id) }}"
+                                                    <a href="{{ route('exportPDF.barangKeluar', $data->id) }}"
                                                         class="btn btn-warning" target="_blank">Print</a>
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
