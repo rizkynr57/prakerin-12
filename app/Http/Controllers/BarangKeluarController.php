@@ -92,11 +92,11 @@ class BarangKeluarController extends Controller
         $idStuff = $request->id_barang;
         $qtySend = $request->jumlah;
 
-        $barang = Barang::findOrFail($idStuff);
+        $barang = Barang::where('id', '=', $idStuff)->first();
         $barang['stok_barang'] -= $qtySend;
         $barang->save();
 
-        $priceCount = Barang::findOrfail($idStuff);
+        $priceCount = Barang::where('id', '=', $idStuff)->first();
         $priceCount->total = $priceCount['harga_jual'] * $qtySend;
         $priceCount->save();
 
@@ -108,12 +108,6 @@ class BarangKeluarController extends Controller
             ->withSuccess('<strong>Berhasil</strong>,
                                             Barang sedang dikirim ke tempat tujuan!');
 
-    }
-
-    public function edit($id)
-    {
-        $barangKeluar = Barang_keluar::findOrFail($id);
-        return view('barang-keluar.edit', compact('barang', 'barangKeluar'));
     }
 
     public function update(Request $request, $id)
