@@ -25,11 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('supplier', SupplierController::class);
     Route::get('/cetak-supplier', [App\Http\Controllers\SupplierController::class, 'cetakSupplierPDF'])->name('exportPDF.suppliersAll');
-    Route::get('/delete/{id}, [App\Http\Controllers\SupplierController::class, 'destroy'])->name('delete');
+    Route::get('/delete/{id}', [App\Http\Controllers\SupplierController::class, 'destroy'])->name('delete');
 
     Route::resource('customer', CustomerController::class);
     Route::get('/cetak-customer', [App\Http\Controllers\CustomerController::class, 'cetakCustomerPDF'])->name('exportPDF.customersAll');
-    // Route::get('/delete/{id}, [App\Http\Controllers\CustomerController::class, 'destroy'])->name('delete');
+    Route::get('/delete/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('delete');
 
     Route::resource('barang', BarangController::class);
 
