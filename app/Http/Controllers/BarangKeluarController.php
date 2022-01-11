@@ -101,7 +101,8 @@ class BarangKeluarController extends Controller
         $priceCount->save();
 
         $direct = new Barang_keluar();
-        $direct->total_harga = $priceCount;
+        $totalHarga = Barang::findOrFail($idStuff);
+        $direct->total_harga = $totalHarga['total'];
         $direct->save();
 
         return redirect('barang-keluar')
