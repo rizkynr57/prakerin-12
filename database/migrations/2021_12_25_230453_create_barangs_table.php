@@ -21,7 +21,6 @@ class CreateBarangsTable extends Migration
             $table->integer('harga');
             $table->integer('harga_jual')->nullable();
             $table->string('satuan');
-            $table->integer('total')->default(0);
             $table->timestamps();
         });
     }
