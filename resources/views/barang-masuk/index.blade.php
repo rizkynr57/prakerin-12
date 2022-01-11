@@ -47,8 +47,10 @@
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('barang-masuk.edit', $data->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                    <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                        data-toggle="modal"
+                                                        data-target=".barangMasuk-edit-{{ $data->id }}">Edit
+                                                    </a>
                                                     <a href="{{ route('barang-masuk.show', $data->id) }}"
                                                         class="btn btn-warning">Show</a>
                                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -57,6 +59,7 @@
                                 </tbody>
                                 </td>
                                 </tr>
+                                @include('barang-masuk.edit')
                                 @endforeach
                             </table>
                         </div>
