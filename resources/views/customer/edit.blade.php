@@ -1,4 +1,4 @@
-<div class="modal fade customer-edit-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade customer-edit-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -8,32 +8,32 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('supplier.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('customer.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kode Customer</label>
-                        <input type="text" class="form-control boxed" name="kode" value="{{ $customer->kode }}"
+                        <input type="text" class="form-control boxed" name="kode" value="{{ $data->kode }}"
                             readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Customer</label>
-                        <input type="text" class="form-control" name="nama" value="{{ $customer->nama }}" required>
+                        <input type="text" class="form-control" name="nama" value="{{ $data->nama }}" required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{ $customer->alamat }}"
+                        <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="email" class="form-control" name="email" value="{{ $customer->email }}"
+                        <input type="email" class="form-control" name="email" value="{{ $data->email }}"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{ $customer->telepon }}"
+                        <input type="text" class="form-control" name="no_telp" value="{{ $data->telepon }}"
                             required>
                     </div>
                 </div>
