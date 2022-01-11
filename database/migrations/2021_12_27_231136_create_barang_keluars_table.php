@@ -22,7 +22,7 @@ class CreateBarangKeluarsTable extends Migration
             $table->integer('jumlah_pengiriman');
             $table->integer('harga_satuan');
             $table->integer('satuan');
-            $table->integer('total_harga')->default(0);
+            $table->integer('total_harga');
             $table->string('tujuan');
             $table->date('tgl_pengiriman');
             $table->timestamps();
