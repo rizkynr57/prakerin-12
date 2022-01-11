@@ -1,4 +1,4 @@
-<div class="modal fade supplier-edit-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade supplier-edit-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -12,23 +12,23 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="">Kode Supplier</label>
-                        <input type="text" class="form-control" name="kode" value="{{ $supplier->kode }}" readonly>
-                    </div> --}}
+                        <input type="text" class="form-control" name="kode" value="{{ $data->kode }}" readonly>
+                    </div>
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="text" class="form-control" name="nama" value="{{ $supplier->nama_supplier }}"
+                        <input type="text" class="form-control" name="nama" value="{{ $data->nama_supplier }}"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{ $supplier->alamat }}"
+                        <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}"
                             required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{ $supplier->no_telp }}"
+                        <input type="text" class="form-control" name="no_telp" value="{{ $data->no_telp }}"
                             required>
                     </div>
                     <div class="form-group">
