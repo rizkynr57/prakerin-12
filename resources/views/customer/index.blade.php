@@ -57,7 +57,8 @@
                                                     </a>
                                                     <a href="{{ route('customer.show', $data->id) }}"
                                                         class="btn btn-warning">show</a>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <a type="submit" class="btn btn-danger delete"
+                                                        data-id="{{ $data->id }}">Delete</button>
                                                 </form>
                                 </tbody>
 
@@ -86,4 +87,36 @@
             $('#customer').DataTable();
         });
     </script>
+
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+         integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+        crossorigin="anonymous">
+  </script>
+
+
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+    $('.delete').click(function () {
+       var customerid = $(this).attr('data-id');
+       swal({
+          title: "Apakah Anda Yakin?",
+          text: "Jika data ini dihapus, maka anda tidak bisa mengembalikan!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+       })
+         .then((willDelete) => {
+          if (willDelete) {
+             window.location = "/delete/"+customerid+""
+             swal("Data Terhapus!", {
+             icon: "success",
+       });
+      } else {
+           swal("Penghapusan Data Dibatalkan!");
+        }
+       });
+     });
+</script>
 @endsection
