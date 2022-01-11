@@ -94,12 +94,13 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $qtySend;
         $barang->save();
 
-        // $priceCount = Barang::findOrfail($idStuff);
-        // $total = $priceCount->harga *= $qtySend;
+        $priceCount = Barang::findOrfail($idStuff);
+        $priceCount->total = $priceCount['harga'] *= $qtySend;
+        $priceCount->save();
 
-        // $direct = new Barang_keluar();
-        // $direct->total_harga = $total;
-        // $direct->save();
+        $direct = new Barang_keluar();
+        $direct->pendapatan = $priceCount;
+        $direct->save();
 
         return redirect('barang-keluar')
             ->withSuccess('<strong>Berhasil</strong>,
