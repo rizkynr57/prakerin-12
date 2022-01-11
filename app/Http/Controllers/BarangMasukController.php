@@ -85,19 +85,7 @@ class BarangMasukController extends Controller
         $barang->stok_barang += $request->jumlah;
         $barang->save();
 
-        return redirect('barang-masuk')->with('success', 'Data berhasil disimpan!');
-    }
-
-    public function edit($id)
-    {
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        return view('barang-masuk.edit', compact('barangMasuk'));
-    }
-
-    public function show($id)
-    {
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        return view('barang-masuk.edit', compact('barangMasuk'));
+        return redirect('barang-masuk')->with('success', 'Barang diterima!');
     }
 
     public function update(Request $request, $id)
