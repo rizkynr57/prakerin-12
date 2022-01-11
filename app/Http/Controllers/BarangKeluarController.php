@@ -80,8 +80,9 @@ class BarangKeluarController extends Controller
         $keluar = new Barang_keluar();
         $keluar->id_customer = $request->id_customer;
         $keluar->id_barang = $request->id_barang;
-        $price = Barang::findOrFail($request->id_barang);
-        $keluar->harga_satuan = $price['harga_jual'];
+        $getData = Barang::findOrFail($request->id_barang);
+        $keluar->harga_satuan = $getData['harga_jual'];
+        $keluar->satuan = $getData['satuan'];
         $keluar->jumlah_pengiriman = $request->jumlah;
         $keluar->tgl_pengiriman = $request->tgl_pengiriman;
         $keluar->tujuan = $request->tujuan;
