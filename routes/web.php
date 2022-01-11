@@ -38,12 +38,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporan-barangkeluar/{id}', [App\Http\Controllers\BarangKeluarController::class, 'laporanBarangKeluar'])->name('laporanBarangKeluar');
     Route::get('/cetak-pdf-all', [App\Http\Controllers\BarangKeluarController::class, 'cetakPDF_all'])->name('exportPDF.barangKeluarAll');
     Route::get('/cetak-pdf/{id}', [App\Http\Controllers\BarangKeluarController::class, 'cetakPDF'])->name('exportPDF.barangKeluar');
-    // Route::get('/delete/{id}, [App\Http\Controllers\BarangKeluarController::class, 'destroy'])->name('delete');
+    // Route::get('/delete/{id}', [App\Http\Controllers\BarangKeluarController::class, 'destroy'])->name('delete');
 
     Route::resource('barang-masuk', BarangMasukController::class);
     Route::get('/laporan-barangmasuk-all', [App\Http\Controllers\BarangMasukController::class, 'laporanBarangMasukAll']);
     Route::get('/laporan-barangmasuk/{id}', [App\Http\Controllers\BarangMasukController::class, 'laporanBarangMasuk'])->name('laporanBarangMasuk');
     Route::get('/cetak-pdf-all', [App\Http\Controllers\BarangMasukController::class, 'cetakPDF_all'])->name('exportPDF.barangMasukAll');
     Route::get('/cetak-pdf/{id}', [App\Http\Controllers\BarangMasukController::class, 'cetakPDF'])->name('exportPDF.barangMasuk');
-    // Route::get('/delete/{id}, [App\Http\Controllers\BarangMasukController::class, 'destroy'])->name('delete');
+    // Route::get('/delete/{id}', [App\Http\Controllers\BarangMasukController::class, 'destroy'])->name('delete');
 });
