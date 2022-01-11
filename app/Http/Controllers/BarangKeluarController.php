@@ -112,7 +112,7 @@ class BarangKeluarController extends Controller
           } else {
              $barang->save();
 
-             $price = Barang::where('id', 'idStuff')->first();
+             $price = Barang::where('id', $idStuff)->first();
              $unitPrice = Barang_keluar::where('id', $idStuff)->first();
              $unitPrice['harga_satuan'] = $price['harga']
              $unitPrice->save();
