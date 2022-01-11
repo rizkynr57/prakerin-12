@@ -32,13 +32,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('barang', BarangController::class);
 
     Route::resource('barang-keluar', BarangKeluarController::class);
-    Route::get('/laporan-barangkeluar-all', [App\Http\Controllers\BarangKeluarController::class, 'laporanBarangKeluarAll'])->name('laporanBarangKeluarAll');
+    Route::get('/laporan-barangkeluar-all', [App\Http\Controllers\BarangKeluarController::class, 'laporanBarangKeluarAll']);
     Route::get('/laporan-barangkeluar/{id}', [App\Http\Controllers\BarangKeluarController::class, 'laporanBarangKeluar'])->name('laporanBarangKeluar');
     Route::get('/cetak-pdf-all', [App\Http\Controllers\BarangKeluarController::class, 'cetakPDF_all'])->name('exportPDF.barangKeluarAll');
     Route::get('/cetak-pdf/{id}', [App\Http\Controllers\BarangKeluarController::class, 'cetakPDF'])->name('exportPDF.barangKeluar');
 
     Route::resource('barang-masuk', BarangMasukController::class);
-    Route::get('/laporan-barangmasuk-all', [App\Http\Controllers\BarangMasukController::class, 'laporanBarangMasukAll'])->name('laporanBarangMasukAll');
+    Route::get('/laporan-barangmasuk-all', [App\Http\Controllers\BarangMasukController::class, 'laporanBarangMasukAll']);
     Route::get('/laporan-barangmasuk/{id}', [App\Http\Controllers\BarangMasukController::class, 'laporanBarangMasuk'])->name('laporanBarangMasuk');
     Route::get('/cetak-pdf-all', [App\Http\Controllers\BarangMasukController::class, 'cetakPDF_all'])->name('exportPDF.barangMasukAll');
     Route::get('/cetak-pdf/{id}', [App\Http\Controllers\BarangMasukController::class, 'cetakPDF'])->name('exportPDF.barangMasuk');
