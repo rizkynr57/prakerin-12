@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-   public function __construct()
+    public function __construct()
     {
         $this->middleware('role:admin,petugas');
     }
@@ -27,22 +27,23 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-           'nama' => 'required|unique:barangs',
-           'jenis' => 'required',
-           'harga' => 'required',
-           'satuan' => 'required'
-       ]);
+            'nama' => 'required|unique:barangs',
+            'jenis' => 'required',
+            'harga' => 'required',
+            'satuan' => 'required',
+        ]);
 
-         Barang::create($request->all());
+        Barang::create($request->all());
 
-         return redirect('barang')->with('success', 'Data berhasil disimpan!');
-        
+        return redirect('barang')->with('success', 'Data berhasil disimpan!');
+
     }
 
     public function show($id)
     {
-        $barang = Barang::findOrFail($id)
+        $barang = Barang::findOrFail($id);
         return view('barang.show', compact('barang'));
+
     }
 
     public function edit($id)
@@ -54,10 +55,10 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-          'nama' => 'required|unique:barangs',
-          'jenis' => 'required',
-          'harga' => 'required',
-          'satuan' => 'required'
+            'nama' => 'required|unique:barangs',
+            'jenis' => 'required',
+            'harga' => 'required',
+            'satuan' => 'required',
         ]);
 
         $barang = Barang::findOrFail($id);
@@ -68,12 +69,13 @@ class BarangController extends Controller
 
     public function destroy($id)
     {
-        If(!Barang::destroy($id)) {
-          return redirect()->back();
-    }
-      Session::flash("flash_notification", [
+        if (!Barang::destroy($id)) {
+            return redirect()->back();
+        }
+        Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data berhasil dihapus",
         ]);
-      return redirect()->route('barang');
+        return redirect()->route('barang');
+    }
 }

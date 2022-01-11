@@ -1,13 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\BarangKeluarController;
-use App\Http\Controllers\BarangMasukController;
-
 
 Route::get('/', function () {
     return view('auth.login');
@@ -15,16 +8,16 @@ Route::get('/', function () {
 
 Auth::routes(
     [
-        'register' => false
+        'register' => false,
     ]
 );
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [App\Http\Controllers]HomeController::class, 'index'])->name('home');
 
 // Hak akses admin dan petugas dibatasi melalui controller langsung!!!
 
-Route::group(['middleware' => 'auth'], function(){
-   
+Route::group(['middleware' => 'auth'], function () {
+
     Route::resource('supplier', 'SupplierController::class');
     Route::get('/cetak-supplier', 'SupplierController@cetakSupplierPDF')->name('exportPDF.suppliersAll');
 
@@ -45,4 +38,3 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/cetak-pdf-all', 'BarangMasukController@cetakPDF_all')->name('exportPDF.barangMasukAll');
     Route::get('/cetak-pdf/{id}', 'BarangMasukController@cetakPDF')->name('exportPDF.barangMasuk');
 });
-

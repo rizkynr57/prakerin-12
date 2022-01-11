@@ -12,7 +12,7 @@ return [
     | For detailed instructions you can look the title section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'title' => 'Pengadaan Barang Indomaret',
     'title_prefix' => '',
@@ -28,7 +28,7 @@ return [
     | For detailed instructions you can look the favicon section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_ico_only' => false,
     'use_full_favicon' => false,
@@ -43,7 +43,7 @@ return [
     | For detailed instructions you can look the logo section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'logo' => '<br>',
     'logo_img' => 'vendor/adminlte/dist/img/indo1.jpeg',
@@ -62,7 +62,7 @@ return [
     | For detailed instructions you can look the user menu section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
@@ -81,7 +81,7 @@ return [
     | For detailed instructions you can look the layout section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'layout_topnav' => null,
     'layout_boxed' => null,
@@ -100,7 +100,7 @@ return [
     | For detailed instructions you can look the auth classes section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
@@ -119,7 +119,7 @@ return [
     | For detailed instructions you can look the admin panel classes here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_body' => '',
     'classes_brand' => '',
@@ -143,7 +143,7 @@ return [
     | For detailed instructions you can look the sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
@@ -165,7 +165,7 @@ return [
     | For detailed instructions you can look the right sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
@@ -185,7 +185,7 @@ return [
     | For detailed instructions you can look the urls section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_route_url' => false,
     'dashboard_url' => 'home',
@@ -206,7 +206,7 @@ return [
     | For detailed instructions you can look the laravel mix section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
-    */
+     */
 
     'enabled_laravel_mix' => false,
     'laravel_mix_css_path' => 'css/app.css',
@@ -222,76 +222,77 @@ return [
     | For detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
-'menu' => [
-  [
-      'type' => 'navbar-search',
-      'text' => 'search',
-      'topnav_right' => true,
-  ],
-  [
-      'type' => 'fullscreen-widget',
-      'topnav_right' => true
-  ],
-  [
-      'type' => 'sidebar-menu-search',
-      'text' => 'search',
-  ],
-  ['header' => 'MENU'],
-  [
-      'text' => 'Beranda',
-      'url' => '/home',
-      'icon' => 'fas fa-home'
-  ],
-  [
-      'text' => 'Data Supplier',
-      'url' => 'supplier',
-      'can' => 'AksesAdmin',
-      'icon' => 'fas fa-address-book'
-  ],
-  [
-      'text' => 'Data Customer',
-      'url' => 'customer',
-      'can' => ['AksesAdmin, 'AksesPetugas'],
-      'icon' => 'fas fa-users'
-  ],
-  [
-      'text' => 'Barang',
-      'url' => 'barang',
-      'can' => ['AksesAdmin', 'AksesPetugas'],
-      'icon' => 'fas fa-balance-scale'
-  ],
-  [
-    'text' => 'Barang Masuk',
-    'url' => 'barang-masuk',
-    'can' => ['AksesAdmin', 'AksesPetugas'],
-    'icon' => 'fas fa-people-carry'
-   ],
-   [
-    'text' => 'Barang Keluar',
-    'url' => 'barang-keluar',
-    'can' => '['AksesAdmin', 'AksesPetugas'],
-    'icon' => 'fas fa-truck'
-  ],
-  [
-    'text' => 'Laporan Barang',
-    'url' => '#',
-    'icon' => 'fas fa-book',
-    'submenu' => [
-      [
-         'text' => 'Laporan Pemasukan Barang',
-         'url' => '/laporan-barangmasuk-all',
-         'can' => 'AksesAdmin',
-         'icon' => 'fas fa-sticky-note'
-      ],
-      [
-         'text' => 'Laporan Pengeluaran Barang',
-         'url' => '/laporan-barangkeluar-all ',
-         'can' => 'AksesAdmin',
-         'icon' => 'far fa-sticky-note'
-      ],
-  ],
-  ],
+     */
+    'menu' => [
+        [
+            'type' => 'navbar-search',
+            'text' => 'search',
+            'topnav_right' => true,
+        ],
+        [
+            'type' => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
+        [
+            'type' => 'sidebar-menu-search',
+            'text' => 'search',
+        ],
+        ['header' => 'MENU'],
+        [
+            'text' => 'Beranda',
+            'url' => '/home',
+            'icon' => 'fas fa-home',
+        ],
+        [
+            'text' => 'Data Supplier',
+            'url' => 'supplier',
+            'can' => 'AksesAdmin',
+            'icon' => 'fas fa-address-book',
+        ],
+        [
+            'text' => 'Data Customer',
+            'url' => 'customer',
+            'can' => ['AksesAdmin', 'AksesPetugas'],
+            'icon' => 'fas fa-users',
+        ],
+        [
+            'text' => 'Barang',
+            'url' => 'barang',
+            'can' => ['AksesAdmin', 'AksesPetugas'],
+            'icon' => 'fas fa-balance-scale',
+        ],
+        [
+            'text' => 'Barang Masuk',
+            'url' => 'barang-masuk',
+            'can' => ['AksesAdmin', 'AksesPetugas'],
+            'icon' => 'fas fa-people-carry',
+        ],
+        [
+            'text' => 'Barang Keluar',
+            'url' => 'barang-keluar',
+            'can' => ['AksesAdmin', 'AksesPetugas'],
+            'icon' => 'fas fa-truck',
+        ],
+        [
+            'text' => 'Laporan Barang',
+            'url' => '#',
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Laporan Pemasukan Barang',
+                    'url' => '/laporan-barangmasuk-all',
+                    'can' => 'AksesAdmin',
+                    'icon' => 'fas fa-sticky-note',
+                ],
+                [
+                    'text' => 'Laporan Pengeluaran Barang',
+                    'url' => '/laporan-barangkeluar-all ',
+                    'can' => 'AksesAdmin',
+                    'icon' => 'far fa-sticky-note',
+                ],
+            ],
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
@@ -302,7 +303,7 @@ return [
     | For detailed instructions you can look the menu filters section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
+     */
 
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
@@ -324,7 +325,7 @@ return [
     | For detailed instructions you can look the plugins section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
     |
-    */
+     */
 
     'plugins' => [
         'Datatables' => [
@@ -410,7 +411,7 @@ return [
     | For detailed instructions you can look the iframe mode section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/IFrame-Mode-Configuration
     |
-    */
+     */
 
     'iframe' => [
         'default_tab' => [
@@ -442,7 +443,7 @@ return [
     | For detailed instructions you can look the livewire here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
-    */
+     */
 
     'livewire' => false,
 ];
