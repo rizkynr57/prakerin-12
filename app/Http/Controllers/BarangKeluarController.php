@@ -96,7 +96,7 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $qtySend;
         $barang->save();
 
-        $totalHarga = Barang_keluar::where('id', '=', $idStuff)->first;
+        $totalHarga = new Barang_keluar;
         $totalHarga->total_harga = $getData['harga_jual'] * $qtySend;
         $totalHarga->save();
 
