@@ -106,9 +106,10 @@
           dangerMode: true,
        })
          .then((willDelete) => {
-         if (willDelete) {
-           swal("Data Terhapus!", {
-           icon: "success",
+          if (willDelete) {
+             window.location = "/delete/"+$supplierid+""
+             swal("Data Terhapus!", {
+             icon: "success",
        });
       } else {
            swal("Penghapusan Data Dibatalkan!");
