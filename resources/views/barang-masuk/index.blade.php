@@ -51,8 +51,8 @@
                                                         data-toggle="modal"
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">Edit
                                                     </a>
-                                                    <a href="{{ route('barang-masuk.show', $data->id) }}"
-                                                        class="btn btn-warning">Show</a>
+                                                    <a href="{{ route('laporanBarangMasuk', $data->id) }}"
+                                                        class="btn btn-warning" target="_blank">Print</a>
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
