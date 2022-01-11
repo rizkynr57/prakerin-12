@@ -81,7 +81,7 @@ class BarangKeluarController extends Controller
         $keluar->id_customer = $request->id_customer;
         $keluar->id_barang = $request->id_barang;
         $price = Barang::findOrFail($request->id_barang);
-        $keluar->harga_satuan = $price['harga'];
+        $keluar->harga_satuan = $price['harga_jual'];
         $keluar->jumlah_pengiriman = $request->jumlah;
         $keluar->tgl_pengiriman = $request->tgl_pengiriman;
         $keluar->tujuan = $request->tujuan;
@@ -94,13 +94,13 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $qtySend;
         $barang->save();
 
-        $priceCount = Barang::findOrfail($idStuff);
-        $priceCount->total = $priceCount['harga'] *= $qtySend;
-        $priceCount->save();
+        // $priceCount = Barang::findOrfail($idStuff);
+        // $priceCount->total = $priceCount['harga'] *= $qtySend;
+        // $priceCount->save();
 
-        $direct = new Barang_keluar();
-        $direct->pendapatan = $priceCount;
-        $direct->save();
+        // $direct = new Barang_keluar();
+        // $direct->pendapatan = $priceCount;
+        // $direct->save();
 
         return redirect('barang-keluar')
             ->withSuccess('<strong>Berhasil</strong>,
