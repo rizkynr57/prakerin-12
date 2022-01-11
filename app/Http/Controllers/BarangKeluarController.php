@@ -86,6 +86,7 @@ class BarangKeluarController extends Controller
         $keluar->jumlah_pengiriman = $request->jumlah;
         $keluar->tgl_pengiriman = $request->tgl_pengiriman;
         $keluar->tujuan = $request->tujuan;
+        $keluar->total_harga = 0;
         $keluar->save();
 
         $idStuff = $request->id_barang;
