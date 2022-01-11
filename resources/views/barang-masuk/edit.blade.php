@@ -1,4 +1,4 @@
-<div class="modal fade barangMasuk-edit-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade barangMasuk-edit-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -14,23 +14,19 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="number" name="id_supplier" class="form-control" value="{{ $barangMasuk->id_supplier }}" readonly>
+                        <input type="number" name="id_supplier" class="form-control" value="{{ $data->id_supplier }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="number" name="id_barang" class="form-control" value="{{ $barangMasuk->id_barang }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis" value="{{ $barangMasuk->jenis_barang }}" required>
+                        <input type="number" name="id_barang" class="form-control" value="{{ $data->id_barang }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Barang</label>
-                        <input type="text" class="form-control" name="jumlah" value="{{ $barangMasuk->jumlah_pemasukan }}"required>
+                        <input type="text" class="form-control" name="jumlah" value="{{ $data->jumlah_pemasukan }}"required>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Barang Masuk</label>
-                        <input type="date" name="tgl_masuk" class="form-control" value="{{ $barangMasuk->tgl_masuk }}" required>
+                        <input type="date" name="tgl_masuk" class="form-control" value="{{ $data->tgl_masuk }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
