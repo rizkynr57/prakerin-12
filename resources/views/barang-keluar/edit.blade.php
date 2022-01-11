@@ -1,4 +1,4 @@
-<div class="modal fade barangKeluar-edit-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade barangKeluar-edit-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -14,23 +14,23 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Customer</label>
-                        <input type="number" name="id_customer" value="{{ $barangKeluar->id_customer }}" class="form-control" readonly>
+                        <input type="number" name="id_customer" value="{{ $data->id_customer }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="number" name="id_barang" value="{{ $barangKeluar->id_barang }}" class="form-control" readonly>
+                        <input type="number" name="id_barang" value="{{ $data->id_barang }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
-                        <input type="text" class="form-control" name="jumlah" value="{{ $barangKeluar->jumlah_pengiriman }}" required>
+                        <input type="text" class="form-control" name="jumlah" value="{{ $data->jumlah_pengiriman }}" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Pengiriman Barang</label>
-                      <input type="date" name="tgl_pengiriman" class="form-control" value="{{ $barangKeluar->tgl_pengiriman }}" required>
+                      <input type="date" name="tgl_pengiriman" class="form-control" value="{{ $data->tgl_pengiriman }}" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tujuan Pengiriman</label>
-                        <input type="text" name="tujuan" class="form-control" value="{{ $barangKeluar->tujuan }}" required>
+                        <input type="text" name="tujuan" class="form-control" value="{{ $data->tujuan }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
