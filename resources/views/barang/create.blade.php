@@ -19,8 +19,12 @@
                         <input type="text" class="form-control" name="jenis_barang">
                     </div>
                     <div class="form-group">
-                        <label for="">Harga</label>
+                        <label for="">Harga Asli</label>
                         <input type="text" class="form-control" name="harga">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Harga Jual</label>
+                        <input type="text" class="form-control" name="jual">
                     </div>
                     <div class="form-group">
                         <label for="">Satuan</label>
