@@ -20,7 +20,6 @@ class CreateBarangsTable extends Migration
             $table->integer('stok_barang');
             $table->integer('harga');
             $table->integer('harga_jual')->nullable();
-            $table->integer('total');
             $table->string('satuan');
             $table->timestamps();
         });
