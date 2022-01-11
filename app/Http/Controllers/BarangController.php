@@ -47,7 +47,9 @@ class BarangController extends Controller
         } else {
              $profit = 0.1; // 10%
         }
-        $barang->harga_jual = $request->harga * $profit;
+        
+        $addPrice = $request->harga * profit;
+        $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
         $barang->save();
         return redirect('barang')->with('success', 'Data disimpan');
