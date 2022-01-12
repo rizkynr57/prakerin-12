@@ -91,15 +91,18 @@ class BarangMasukController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'id_supplier' => 'required',
-            'id_barang' => 'required',
-            'jenis' => 'required',
             'jumlah' => 'required',
+            'tgl_masuk' => 'required'
         ]);
+        
+        $barangMasuk = findOrFail($request->id_barang);
+        $barangMasuk->jumlah_pemasukan = $request->jumlah;
+        $barangMasuk->tgl_masuk = $request->tgl_masuk;
+        $barangMasuk->save();
 
-        $barang = Barang::where('id', $request->id_barang)->first();
+        $barang = Barang::findOrFail($request->id_barang);
         $barang->jumlah_barang += $request->jumlah;
-        $barang->update();
+        $barang->save();
 
         return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
     }
