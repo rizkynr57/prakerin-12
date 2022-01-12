@@ -14,7 +14,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kode Customer</label>
-                        <input type="text" class="form-control boxed" name="kode" value="{{ $customer->kode }}" readonly>
+                        <input type="text" class="form-control boxed" name="kode" value="{{ $customer->kode }}"
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Customer</label>
@@ -22,15 +23,18 @@
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{ $customer->alamat }}" required>
+                        <input type="text" class="form-control" name="alamat" value="{{ $customer->alamat }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="email" class="form-control" name="email" value="{{ $customer->email }}" required>
+                        <input type="email" class="form-control" name="email" value="{{ $customer->email }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{ $customer->no_telp }}" required>
+                        <input type="text" class="form-control" name="no_telp" value="{{ $customer->telepon }}"
+                            required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -41,4 +45,3 @@
         </div>
     </div>
 </div>
-

@@ -1,5 +1,4 @@
-<div class="modal fade barangKeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade barangKeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,11 +12,21 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Customer</label>
-                        {!! Form::select('id_customer', $customer, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Customer --', 'id' => 'id_customer', 'required']) !!}
+                        <select class="form-control" name="id_customer">
+                            <option value=""></option>
+                            @foreach ($customer as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'required']) !!}
+                        <select class="form-control" name="id_barang">
+                            <option value=""></option>
+                            @foreach ($barang as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_barang }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
@@ -25,8 +34,9 @@
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Pengiriman Barang</label>
-                      <input type="date" name="tgl_pengiriman" class="form-control">
+                        <input type="date" name="tgl_pengiriman" class="form-control">
                     </div>
+
                     <div class="form-group">
                         <label for="">Tujuan Pengiriman</label>
                         <input type="text" name="tujuan" class="form-control">

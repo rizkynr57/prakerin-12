@@ -27,15 +27,20 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|unique:barangs',
-            'jenis' => 'required',
+            'nama_barang' => 'required|unique:barangs',
+            'jenis_barang' => 'required',
             'harga' => 'required',
             'satuan' => 'required',
         ]);
 
-        Barang::create($request->all());
-
-        return redirect('barang')->with('success', 'Data berhasil disimpan!');
+        $barang = new Barang;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->jenis_barang = $request->jenis_barang;
+        $barang->stok_barang = 0;
+        $barang->harga = $request->harga;
+        $barang->satuan = $request->satuan;
+        $barang->save();
+        return redirect('barang')->with('success', 'Data disimpan');
 
     }
 

@@ -14,11 +14,11 @@ class SupplierController extends Controller
     {
         $this->middleware('role:admin,petugas');
     }
-    
+
     public function index()
     {
-        $supplier = Supplier::all();
         $code = Supplier::code();
+        $supplier = Supplier::all();
         return view('supplier.index', compact('supplier', 'code'));
     }
 
@@ -32,17 +32,22 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'kode' => 'required',
-            'nama' => 'required|string|unique:suppliers',
+            'nama' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'perusahaan' => 'required|unique:suppliers',
+            'perusahaan' => 'required',
         ]);
+        $supplier = new Supplier();
+        $supplier->kode = $request->kode;
+        $supplier->nama_supplier = $request->nama;
+        $supplier->alamat = $request->alamat;
+        $supplier->no_telp = $request->no_telp;
+        $supplier->nama_perusahaan = $request->perusahaan;
+        $supplier->save();
 
-        Supplier::create($request->all());
-
-        return redirect('supplier')->with('success', 'Data berhasil disimpan!');
+        return redirect('supplier')->with('success', 'Data Berhasil Disimpan!');
     }
 
     public function show($id)
@@ -53,8 +58,9 @@ class SupplierController extends Controller
 
     public function edit($id)
     {
+        $code = Supplier::code();
         $supplier = Supplier::findOrFail($id);
-        return view('supplier.edit', compact('supplier'));
+        return view('supplier.edit', compact('supplier', 'code'));
     }
 
     public function update(Request $request, $id)

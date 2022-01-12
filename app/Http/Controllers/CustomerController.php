@@ -34,21 +34,28 @@ class CustomerController extends Controller
     {
         $this->validate($request, [
             'kode' => 'required',
-            'nama' => 'required|string|unique:customers',
+            'nama' => 'required',
             'alamat' => 'required',
             'email' => 'required|email|unique:customers',
             'no_telp' => 'required',
         ]);
 
-        Customer::create($request->all());
+        $customer = new Customer;
+        $customer->kode = $request->kode;
+        $customer->nama = $request->nama;
+        $customer->alamat = $request->alamat;
+        $customer->email = $request->email;
+        $customer->telepon = $request->no_telp;
+        $customer->save();
 
         return redirect('customer')->with('success', 'Data berhasil disimpan!');
     }
 
     public function show($id)
     {
+        $code = Customer::code();
         $customer = Customer::findOrFail($id);
-        return view('customer.show', compact('customer'));
+        return view('customer.show', compact('customer', 'code'));
     }
 
     public function edit($id)
@@ -66,8 +73,13 @@ class CustomerController extends Controller
             'no_telp' => 'required',
         ]);
 
-        $customer = Customer::findOrFail($id);
-        $customer->update($request->all());
+        $customer = Customer::findOrfail($id);
+        $customer->kode = $request->kode;
+        $customer->nama = $request->nama;
+        $customer->alamat = $request->alamat;
+        $customer->email = $request->email;
+        $customer->telepon = $request->no_telp;
+        $customer->save();
 
         return redirect('customer')->with('info', 'Data berhasil diubah!');
     }

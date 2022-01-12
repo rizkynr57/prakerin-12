@@ -1,5 +1,4 @@
-<div class="modal fade barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade barang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,11 +12,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama">
+                        <input type="text" class="form-control" name="nama_barang">
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis">
+                        <input type="text" class="form-control" name="jenis_barang">
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>

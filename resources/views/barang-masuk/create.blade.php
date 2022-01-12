@@ -1,5 +1,4 @@
-<div class="modal fade barangMasuk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade barangMasuk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,18 +12,24 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        {!! Form::select('id_supplier', $supplier, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Supplier --', 'id' => 'id_supplier', 'required']) !!}
+                        <select class="form-control" name="id_supplier">
+                            <option value=""></option>
+                            @foreach ($supplier as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_supplier }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        {!! Form::select('id_barang', $barang, null, ['class' => 'form-control select', 'placeholder' => '-- Pilih Barang --', 'id' => 'id_barang', 'required']) !!}
+                        <select class="form-control" name="id_barang">
+                            <option value=""></option>
+                            @foreach ($barang as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_barang }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Jumlah Barang</label>
+                        <label for="">Jumlah Pemasukan</label>
                         <input type="text" class="form-control" name="jumlah" required>
                     </div>
                     <div class="form-group">

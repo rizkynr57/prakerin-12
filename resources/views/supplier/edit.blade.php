@@ -12,25 +12,29 @@
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="">Kode Supplier</label>
                         <input type="text" class="form-control" name="kode" value="{{ $supplier->kode }}" readonly>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="text" class="form-control" name="nama" value="{{ $supplier->nama_supplier }}" required>
+                        <input type="text" class="form-control" name="nama" value="{{ $supplier->nama_supplier }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{ $supplier->alamat }}" required>
+                        <input type="text" class="form-control" name="alamat" value="{{ $supplier->alamat }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" value="{{ $supplier->no_telp }}" required>
+                        <input type="text" class="form-control" name="no_telp" value="{{ $supplier->no_telp }}"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Perusahaan</label>
-                        <input type="text" class="form-control" name="perusahaan" value="{{ $supplier->nama_perusahaan }}" required>
+                        <input type="text" class="form-control" name="perusahaan"
+                            value="{{ $supplier->nama_perusahaan }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">

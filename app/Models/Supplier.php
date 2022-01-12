@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Session;
-use DB;
 
 class Supplier extends Model
 {
@@ -16,7 +16,7 @@ class Supplier extends Model
         'alamat',
         'no_telp',
         'email',
-        'nama_perusahaan'
+        'nama_perusahaan',
     ];
 
     public $timestamps = true;
@@ -26,26 +26,25 @@ class Supplier extends Model
         return $this->hasMany('App\Models\Barang_masuk', 'id_supplier');
     }
 
-    public function code()
+    public static function code()
     {
-        $generateCode = DB::table('suppliers')->max('kode');
-        $addZero = '';
-        $generateCode = str_replace("GTJ", "", $generateCode);
-        $generateCode = (int) $generateCode + 1;
-        $addictionalCode = $generateCode;
+        $kode = DB::table('suppliers')->max('kode');
+        $addNol = '';
+        $kode = str_replace("PGJ", "", $kode);
+        $kode = (int) $kode + 1;
+        $incrementKode = $kode;
 
-        if (strlen($generateCode) == 1) {
-            $addZero = "000";
-        } elseif (strlen($generateCode) == 2) {
-            $addZero = "00";
-        } elseif (strlen($generateCode == 3)) {
-            $addZero = "0";
+        if (strlen($kode) == 1) {
+            $addNol = "000";
+        } elseif (strlen($kode) == 2) {
+            $addNol = "00";
+        } elseif (strlen($kode == 3)) {
+            $addNol = "0";
         }
 
-        $newCode = "CTR" . $addZero . $addictionalCode;
-        return $newCode;
+        $kodeBaru = "PGJ" . $addNol . $incrementKode;
+        return $kodeBaru;
     }
-
     public static function boot()
     {
         parent::boot();
