@@ -67,14 +67,13 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required|string|unique:customer',
+            'nama' => 'required,
             'alamat' => 'required',
             'email' => 'required|email|unique:customer',
             'no_telp' => 'required',
         ]);
 
         $customer = Customer::findOrfail($id);
-        $customer->kode = $request->kode;
         $customer->nama = $request->nama;
         $customer->alamat = $request->alamat;
         $customer->email = $request->email;
