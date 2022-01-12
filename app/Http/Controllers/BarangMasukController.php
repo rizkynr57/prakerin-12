@@ -97,9 +97,6 @@ class BarangMasukController extends Controller
             'jumlah' => 'required',
         ]);
 
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        Barang_masuk::update($request->all());
-
         $barang = Barang::where('id', $request->id_barang)->first();
         $barang->jumlah_barang += $request->jumlah;
         $barang->update();
