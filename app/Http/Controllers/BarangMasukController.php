@@ -106,10 +106,6 @@ class BarangMasukController extends Controller
 
     public function destroy($id)
     {
-        $barang = Barang::findOrFail($id);
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        $barang['jumlah_barang'] -= $barangMasuk['jumlah_pemasukan'];
-        $barang->save();
         
         if (!Barang_masuk::destroy($id)) {
            return redirect->back();
