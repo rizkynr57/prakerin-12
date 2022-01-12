@@ -103,12 +103,12 @@ class BarangMasukController extends Controller
 
         $pemasukan = $request->jumlah;
         $edit = Barang_masuk::findOrFail($request->id_barang);
-        $objek = Barang::findOrFail($request->id_barang);
+        $objem = Barang::findOrFail($request->id_barang);
         if ($pemasukan > $edit['jumlah_pemasukan']) {
-            $objek = $barang['stok_barang'] + $pemasukan;
+            $objek = $objek['stok_barang'] + $pemasukan;
             $objek->save();
         } elseif ($pemasukan < $edit['jumlah_pemasukan']) {
-            $objek = $barang['stok_barang'] - $pemasukan;
+            $objek = $objek['stok_barang'] - $pemasukan;
             $objek->save();
         } elseif ($pemasukan == $edit['jumlah_pemasukan']) {
             return redirect()->back();
