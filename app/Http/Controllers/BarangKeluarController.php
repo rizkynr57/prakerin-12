@@ -108,9 +108,23 @@ class BarangKeluarController extends Controller
 
     public function update(Request $request, $id)
     {
-      
-        //
-        
+        $request->validate([
+            'id_barang' => 'required',
+            'jumlah' => 'required',
+            'tgl_pengiriman' => 'required',
+            'tujuan' => 'required',
+        ]);
+           
+        $barangMasuk = Barang_masuk::findOrFail($id);
+        $barangMasuk->jumlah_pemasukan = $request->jumlah;
+        $barangMasuk->tgl_pengiriman = $request->tgl_pengiriman;
+        $barangMasuk->save();
+
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->['stok_barang'] -= $request->jumlah;
+        $barang->save();
+
+        return redirect('barang-keluar')->withSuccess('Data Diubah');
     }
 
     public function destroy($id)
