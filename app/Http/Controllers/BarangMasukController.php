@@ -106,9 +106,15 @@ class BarangMasukController extends Controller
 
     public function destroy($id)
     {
+        $barang = findOrFail($id);
+        $barangMasuk =findOrFail($id);
+        $barang['jumlah_barang'] -= $barangMasuk['jumlah_pemasukan'];
+        $barang->save();
+        
         if (!Barang_masuk::destroy($id)) {
-            return redirect()->back();
-        }
+           return redirect->back();
+         }
+
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data berhasil dihapus",
