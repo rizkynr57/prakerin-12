@@ -108,32 +108,8 @@ class BarangKeluarController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'id_customer' => 'required',
-            'id_barang' => 'required',
-            'jumlah' => 'required|numeric',
-            'tgl_pengiriman' => 'required',
-            'tujuan' => 'required',
-        ]);
-        $barangKeluar = Barang_keluar::findOrFail($id);
-        $barangKeluar->tgl_pengiriman = $request->tujuan;
-        $barangKeluar->tujuan = $request->tujuan;
-        $barangKeluar->save();
-
-        $idStuff = $request->id_barang;
-
-        $barang = Barang::all();
-        foreach($barang as $key => $value) {
-           $direct = Barang_keluar::where('id', $idStuff)->first();         
-           if ($idStuff > $barang->stok_barang) {
-               $update = $barang['stok_barang'] - $direct[$value];
-               $update->save();     
-          } else {
-               $update = $barang['stok_barang'] + $direct[$value];
-               $update->save();
-          }
-       }
-           return redirect('barang-keluar')->withSuccess('Edited');
+      
+        //
         
     }
 
