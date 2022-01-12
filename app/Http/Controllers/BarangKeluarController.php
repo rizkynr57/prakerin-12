@@ -116,16 +116,25 @@ class BarangKeluarController extends Controller
             'tujuan' => 'required',
         ]);
         $barangKeluar = Barang_keluar::findOrFail($id);
-        $barangKeluar->update($request->all());
+        $barangKeluar->tgl_pengiriman = $request->tujuan;
+        $barangKeluar->tujuan = $request->tujuan;
+        $barangKeluar->save();
 
-        $barang = Barang::where('id', $request->id_barang)->first();
-        $barang->jumlah_barang -= $request->jumlah;
-        if ($barang['jumlah_barang'] >= 0) {
-            $barang->save();
-            return redirect('barang-keluar')->withSuccess('<strong>Berhasil</strong>, pengiriman ulang dilakukan!');
-        } else {
-            return redirect('barang-keluar')->withError('Gagal', 'Pengiriman tidak boleh melebihi batas stok tersisa!');
-        }
+        $idStuff = $request->id_barang;
+
+        $barang = Barang::all();
+        foreach($barang as $item => $value) {
+           $direct = Barang_keluar::where('id', $idStuff[$key])->first();         
+           if ($idStuff > $barang->stok_barang) {
+               $update = $barang['stok_barang'] + $direct[$item];
+               $update->save();     
+          } else {
+               $update = $barang['stok_barang'] - $direct[$item];
+               $update->save();
+          }
+       }
+           return redirect('barang-keluar')->withSuccess('Edited');
+        
     }
 
     public function destroy($id)
