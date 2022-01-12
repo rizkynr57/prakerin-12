@@ -96,9 +96,9 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $qtySend;
         $barang->save();
 
-        $totalHarga = new Barang_keluar;
-        $totalHarga->total_harga = $getData['harga_jual'] * $qtySend;
-        $totalHarga->save();
+        // $totalHarga = new Barang_keluar;
+        // $totalHarga->total_harga = $getData['harga_jual'] * $qtySend;
+        // $totalHarga->save();
 
         return redirect('barang-keluar')
             ->withSuccess('<strong>Berhasil</strong>,
