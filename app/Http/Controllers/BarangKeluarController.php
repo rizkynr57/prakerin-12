@@ -109,6 +109,7 @@ class BarangKeluarController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_supplier' => 'required,
             'id_barang' => 'required',
             'jumlah' => 'required',
             'tgl_pengiriman' => 'required',
@@ -118,17 +119,22 @@ class BarangKeluarController extends Controller
         $barangMasuk = Barang_masuk::findOrFail($id);
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_pengiriman = $request->tgl_pengiriman;
-        $barangMasuk->save();
+        $barangMasuk->update();
 
         $barang = Barang::findOrFail($request->id_barang);
         $barang->['stok_barang'] -= $request->jumlah;
-        $barang->save();
+        $barang->update();
 
         return redirect('barang-keluar')->withSuccess('Data Diubah');
     }
 
     public function destroy($id)
     {
+         $data = Barang_keluar::findOrFail($id);
+         $objek = Barang::findOrFail($id);
+         $objek['stok_barang'] += $data['jumlah_pengiriman'];
+         $objek->save();
+
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
