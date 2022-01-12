@@ -90,7 +90,8 @@ class BarangMasukController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $request->validate([
+            'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
             'tgl_masuk' => 'required'
@@ -99,20 +100,11 @@ class BarangMasukController extends Controller
         $barangMasuk = findOrFail($request->id_barang);
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
-        $barangMasuk->save();
+        $barangMasuk->update();
 
-        $pemasukan = $request->jumlah;
-        $edit = Barang_masuk::findOrFail($request->id_barang);
-        $objek = Barang::findOrFail($request->id_barang);
-        if ($pemasukan > $edit['jumlah_pemasukan']) {
-            $objek = $objek['stok_barang'] + $pemasukan;
-            $objek->save();
-        } elseif ($pemasukan < $edit['jumlah_pemasukan']) {
-            $objek = $objek['stok_barang'] - $pemasukan;
-            $objek->save();
-        } elseif ($pemasukan == $edit['jumlah_pemasukan']) {
-            return redirect()->back();
-        }
+        $barang = Barang::findOrFail($request-id_barang);
+        $barang['stok_barang'] += $request->jumlah;
+        $barang->update();
         return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
     }
 
