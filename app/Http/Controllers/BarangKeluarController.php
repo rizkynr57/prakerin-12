@@ -124,7 +124,7 @@ class BarangKeluarController extends Controller
 
         $barang = Barang::all();
         foreach($barang as $key => $value) {
-           $direct = Barang_keluar::where('id', $idStuff[$key])->first();         
+           $direct = Barang_keluar::where('id', $idStuff)->first();         
            if ($idStuff > $barang->stok_barang) {
                $update = $barang['stok_barang'] - $direct[$value];
                $update->save();     
