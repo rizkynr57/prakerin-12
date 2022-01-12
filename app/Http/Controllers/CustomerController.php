@@ -32,7 +32,7 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'kode' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
@@ -66,7 +66,7 @@ class CustomerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
             'email' => 'required|email|unique:customer',
