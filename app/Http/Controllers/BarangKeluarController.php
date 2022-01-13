@@ -7,7 +7,6 @@ use App\Models\Barang_keluar;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use PDF;
-use Redirect;
 use Session;
 
 class BarangKeluarController extends Controller
@@ -80,20 +79,20 @@ class BarangKeluarController extends Controller
         $keluar = new Barang_keluar();
         $keluar->id_customer = $request->id_customer;
         $keluar->id_barang = $request->id_barang;
+        $keluar->jumlah_pengiriman = $request->jumlah;
         $getData = Barang::findOrFail($request->id_barang);
         $keluar->harga_satuan = $getData['harga_jual'];
         $keluar->satuan = $getData['satuan'];
-        $keluar->jumlah_pengiriman = $request->jumlah;
         $keluar->tgl_pengiriman = $request->tgl_pengiriman;
-        $keluar->tujuan = $request->tujuan;
         $keluar->total_harga = 0;
+        $keluar->tujuan = $request->tujuan;
         $keluar->save();
 
         $idStuff = $request->id_barang;
         $qtySend = $request->jumlah;
 
-        $barang = Barang::where('id', '=', $idStuff)->first();
-        $barang['stok_barang'] -= $qtySend;
+        $barang = Barang::findOrfail($idStuff);
+        $barang->stok_barang -= $qtySend;
         $barang->save();
 
         // $totalHarga = new Barang_keluar;
@@ -115,14 +114,14 @@ class BarangKeluarController extends Controller
             'tgl_pengiriman' => 'required',
             'tujuan' => 'required',
         ]);
-           
+
         $barangMasuk = Barang_masuk::findOrFail($id);
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_pengiriman = $request->tgl_pengiriman;
         $barangMasuk->update();
 
         $barang = Barang::findOrFail($request->id_barang);
-        $barang->['stok_barang'] -= $request->jumlah;
+        $barang['stok_barang'] -= $request->jumlah;
         $barang->update();
 
         return redirect('barang-keluar')->withSuccess('Data Diubah');
@@ -130,11 +129,6 @@ class BarangKeluarController extends Controller
 
     public function destroy($id)
     {
-         $data = Barang_keluar::findOrFail($id);
-         $objek = Barang::findOrFail($id);
-         $objek['stok_barang'] += $data['jumlah_pengiriman'];
-         $objek->save();
-
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
