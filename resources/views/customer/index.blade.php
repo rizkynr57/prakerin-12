@@ -9,12 +9,12 @@
 @endsection
 
 @section('content')
-@include('layouts._flash')
+    @include('layouts._flash')
     <div class="container">
         <div class="'row">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">Data Customer
+                    <div class="card-header"><i class="fas fa-user-circle"></i> Data Customer
                         <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
                             data-target=".customer">Tambah Data</a>
                         @include('customer.create')
@@ -49,18 +49,20 @@
                                             <td>{{ $data->email }}</td>
                                             <td>{{ $data->telepon }}</td>
                                             <td>
-                                                
-                                                    <a class="btn btn-outline btn-sm btn-outline-warning"
-                                                        data-toggle="modal"
-                                                        data-target=".customer-edit-{{ $data->id }}">Edit
+                                                <form action="{{ route('customer.destroy', $data->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="btn btn-primary" data-toggle="modal"
+                                                        data-target=".customer-edit-{{ $data->id }}"><i
+                                                            class="fas fa-edit"></i>Edit
                                                     </a>
                                                     <a href="{{ route('customer.show', $data->id) }}"
-                                                        class="btn btn-warning">show</a>
-                                                    <a type="submit" class="btn btn-danger delete"
-                                                        data-id="{{ $data->id }}">Delete</a>
-                                                
+                                                        class="btn btn-warning"><i class="fas fa-id-card"></i> Show</a>
+                                                    <button class="btn btn-danger delete"
+                                                        onclick="return confirm('Are You Sure ?')"><i
+                                                            class="fas fa-trash"></i>Delete</button>
+                                                </form>
                                 </tbody>
-
                                 </td>
                                 </tr>
                                 @include('customer.edit')
@@ -87,35 +89,4 @@
         });
     </script>
 
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.slim.js"
-         integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-        crossorigin="anonymous">
-  </script>
-
-
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script>
-    $('.delete').click(function () {
-       var customerid = $(this).attr('data-id');
-       swal({
-          title: "Apakah Anda Yakin?",
-          text: "Jika data ini dihapus, maka anda tidak bisa mengembalikan!",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-       })
-         .then((willDelete) => {
-          if (willDelete) {
-             window.location = "/delete/"+customerid+""
-             swal("Data Terhapus!", {
-             icon: "success",
-       });
-      } else {
-           swal("Penghapusan Data Dibatalkan!");
-        }
-       });
-     });
-</script>
 @endsection
