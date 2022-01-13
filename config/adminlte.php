@@ -246,31 +246,27 @@ return [
         [
             'text' => 'Data Supplier',
             'url' => 'supplier',
-            'can' => ['AksesAdmin', 'AksePetugas'],
             'icon' => 'fas fa-address-book',
         ],
         [
             'text' => 'Data Customer',
             'url' => 'customer',
-            'can' => ['AksesAdmin', 'AksesPetugas'],
             'icon' => 'fas fa-users',
         ],
         [
             'text' => 'Barang',
             'url' => 'barang',
-            'can' => ['AksesAdmin', 'AksesPetugas'],
             'icon' => 'fas fa-balance-scale',
         ],
         [
             'text' => 'Barang Masuk',
             'url' => 'barang-masuk',
-            'can' => ['AksesAdmin', 'AksesPetugas'],
+
             'icon' => 'fas fa-people-carry',
         ],
         [
             'text' => 'Barang Keluar',
             'url' => 'barang-keluar',
-            'can' => ['AksesAdmin', 'AksesPetugas'],
             'icon' => 'fas fa-truck',
         ],
         [
@@ -289,6 +285,70 @@ return [
                     'text' => 'Laporan Pengeluaran Barang',
                     'url' => '/laporan-barangkeluar-all ',
                     'can' => 'AksesAdmin',
+                    'icon' => 'far fa-sticky-note',
+                ],
+            ],
+        ],
+    ],
+    'menu' => [
+        [
+            'type' => 'navbar-search',
+            'text' => 'search',
+            'topnav_right' => true,
+        ],
+        [
+            'type' => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
+        [
+            'type' => 'sidebar-menu-search',
+            'text' => 'search',
+        ],
+        ['header' => 'MENU'],
+        [
+            'text' => 'Beranda',
+            'url' => '/home',
+            'icon' => 'fas fa-home',
+        ],
+        [
+            'text' => 'Data Supplier',
+            'url' => 'supplier',
+            'icon' => 'fas fa-address-book',
+        ],
+        [
+            'text' => 'Data Customer',
+            'url' => 'customer',
+            'icon' => 'fas fa-users',
+        ],
+        [
+            'text' => 'Barang',
+            'url' => 'barang',
+            'icon' => 'fas fa-balance-scale',
+        ],
+        [
+            'text' => 'Barang Masuk',
+            'url' => 'barang-masuk',
+
+            'icon' => 'fas fa-people-carry',
+        ],
+        [
+            'text' => 'Barang Keluar',
+            'url' => 'barang-keluar',
+            'icon' => 'fas fa-truck',
+        ],
+        [
+            'text' => 'Laporan Barang',
+            'url' => '#',
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Laporan Pemasukan Barang',
+                    'url' => '/laporan-barangmasuk-all',
+                    'icon' => 'fas fa-sticky-note',
+                ],
+                [
+                    'text' => 'Laporan Pengeluaran Barang',
+                    'url' => '/laporan-barangkeluar-all ',
                     'icon' => 'far fa-sticky-note',
                 ],
             ],
