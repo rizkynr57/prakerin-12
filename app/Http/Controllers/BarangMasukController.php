@@ -51,7 +51,7 @@ class BarangMasukController extends Controller
         $data2 = Supplier::all();
         $data = Barang_masuk::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('data', 'data2', 'data3', 'no'));
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
     }
 
@@ -59,9 +59,9 @@ class BarangMasukController extends Controller
     {
         $data3 = Barang::all();
         $data2 = Supplier::all();
-        $data = Barang_masuk::find($id);
+        $data = Barang_masuk::findOrFail($id);
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.cetaklaporan', compact('data', 'data2', 'data3', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangMasuk', compact('data', 'data2', 'data3', 'no'));
         return $pdf->download('laporan-pemasukan-barang-satuan.pdf');
     }
 
@@ -94,31 +94,26 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
-            'tgl_masuk' => 'required'
+            'tgl_masuk' => 'required',
         ]);
-        
-        $barangMasuk = findOrFail($request->id_barang);
+
+        $barangMasuk = Barang_masuk::findOrFail($id);
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
         $barangMasuk->update();
 
-        $barang = Barang::findOrFail($request-id_barang);
+        $barang = Barang::findOrFail($request->id_barang);
         $barang['stok_barang'] += $request->jumlah;
         $barang->update();
         return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
+
     }
 
     public function destroy($id)
     {
-         $data = Barang_masuk::findOrFail($id);
-         $objek = Barang::findOrFail($id);
-         $objek['stok_barang'] -= $data['jumlah_pemasukan'];
-         $objek->save();
-        
         if (!Barang_masuk::destroy($id)) {
-           return redirect->back();
-         }
-
+            return redirect()->back();
+        }
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Data berhasil dihapus",
