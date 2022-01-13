@@ -21,7 +21,7 @@ class Supplier extends Model
 
     public $timestamps = true;
 
-    public function barangMasuk()
+    public function barangKeluar()
     {
         return $this->hasMany('App\Models\Barang_masuk', 'id_supplier');
     }
@@ -48,11 +48,11 @@ class Supplier extends Model
     public static function boot()
     {
         parent::boot();
-        self::deleting(function ($supplier) {
-            if ($supplier->masuk->count() > 0) {
+        self::deleting(function ($customer) {
+            if ($customer->barangKeluar->count() > 0) {
                 $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
                 $msg .= '<ul>';
-                foreach ($supplier->masuk as $data) {
+                foreach ($customer->barangKeluar as $data) {
                     $msg .= "<li>$data->nama_barang</li>";
                 }
                 $msg .= '</ul>';
