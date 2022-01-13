@@ -23,8 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}"
-                            required>
+                        <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}" required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
@@ -34,7 +33,7 @@
                     <div class="form-group">
                         <label for="">Nama Perusahaan</label>
                         <input type="text" class="form-control" name="perusahaan"
-                            value="{{ $supplier->nama_perusahaan }}" required>
+                            value="{{ $data->nama_perusahaan }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
