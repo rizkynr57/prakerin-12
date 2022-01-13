@@ -3,9 +3,9 @@ Praktik Kerja Lapangan Internal
 
 Package that used :
 ---
-composer require realrashid/sweet-alert
+<h3>composer require realrashid/sweet-alert</h3>
 ---
 
 ---
-composer require barryvdh/laravel-dompdf
+<h3>composer require barryvdh/laravel-dompdf</h3>
 ---
