@@ -109,7 +109,7 @@ class BarangKeluarController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_supplier' => 'required,
+            'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
             'tgl_pengiriman' => 'required',
