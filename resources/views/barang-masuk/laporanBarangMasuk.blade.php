@@ -28,7 +28,6 @@
         <td>No</td>
         <td>Nama Supplier</td>
         <td>Nama Barang</td>
-        <td>Jenis Barang</td>
         <td>Jumlah Pemasukan</td>
         <td>Tanggal Pemasukan Barang</td>
     </tr>
@@ -39,8 +38,7 @@
             <td>{{ $no++ }}</td>
             <td>{{ $data->supplier->nama_supplier }}</td>
             <td>{{ $data->barang->nama_barang}}</td>
-            <td>{{ $data->jenis_pengiriman}}</td>
-            <td>{{ $data->jumlah_barang }}</td>
+            <td>{{ $data->jumlah_pemasukan }}</td>
             <td>{{ $data->tgl_masuk }}</td>
         </tr>
         </tbody>
