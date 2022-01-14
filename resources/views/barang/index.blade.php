@@ -31,7 +31,7 @@
                                             <use xlink:href="#exclamation-triangle-fill" />
                                         </svg>
                                         <div>
-                                            <strong">PERINGATAN!</strong>stok <b>$item->nama_barang</b> kosong!!!
+                                            <strong>PERINGATAN!</strong>stok <b>$item->nama_barang</b> kosong!!!
                                         </div>
                                     </div>
                                 @endif
