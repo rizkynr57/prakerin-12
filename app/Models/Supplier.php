@@ -30,7 +30,7 @@ class Supplier extends Model
     {
         $kode = DB::table('suppliers')->max('kode');
         $addNol = '';
-        $kode = str_replace("PGJ", "", $kode);
+        $kode = str_replace("SPR", "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
 
@@ -42,7 +42,7 @@ class Supplier extends Model
             $addNol = "0";
         }
 
-        $kodeBaru = "PGJ" . $addNol . $incrementKode;
+        $kodeBaru = "SPR" . $addNol . $incrementKode;
         return $kodeBaru;
     }
     public static function boot()
