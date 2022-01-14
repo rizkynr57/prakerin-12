@@ -13,6 +13,7 @@ class SupplierController extends Controller
     public function __construct()
     {
         if (Auth::user() == 'petugas') {
+
             return redirect('home')->withError('Anda tidak memiliki akses pada halaman sebelumnya !');
         }
     }
