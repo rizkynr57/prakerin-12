@@ -26,9 +26,9 @@
     <thead>
     <tr>
         <td>No</td>
+        <td>Nama Customer</td>
         <td>Nama Barang</td>
         <td>Jumlah Pengiriman</td>
-        <td>Total Harga</td>
         <td>Tujuan</td>
         <td>Tanggal Pengiriman Barang</td>
     </tr>
@@ -37,9 +37,9 @@
         <tbody>
         <tr>
             <td>{{ $no++ }}</td>
+            <td>{{ $data->customer->nama }}</td>
             <td>{{ $data->barang->nama_barang}}</td>
             <td>{{ $data->jumlah_pengiriman}}</td>
-            <td>{{ $totalHarga }}</td>
             <td>{{ $data->tujuan }}</td>
             <td>{{ $data->tgl_pengiriman }}</td>
         </tr>
