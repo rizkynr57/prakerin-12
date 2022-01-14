@@ -29,6 +29,8 @@
         <td>Nama Customer</td>
         <td>Nama Barang</td>
         <td>Jumlah Pengiriman</td>
+        <td>Harga Satuan</td>
+        <td>Satuan Barang</td>
         <td>Tujuan</td>
         <td>Tanggal Pengiriman Barang</td>
     </tr>
@@ -38,8 +40,10 @@
         <tr>
             <td>{{ $no++ }}</td>
             <td>{{ $data->customer->nama }}</td>
-            <td>{{ $data->barang->nama_barang}}</td>
-            <td>{{ $data->jumlah_pengiriman}}</td>
+            <td>{{ $data->barang->nama_barang }}</td>
+            <td>{{ $data->jumlah_pengiriman }}</td>
+            <td>{{ $data->harga_satuan }}</td>
+            <td>{{ $data->satuan }}</td>
             <td>{{ $data->tujuan }}</td>
             <td>{{ $data->tgl_pengiriman }}</td>
         </tr>
