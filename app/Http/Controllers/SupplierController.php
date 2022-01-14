@@ -53,19 +53,6 @@ class SupplierController extends Controller
         return redirect('supplier')->with('success', 'Data Berhasil Disimpan!');
     }
 
-    public function show($id)
-    {
-        $supplier = Supplier::findOrFail($id);
-        return view('supplier.show', compact('supplier'));
-    }
-
-    public function edit($id)
-    {
-        $code = Supplier::code();
-        $supplier = Supplier::findOrFail($id);
-        return view('supplier.edit', compact('supplier', 'code'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
