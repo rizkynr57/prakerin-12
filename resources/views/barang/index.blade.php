@@ -20,22 +20,22 @@
                                 data-target=".barang">Tambah Data</a>
                             @include('barang.create')
                         </div>
-                        <div class="card-body">
-                            @if ($barang['stok_barang'] < 1)
-                                @foreach ($barang as $item)
+                         <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="barang">
+                           @foreach ($barang as $item)
+                              @if ($item->stok_barang < 1)                                   
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
                                         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
                                             aria-label="Warning:">
                                             <use xlink:href="#exclamation-triangle-fill" />
                                         </svg>
                                         <div>
-                                            <p style="color: red">PERINGATAN! </p>stok <b>$item['nama_barang']</b> kosong!!!
+                                            <strong">PERINGATAN!</strong>stok <b>$item->nama_barang</b> kosong!!!
                                         </div>
                                     </div>
-                                @endforeach
-                            @endif
-                            <div class="table-responsive">
-                                <table class="table" id="barang">
+                                @endif
+                            @endforeach
                                     <thead>
                                         <tr>
                                             <th>No</th>
