@@ -12,11 +12,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama_barang">
+                        <input type="text" class="form-control" name="nama">
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis_barang">
+                        <input type="text" class="form-control" name="jenis">
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>
