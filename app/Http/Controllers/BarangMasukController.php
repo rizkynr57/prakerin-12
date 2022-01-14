@@ -105,6 +105,7 @@ class BarangMasukController extends Controller
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
         $barangMasuk->update();
 
+        $barang = Barang::find($request->id_barang);
         $barang['stok_barang'] += $request->jumlah;
         $barang->update();
 
