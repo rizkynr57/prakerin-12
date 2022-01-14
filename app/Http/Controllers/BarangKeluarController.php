@@ -108,16 +108,20 @@ class BarangKeluarController extends Controller
             'tujuan' => 'required',
         ]);
 
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        $barangMasuk->jumlah_pemasukan = $request->jumlah;
-        $barangMasuk->tgl_pengiriman = $request->tgl_pengiriman;
-        $barangMasuk->update();
+        $barangKeluar = Barang_keluar::findOrFail($id);
+        $reset = Barang::findOrFail($request->id_barang);
+        $reset['stok_barang'] += $barangKeluar['jumlah_pengiriman'];
+        $reset->update();
+        
+        $barangKeluar->jumlah_pemasukan = $request->jumlah;
+        $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
+        $barangKeluar->update();
 
-        $barang = Barang::findOrFail($request->id_barang);
+        $barang = Barang_keluar::find($request->id_barang);
         $barang['stok_barang'] -= $request->jumlah;
         $barang->update();
 
-        return redirect('barang-keluar')->with('info', 'Data telah Diubah');
+        return redirect('barang-keluar')->withInfo('Data telah Diubah');
     }
 
     public function destroy($id)
