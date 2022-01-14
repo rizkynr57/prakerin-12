@@ -19,7 +19,7 @@
     }
 </style>
 <table id="barang-keluar" width="100%">
- <a type="button" href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-success">
+ <a type="button" href="{{ route('exportPDF.barangKeluarAll') }}" class="btn btn-success">
    <i class="fas fa-file-export">Export PDF</i>
  </a>
     <thead>
