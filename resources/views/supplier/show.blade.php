@@ -36,7 +36,6 @@
                 <div class="modal-footer">
                     <a href="{{ url('supplier') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i>Kembali</a>
                 </div>
-            </form>
         </div>
     </div>
 </div>
