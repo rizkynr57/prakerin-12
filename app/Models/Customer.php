@@ -29,7 +29,7 @@ class Customer extends Model
     {
         $kode = DB::table('customers')->max('kode');
         $addNol = '';
-        $kode = str_replace("PGJ", "", $kode);
+        $kode = str_replace("CTR", "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
 
@@ -41,7 +41,7 @@ class Customer extends Model
             $addNol = "0";
         }
 
-        $kodeBaru = "PGJ" . $addNol . $incrementKode;
+        $kodeBaru = "CTR" . $addNol . $incrementKode;
         return $kodeBaru;
     }
 
