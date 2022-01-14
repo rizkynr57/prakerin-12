@@ -18,12 +18,6 @@ class BarangController extends Controller
         return view('barang.index', compact('barang'));
     }
 
-    public function create()
-    {
-        //
-
-    }
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -48,25 +42,12 @@ class BarangController extends Controller
              $profit = 0.1; // 10%
         }
         
-        $addPrice = $request->harga * profit;
+        $addPrice = $request->harga * $profit;
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
         $barang->save();
         return redirect('barang')->with('success', 'Data disimpan');
 
-    }
-
-    public function show($id)
-    {
-        $barang = Barang::findOrFail($id);
-        return view('barang.show', compact('barang'));
-
-    }
-
-    public function edit($id)
-    {
-        $barang = Barang::findOrFail($id);
-        return view('barang.edit', compact('barang'));
     }
 
     public function update(Request $request, $id)
