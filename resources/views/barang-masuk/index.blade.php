@@ -50,11 +50,14 @@
                                                     @method('DELETE')
                                                     <a class="btn btn-outline btn-sm btn-outline-warning"
                                                         data-toggle="modal"
-                                                        data-target=".barangMasuk-edit-{{ $data->id }}">Edit
+                                                        data-target=".barangMasuk-edit-{{ $data->id }}">
+                                                     <i class="fas fa-edit"></i>Edit</a>
                                                     </a>
-                                                    <a href="{{ route('exportPDF.barangMasuk', $data->id) }}"
-                                                        class="btn btn-warning" target="_blank">Print</a>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <a href="{{ route('laporanBarangMasuk', $data->id) }}"
+                                                        class="btn btn-warning" target="_blank">
+                                                      <i class="fas fa-print"></i> Print</a>
+                                                    <button type="submit" class="btn btn-danger">
+                                                      <i class="fas fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                 </tbody>
