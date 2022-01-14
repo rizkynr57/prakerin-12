@@ -79,7 +79,7 @@ class SupplierController extends Controller
         $supplier->alamat = $request->alamat;
         $supplier->no_telp = $request->no_telp;
         $supplier->nama_perusahaan = $request->perusahaan;
-        $supplier->save();
+        $supplier->update();
 
         return redirect('supplier')->with('info', 'Data berhasil diubah!');
     }
