@@ -55,8 +55,9 @@
                                                         data-target=".supplier-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>Edit
                                                     </a>
-                                                    <a href="{{ route('supplier.show', $data->id) }}"
-                                                        class="btn btn-warning"><i class="fas fa-id-card"></i> Show</a>
+                                                    <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
+                                                        data-target=".supplier-show-{{ $data->id }}">Show
+                                                          <i class="fas fa-id-card"></i> Show</a>
                                                     <button class="btn btn-danger delete"
                                                         onclick="return confirm('Are You Sure ?')"><i
                                                             class="fas fa-trash"></i>Delete</button>
