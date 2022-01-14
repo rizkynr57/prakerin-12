@@ -22,6 +22,8 @@ class CreateBarangKeluarsTable extends Migration
             $table->integer('jumlah_pengiriman');
             $table->integer('harga_satuan');
             $table->integer('satuan');
+            $table->bigInteger('total_harga')->nullable();
+            $table->bigInteger('keuntungan')->nullable();
             $table->string('tujuan');
             $table->date('tgl_pengiriman');
             $table->timestamps();
