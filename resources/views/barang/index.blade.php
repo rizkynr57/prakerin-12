@@ -59,16 +59,18 @@
                                                 <td>{{ $data->stok_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->satuan }}</td>
-                                                {{-- <a class="btn btn-outline btn-sm btn-outline-warning" data-toggle="modal"
+                                                <a class="btn btn-outline btn-sm btn-outline-warning" data-toggle="modal"
                                                     data-target=".barang-edit-{{ $data->id }}">Edit
                                                 </a>
-                                                <a href="{{ route('barang.show', $data->id) }}"
-                                                    class="btn btn-outline-warning">Show</a> --}}
+                                                <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
+                                                        data-target=".barang-show-{{ $data->id }}">Show
+                                                 </a>
                                     </tbody>
 
                                     </td>
                                     </tr>
-                                    {{-- @include('barang.edit') --}}
+                                    @include('barang.edit')
+                                    @include('barang.show')
                                     @endforeach
                                 </table>
                             </div>
