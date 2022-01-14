@@ -39,7 +39,6 @@ class BarangMasukController extends Controller
     {
         $barang = Barang::all();
         $supplier = Supplier::all();
-        $data = Barang_masuk::all();
         $barangMasuk = Barang_masuk::find($id);
         $no = 1;
         return view('barang-masuk.laporanBarangMasuk', compact('barangMasuk', 'supplier', 'barang', 'no'));
@@ -47,21 +46,21 @@ class BarangMasukController extends Controller
 
     public function cetakPDF_all()
     {
-        $data3 = Barang::all();
-        $data2 = Supplier::all();
-        $data = Barang_masuk::all();
+        $barang = Barang::all();
+        $supplier = Supplier::all();
+        $barangMasuk = Barang_masuk::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('data', 'data2', 'data3', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
     }
 
     public function cetakPDF($id)
     {
-        $data3 = Barang::all();
-        $data2 = Supplier::all();
-        $data = Barang_masuk::findOrFail($id);
+        $barang = Barang::all();
+        $supplier = Supplier::all();
+        $barangMasuk = Barang_masuk::findOrFail($id);
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangMasuk', compact('data', 'data2', 'data3', 'no'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
         return $pdf->download('laporan-pemasukan-barang-satuan.pdf');
     }
 
