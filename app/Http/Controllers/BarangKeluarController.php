@@ -80,24 +80,17 @@ class BarangKeluarController extends Controller
         $keluar->id_customer = $request->id_customer;
         $keluar->id_barang = $request->id_barang;
         $keluar->jumlah_pengiriman = $request->jumlah;
+
         $getData = Barang::findOrFail($request->id_barang);
+
         $keluar->harga_satuan = $getData['harga_jual'];
         $keluar->satuan = $getData['satuan'];
         $keluar->tgl_pengiriman = $request->tgl_pengiriman;
-        $keluar->total_harga = 0;
         $keluar->tujuan = $request->tujuan;
         $keluar->save();
 
-        $idStuff = $request->id_barang;
-        $qtySend = $request->jumlah;
-
-        $barang = Barang::findOrfail($idStuff);
-        $barang->stok_barang -= $qtySend;
-        $barang->save();
-
-        // $totalHarga = new Barang_keluar;
-        // $totalHarga->total_harga = $getData['harga_jual'] * $qtySend;
-        // $totalHarga->save();
+        $getData->stok_barang -= $request->jumlah;
+        $getData->save();
 
         return redirect('barang-keluar')
             ->withSuccess('<strong>Berhasil</strong>,
