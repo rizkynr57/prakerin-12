@@ -104,7 +104,7 @@ class BarangMasukController extends Controller
         $barang = Barang::findOrFail($request->id_barang);
         $barang['stok_barang'] += $request->jumlah;
         $barang->update();
-        return redirect('barang-masuk')->with('success', 'Data berhasil diedit!');
+        return redirect('barang-masuk')->with('info', 'Data telah diubah!');
 
     }
 
