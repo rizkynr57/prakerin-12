@@ -121,7 +121,7 @@ class BarangKeluarController extends Controller
         $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangKeluar->update();
 
-        $barang = Barang_keluar::find($request->id_barang);
+        $barang = Barang::find($request->id_barang);
         $barang['stok_barang'] -= $request->jumlah;
         $barang->update();
     
