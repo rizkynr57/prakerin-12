@@ -12,11 +12,6 @@ use Session;
 class BarangMasukController extends Controller
 {
 
-    public function __construct()
-    {
-        //
-    }
-
     public function index()
     {
         $supplier = Supplier::all();
