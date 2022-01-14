@@ -68,6 +68,7 @@
                                 </td>
                                 </tr>
                                 @include('supplier.edit')
+                                @include('supplier.show')
                                 @endforeach
                             </table>
                         </div>
