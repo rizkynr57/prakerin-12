@@ -48,21 +48,21 @@ class BarangKeluarController extends Controller
 
     public function cetakPDF_all()
     {
-        $data2 = Barang::all();
-        $data3 = Customer::all();
-        $data = Barang_keluar::all();
+        $barang = Barang::all();
+        $customer = Customer::all();
+        $barangMasuk = Barang_keluar::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('data', 'data2', 'no', 'data3'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
     public function cetakPDF($id)
     {
-        $data2 = Barang::all();
-        $data3 = Customer::all();
-        $data = Barang_keluar::find($id);
+        $barang = Barang::all();
+        $customer = Customer::all();
+        $barangMasuk = Barang_keluar::find($id);
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('data', 'data2', 'no', 'data3'));
+        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
