@@ -1,52 +1,42 @@
-@extends('adminlte::page')
-
-@section('title', 'Data Customer')
-
-@section('content_header')
-
-<h2><br></h2>
-
-@stop
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">Show</div>
-                <div class="card-body">
+<div class="modal fade customer-show-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Supplier</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Kode Customer</label>
+                        <input type="text" class="form-control boxed" name="kode" value="{{ $data->kode }}"
+                            readonly>
+                    </div>
                     <div class="form-group">
                         <label for="">Nama Customer</label>
-                        <input type="text" name="nama" class="form-control" value="{{ $customer->nama }}" readonly>
+                        <input type="text" class="form-control" name="nama" value="{{ $data->nama }}" required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" name="alamat" class="form-control" value="{{ $customer->alamat }}" readonly>
+                        <input type="text" class="form-control" name="alamat" value="{{ $data->alamat }}"
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" name="email" class="form-control" value="{{ $customer->email }}" readonly>
+                        <input type="email" class="form-control" name="email" value="{{ $data->email }}"
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" name="no_telp" class="form-control" value="{{ $customer->no_telp }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <br>
-                        <a href="{{ route('supplier.index') }}" class="btn btn-outline-primary">Kembali</a>
+                        <input type="text" class="form-control" name="no_telp" value="{{ $data->telepon }}"
+                            readonly>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <a href="{{ url('customer') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i>Kembali</a>
+                </div>
         </div>
     </div>
 </div>
-@stop
-
-@section('css')
-
-@stop
-
-@section('js')
-
-@stop
-
