@@ -42,7 +42,8 @@
                                             <th>Nama Barang</th>
                                             <th>Jenis Barang</th>
                                             <th>Stok Barang</th>
-                                            <th>Harga</th>
+                                            <th>Harga Beli</th>
+                                            <th>Harga Jual</th>
                                             <th>Satuan</th>
                                             <th>Action</th>
                                         </tr>
@@ -58,6 +59,7 @@
                                                 <td>{{ $data->jenis_barang }}</td>
                                                 <td>{{ $data->stok_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
+                                                <td>{{ $data->harga_jual }}</td>
                                                 <td>{{ $data->satuan }}</td>
                                                 <a class="btn btn-outline btn-sm btn-outline-warning" data-toggle="modal"
                                                     data-target=".barang-edit-{{ $data->id }}"><i
