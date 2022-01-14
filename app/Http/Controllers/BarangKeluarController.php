@@ -122,6 +122,11 @@ class BarangKeluarController extends Controller
 
     public function destroy($id)
     {
+        $barangKeluar = Barang_keluar::find($id);
+        $barang = Barang::where('id', $barangKeluar->id_barang)->firstOrFail();
+        $barang->stok_barang += $barangKeluar->jumlah_pengiriman;
+        $barang->save();
+
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
