@@ -97,14 +97,18 @@ class BarangMasukController extends Controller
         ]);
 
         $barangMasuk = Barang_masuk::findOrFail($id);
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang['stok_barang'] -= $barangMasuk['jumlah_pemasukan'];
+        $barang->update();
+        
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
         $barangMasuk->update();
 
-        $barang = Barang::findOrFail($request->id_barang);
         $barang['stok_barang'] += $request->jumlah;
         $barang->update();
-        return redirect('barang-masuk')->with('info', 'Data telah diubah!');
+
+        return redirect('barang-masuk')->withInfo('Data telah diubah!');
 
     }
 
