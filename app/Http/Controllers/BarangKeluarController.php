@@ -87,7 +87,7 @@ class BarangKeluarController extends Controller
         $barangkeluar->satuan = $getData['satuan'];
         $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangkeluar->tujuan = $request->tujuan;
-        $keluar->save();
+        $barangKeluar->save();
 
         $getData['stok_barang'] -= $request->jumlah;
         if ($request->jumlah >= $getData['stok_barang']) {
