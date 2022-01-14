@@ -60,10 +60,11 @@
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->satuan }}</td>
                                                 <a class="btn btn-outline btn-sm btn-outline-warning" data-toggle="modal"
-                                                    data-target=".barang-edit-{{ $data->id }}">Edit
+                                                    data-target=".barang-edit-{{ $data->id }}"><i
+                                                            class="fas fa-edit">edit
                                                 </a>
                                                 <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
-                                                        data-target=".barang-show-{{ $data->id }}">Show
+                                                        data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>show
                                                  </a>
                                     </tbody>
 
