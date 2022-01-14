@@ -54,19 +54,6 @@ class CustomerController extends Controller
         return redirect('customer')->with('success', 'Data berhasil disimpan!');
     }
 
-    public function show($id)
-    {
-        $code = Customer::code();
-        $customer = Customer::findOrFail($id);
-        return view('customer.show', compact('customer', 'code'));
-    }
-
-    public function edit($id)
-    {
-        $customer = Customer::findOrFail($id);
-        return view('customer.edit', compact('customer'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
