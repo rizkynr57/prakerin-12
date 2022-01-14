@@ -80,7 +80,7 @@ class CustomerController extends Controller
         $customer->alamat = $request->alamat;
         $customer->email = $request->email;
         $customer->telepon = $request->no_telp;
-        $customer->save();
+        $customer->update();
 
         return redirect('customer')->with('info', 'Data berhasil diubah!');
     }
