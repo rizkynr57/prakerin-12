@@ -21,8 +21,8 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama_barang' => 'required|unique:barangs',
-            'jenis_barang' => 'required',
+            'nama' => 'required|unique:barangs',
+            'jenis' => 'required',
             'harga' => 'required',
             'satuan' => 'required',
         ]);
@@ -60,7 +60,22 @@ class BarangController extends Controller
         ]);
 
         $barang = Barang::findOrFail($id);
-        $barang->update($request->all());
+        $barang->nama_barang = $request->nama;
+        $barang->jenis_barang = $request->jenis;
+        $barang->harga = $request->harga;
+        if($request->harga >= 100000) {
+             $profit = 0.3; // 30%
+        } else if ($request->harga >= 70000) {
+             $profit = 0.25; // 25%
+        } else if ($request->harga >= 50000) {
+             $profit = 0.2; // 20%
+        } else {
+             $profit = 0.1; // 10%
+        }
+        
+        $addPrice = $request->harga * $profit;
+        $barang->harga_jual = $request->harga + $addPrice;
+        $barang->satuan => $request->satuan;
 
         return redirect('barang')->with('success', 'Data berhasil diedit!');
     }
