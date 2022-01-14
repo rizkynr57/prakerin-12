@@ -111,17 +111,14 @@
                                             <td>{{ $data->jumlah_pemasukan }}</td>
                                             <td>{{ $data->tgl_masuk }}</td>
                                             <td>
-                                                    <a class="btn btn-outline btn-sm btn-outline-warning"
-                                                        data-toggle="modal"
-                                                        data-target=".barangMasuk-edit-{{ $data->id }}">
-                                                     <i class="fas fa-edit"></i> Edit</a>
-                                                    </a>
-                                                    <a href="{{ route('laporanBarangMasuk', $data->id) }}"
-                                                        class="btn btn-warning" target="_blank">
-                                                      <i class="fas fa-print"></i> Print</a>
+                                               <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                  data-toggle="modal"
+                                                  data-target=".barangMasuk-edit-{{ $data->id }}">
+                                                  <i class="fas fa-edit"></i> Edit</a>
+                                               </a>
                                             </td>
-                                </tbody>
-                                </td>
+                                       </tbody>
+                                    </td>
                                 </tr>
                                 @include('barang-masuk.edit')
                                 @endforeach
