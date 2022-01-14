@@ -12,7 +12,7 @@ class CustomerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin,petugas');
+        //
     }
 
     public function index()
