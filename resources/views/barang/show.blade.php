@@ -1,51 +1,34 @@
-@extends('adminlte::page')
-
-@section('title', 'Data Supplier')
-
-@section('content_header')
-
-<h2><br></h2>
-
-@stop
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">Show</div>
-                <div class="card-body">
+<div class="modal fade barang-show{{ $data->id }}-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Supplier</label>
-                        <input type="text" name="nama" class="form-control" value="{{ $supplier->nama_supplier }}" readonly>
+                        <label for="">Nama Barang</label>
+                        <input type="text" class="form-control" name="nama" value="{{ $barang->nama_barang }}">
                     </div>
                     <div class="form-group">
-                        <label for="">Alamat</label>
-                        <input type="text" name="alamat" class="form-control" value="{{ $supplier->alamat }}" readonly>
+                        <label for="">Jenis Barang</label>
+                        <input type="text" class="form-control" name="jenis" value="{{ $barang->jenis_barang }}">
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Telepon</label>
-                        <input type="text" name="no_telp" class="form-control" value="{{ $supplier->no_telp }}" readonly>
+                        <label for="">Harga</label>
+                        <input type="text" class="form-control" name="harga" value="{{ $barang->harga }}">
                     </div>
                     <div class="form-group">
-                        <label for="">Nama Perusahaan</label>
-                        <input type="text" name="perusahaan" class="form-control" value="{{ $supplier->nama_perusahaan }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <br>
-                        <a href="{{ route('supplier.index') }}" class="btn btn-outline-primary">Kembali</a>
+                        <label for="">Satuan</label>
+                        <input type="text" class="form-control" name="satuan" value="{{ $barang->satusn }}">
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <a href="{{ url('barang') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i>Kembali</a>
+                </div>
         </div>
     </div>
 </div>
-@stop
-
-@section('css')
-
-@stop
-
-@section('js')
-
-@stop
