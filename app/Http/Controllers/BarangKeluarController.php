@@ -89,8 +89,12 @@ class BarangKeluarController extends Controller
         $keluar->tujuan = $request->tujuan;
         $keluar->save();
 
-        $getData->stok_barang -= $request->jumlah;
+        $getData['stok_barang'] -= $request->jumlah;
         $getData->save();
+
+        $total = Barang_keluar::find($request->id_barang);
+        $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
+        $total->save();
 
         return redirect('barang-keluar')
             ->withSuccess('<strong>Berhasil</strong>,
@@ -111,7 +115,7 @@ class BarangKeluarController extends Controller
         $barangKeluar = Barang_keluar::findOrFail($id);
         $reset = Barang::findOrFail($request->id_barang);
         $reset['stok_barang'] += $barangKeluar['jumlah_pengiriman'];
-        $reset->update();
+        $reset->save();
         
         $barangKeluar->jumlah_pemasukan = $request->jumlah;
         $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
@@ -120,6 +124,10 @@ class BarangKeluarController extends Controller
         $barang = Barang_keluar::find($request->id_barang);
         $barang['stok_barang'] -= $request->jumlah;
         $barang->update();
+    
+        $total = Barang_keluar::find($request->id_barang);
+        $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
+        $total->save();
 
         return redirect('barang-keluar')->withInfo('Data telah Diubah');
     }
