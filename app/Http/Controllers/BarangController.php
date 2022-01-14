@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
-
+    
     public function index()
     {
         $barang = Barang::all();
