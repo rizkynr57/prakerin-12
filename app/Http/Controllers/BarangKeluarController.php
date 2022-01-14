@@ -117,7 +117,7 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $request->jumlah;
         $barang->update();
 
-        return redirect('barang-keluar')->withSuccess('Data Diubah');
+        return redirect('barang-keluar')->with('info', 'Data telah Diubah');
     }
 
     public function destroy($id)
