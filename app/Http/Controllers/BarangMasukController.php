@@ -99,7 +99,7 @@ class BarangMasukController extends Controller
         $barangMasuk = Barang_masuk::findOrFail($id);
         $reset = Barang::findOrFail($request->id_barang);
         $reset['stok_barang'] -= $barangMasuk['jumlah_pemasukan'];
-        $reset->update();
+        $reset->save();
         
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
