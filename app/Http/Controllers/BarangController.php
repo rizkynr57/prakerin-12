@@ -76,6 +76,7 @@ class BarangController extends Controller
         $addPrice = $request->harga * $profit;
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan => $request->satuan;
+        $barang->update();
 
         return redirect('barang')->with('success', 'Data berhasil diedit!');
     }
