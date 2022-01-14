@@ -11,10 +11,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('profil', function () {
-//     return view('profil');
-// });
-
 Auth::routes(
     [
         'register' => false,
