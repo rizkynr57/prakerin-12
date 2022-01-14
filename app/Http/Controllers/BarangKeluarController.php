@@ -92,8 +92,9 @@ class BarangKeluarController extends Controller
         $getData['stok_barang'] -= $request->jumlah;
         if ($request->jumlah > $getData['stok_barang']) {
               return back()->withError('Tidak boleh melebihi batas sisa');
+        } else {
+             $getData->save();
         }
-        $getData->save();
 
         $total = Barang_keluar::find($request->id_barang);
         $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
