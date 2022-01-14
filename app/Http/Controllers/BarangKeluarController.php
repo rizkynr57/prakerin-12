@@ -76,23 +76,23 @@ class BarangKeluarController extends Controller
             'tujuan' => 'required',
         ]);
 
-        $keluar = new Barang_keluar();
-        $keluar->id_customer = $request->id_customer;
-        $keluar->id_barang = $request->id_barang;
-        $keluar->jumlah_pengiriman = $request->jumlah;
+        $barangkeluar = new Barang_keluar();
+        $barangkeluar->id_customer = $request->id_customer;
+        $barangkeluar->id_barang = $request->id_barang;
+        $barangkeluar->jumlah_pengiriman = $request->jumlah;
 
         $getData = Barang::findOrFail($request->id_barang);
 
-        $keluar->harga_satuan = $getData['harga_jual'];
-        $keluar->satuan = $getData['satuan'];
-        $keluar->tgl_pengiriman = $request->tgl_pengiriman;
-        $keluar->tujuan = $request->tujuan;
+        $barangKeluar->harga_satuan = $getData['harga_jual'];
+        $barangkeluar->satuan = $getData['satuan'];
+        $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
+        $barangkeluar->tujuan = $request->tujuan;
         $keluar->save();
 
         $getData['stok_barang'] -= $request->jumlah;
-  //      if (!Barang::where('id', $request->id_barang)->get()->value('stok_barang') <= $request->jumlah) {
-  //            return back()->withError('Tidak boleh melebihi batas sisa');
-  //      }
+        if (!Barang::where('id', $barangKeluar->id_barang)->get()->value('stok_barang') <= $request->jumlah) {
+              return back()->withError('Tidak boleh melebihi batas sisa');
+        }
         $getData->save();
 
         $total = Barang_keluar::find($request->id_barang);
