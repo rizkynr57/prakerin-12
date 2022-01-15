@@ -143,6 +143,6 @@ class BarangKeluarController extends Controller
             "level" => "success",
             "message" => "Data berhasil dihapus",
         ]);
-        return redirect()->route('barang-keluar.index');
+        return redirect('barang-keluar')->withSuccess('Data telah dihapus');
     }
 }
