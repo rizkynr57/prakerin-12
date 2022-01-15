@@ -6,6 +6,7 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
+use Str;
 
 class SupplierController extends Controller
 {
