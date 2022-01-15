@@ -12,10 +12,11 @@ class SupplierController extends Controller
 
     public function __construct()
     {
-        if (Auth::user() == 'petugas') {
-
+      if (Str::length(Auth::guard('user')->user()) > 0)
+         if (Auth::guard('user')->user()->role = "petugas") {
             return redirect('home')->withError('Anda tidak memiliki akses pada halaman sebelumnya !');
-        }
+         }
+       }
     }
 
     public function index()
