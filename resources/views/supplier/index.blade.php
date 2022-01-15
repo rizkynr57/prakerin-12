@@ -62,10 +62,8 @@
                                                         onclick="return confirm('Are You Sure ?')"><i
                                                             class="fas fa-trash"></i>Delete</button>
                                                 </form>
-
-                                </tbody>
-
-                                </td>
+                                        </tbody>
+                                    </td>
                                 </tr>
                                 @include('supplier.edit')
                                 @include('supplier.show')
