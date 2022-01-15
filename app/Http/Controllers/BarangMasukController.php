@@ -79,7 +79,7 @@ class BarangMasukController extends Controller
         $barang->stok_barang += $request->jumlah;
         $barang->save();
 
-        return redirect('barang-masuk')->with('success', 'Barang diterima!');
+        return redirect('barang-masuk')->withSuccess('Barang diterima!');
     }
 
     public function update(Request $request, $id)
@@ -122,6 +122,6 @@ class BarangMasukController extends Controller
             "level" => "success",
             "message" => "Data berhasil dihapus",
         ]);
-        return redirect()->route('barang-masuk.index');
+        return redirect('barang-masuk')->withSuccess('Data telah dihapus');
     }
 }
