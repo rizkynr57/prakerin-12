@@ -51,7 +51,7 @@ class CustomerController extends Controller
         $customer->telepon = $request->no_telp;
         $customer->save();
 
-        return redirect('customer')->with('success', 'Data berhasil disimpan!');
+        return redirect('customer')->withSuccess('Data berhasil disimpan!');
     }
 
     public function update(Request $request, $id)
@@ -70,7 +70,7 @@ class CustomerController extends Controller
         $customer->telepon = $request->no_telp;
         $customer->update();
 
-        return redirect('customer')->with('info', 'Data berhasil diubah!');
+        return redirect('customer')->withInfo('Data berhasil diubah!');
     }
 
     public function destroy($id)
@@ -82,6 +82,6 @@ class CustomerController extends Controller
             "level" => "success",
             "message" => "Data Berhasil Dihapus",
         ]);
-        return redirect()->route('customer.index');
+        return redirect('customer')->withSuccess('Data telah dihapus');
     }
 }
