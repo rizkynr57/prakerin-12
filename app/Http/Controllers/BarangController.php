@@ -42,7 +42,7 @@ class BarangController extends Controller
         $barang->satuan = $request->satuan;
         $barang->save();
 
-        return redirect('barang')->with('success', 'Data disimpan');
+        return redirect('barang')->withSuccess('Data disimpan');
 
     }
 
@@ -73,7 +73,7 @@ class BarangController extends Controller
         $barang->satuan => $request->satuan;
         $barang->update();
 
-        return redirect('barang')->with('success', 'Data berhasil diedit!');
+        return redirect('barang')->withInfo('Data berhasil diedit!');
     }
 
     public function destroy($id)
@@ -85,6 +85,6 @@ class BarangController extends Controller
             "level" => "success",
             "message" => "Data berhasil dihapus",
         ]);
-        return redirect()->route('barang');
+        return redirect('barang')->withSuccess('Data telah dihapus');
     }
 }
