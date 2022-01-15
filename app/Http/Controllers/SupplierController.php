@@ -50,7 +50,7 @@ class SupplierController extends Controller
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->save();
 
-        return redirect('supplier')->with('success', 'Data Berhasil Disimpan!');
+        return redirect('supplier')->withSuccess('Data Berhasil Disimpan!');
     }
 
     public function update(Request $request, $id)
@@ -69,7 +69,7 @@ class SupplierController extends Controller
         $supplier->nama_perusahaan = $request->perusahaan;
         $supplier->update();
 
-        return redirect('supplier')->with('info', 'Data berhasil diubah!');
+        return redirect('supplier')->withInfo('Data berhasil diubah!');
     }
 
     public function destroy($id)
@@ -81,6 +81,6 @@ class SupplierController extends Controller
             "level" => "success",
             "message" => "Data Berhasil Dihapus",
         ]);
-        return redirect()->route('supplier');
+        return redirect('supplier')->withSuccess('Data telah dihapus');
     }
 }
