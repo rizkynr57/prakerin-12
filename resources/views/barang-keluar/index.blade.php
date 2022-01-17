@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">Data Barang Keluar
                         <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target=".barangKeluar">Tambah Data</a>
+                            data-target=".barangKeluar" onclick="addForm()">Tambah Data</a>
                         @include('barang-keluar.create')
                     </div>
                     <div class="card-body">
