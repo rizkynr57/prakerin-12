@@ -24,9 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('supplier', SupplierController::class);
+    Route::get('/apiSupplier', [SupplierController::class, 'ApiSupplier'])->name('api.supplier');
     Route::get('/cetak-supplier', [SupplierController::class, 'cetakSupplierPDF'])->name('exportPDF.suppliersAll');
 
     Route::resource('customer', CustomerController::class);
+    Route::get('/apiCustomer', [CustomerController::class, 'ApiCustomer'])->name('api.customer');
     Route::get('/cetak-customer', [CustomerController::class, 'cetakCustomerPDF'])->name('exportPDF.customersAll');
 
     Route::resource('barang', BarangController::class);
