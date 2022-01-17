@@ -11,6 +11,7 @@
                 {{ csrf_field() }} {{ method_field('POST') }}
 
                 <div class="modal-body">
+                  <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label for="">Kode Customer</label>
                         <input type="text" class="form-control boxed" name="kode" value="{{ $code }}" readonly>
