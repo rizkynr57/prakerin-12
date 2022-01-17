@@ -59,6 +59,25 @@ class BarangMasukController extends Controller
         return $pdf->download('laporan-pemasukan-barang-satuan.pdf');
     }
 
+    public function ApiIn()
+    {
+        $barangKeluar = Barang_masuk::all();
+
+        return Datatables::of($barangMasuk)
+            ->addColumn('nama_barang', function ($barangMasuk){
+                return $barangMasuk->barang->nama_barang;
+            })
+            ->addColumn('nama_supplier', function ($barangMasuk){
+                return $barangMasuk->supplier->nama_supplier;
+            })
+            ->addColumn('action', function($barangMasuk){
+                return '<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a onclick="editForm('. $barangKeluar->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+                    '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            })
+            ->rawColumns(['nama_barang', 'nama_supplier', 'action'])->make(true);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
