@@ -91,4 +91,123 @@
         });
     </script>
 
+    <script type="text/javascript">
+          var table = $(#customer).DataTables({
+                 processing = true;
+                 serverSide = true;
+                 ajax = "{{ route('api.customer') }}",
+                 column = [
+                           {data: 'id', name, 'id'},
+                           {data: 'nama', name, 'nama'},
+                           {data: 'alamat', name, 'alamat'},
+                           {data: 'email', name, 'email'},
+                           {data: 'telepon', name, 'no_telp'},
+                           {data: 'action', name, 'action', orderable: false, searchable: false}
+                          ]
+                   });
+        
+               function addForm() {
+                    save_method = "add";
+                    $('input[name=_method]').val('POST');
+                    $('#modal-form').modal('show');
+                    $('#modal-form form')[0].reset();
+                    $'.modal-title').text('Tambah Data');
+               }
+               
+               function editForm($id) {
+                    save_method = 'edit';
+                    $('input[name=_method').val('PUT');
+                    $('#modal-form form')[0].reset();
+                    $.ajax({
+                           url: "{{ url('supplier') }}" + '/' + id + "/edit",
+                           type: "GET",
+                           dataType: "JSON",
+                           success: function($data) {
+                                $('#modal-form').modal('show');
+                                $('.modal-title').text('Edit Customer');
+                                $('#id').val(data.id);
+                                $('#nama').val(data.nama);
+                                $('#alamat').val(data.alamat);
+                                $('#email').val(data.email);
+                                $('#telepon').val(data.no_telp);
+                             },
+                         error : function() {
+                             alert('Tidak ada data');
+                         } 
+                       }); 
+                      }
+               function deleteData(id){
+            var csrf_token = $('meta[name="csrf-token"]').attr('content');
+            swal({
+                title: 'Apakah anda yakin ?',
+                text: "Kamu tidak akan bisa mengembalikan !",
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Iya, hapus!'
+            }).then(function () {
+                $.ajax({
+                    url : "{{ url('customer') }}" + '/' + id,
+                    type : "POST",
+                    data : {'_method' : 'DELETE', '_token' : csrf_token},
+                    success : function(data) {
+                        table.ajax.reload();
+                        swal({
+                            title: 'Success!',
+                            text: data.message,
+                            type: 'success',
+                            timer: '1500'
+                        })
+                    },
+                    error : function () {
+                        swal({
+                            title: 'Oops...',
+                            text: data.message,
+                            type: 'error',
+                            timer: '1500'
+                        })
+                    }
+                });
+            });
+        }
+        $(function(){
+            $('#modal-form form').validator().on('submit', function (e) {
+                if (!e.isDefaultPrevented()){
+                    var id = $('#id').val();
+                    if (save_method == 'add') url = "{{ url('customer') }}";
+                    else url = "{{ url('customer') . '/' }}" + id;
+                    $.ajax({
+                        url : url,
+                        type : "POST",
+                        //hanya untuk input data tanpa dokumen
+//                      data : $('#modal-form form').serialize(),
+                        data: new FormData($("#modal-form form")[0]),
+                        contentType: false,
+                        processData: false,
+                        success : function(data) {
+                            $('#modal-form').modal('hide');
+                            table.ajax.reload();
+                            swal({
+                                title: 'Success!',
+                                text: data.message,
+                                type: 'success',
+                                timer: '1500'
+                            })
+                        },
+                        error : function(data){
+                            swal({
+                                title: 'Oops...',
+                                text: data.message,
+                                type: 'error',
+                                timer: '1500'
+                            })
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+    </script>
+
 @endsection
