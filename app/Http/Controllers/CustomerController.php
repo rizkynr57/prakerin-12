@@ -35,6 +35,18 @@ class CustomerController extends Controller
         return $pdf->download('Data-customer.pdf');
     }
 
+    public function ApiCustomer() 
+    {
+        $customer = Customer::all();
+        return DataTables::of($customer)
+                 ->AddColumn('action' function($customer) {
+                  return '<a href="#" class="btn btn-warning"><i class="fas fa-id-card"></i>Show</a>' .
+                       '<a onclick="editForm('.$customer->id.')" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>' .
+                       '<a onclick="deleteData('.$customer->id.')" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>';
+                });
+                ->rawColumns(['action'])->make(true);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
