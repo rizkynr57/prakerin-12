@@ -72,8 +72,8 @@ class BarangMasukController extends Controller
             })
             ->addColumn('action', function($barangMasuk){
                 return '<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $barangKeluar->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                    '<a onclick="editForm('. $barangMasuk->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+                    '<a onclick="deleteData('. $barangMasuk->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             })
             ->rawColumns(['nama_barang', 'nama_supplier', 'action'])->make(true);
     }
