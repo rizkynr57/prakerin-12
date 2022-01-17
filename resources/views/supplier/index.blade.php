@@ -55,8 +55,8 @@
                                                         data-target=".supplier-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>Edit
                                                     </a>
-                                                    <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
-                                                        data-target=".supplier-show-{{ $data->id }}">Show
+                                                    <a class="btn btn-warning" data-toggle="modal"
+                                                        data-target=".supplier-show-{{ $data->id }}">
                                                           <i class="fas fa-id-card"></i> Show</a>
                                                     <button class="btn btn-danger delete"
                                                         onclick="return confirm('Are You Sure ?')"><i

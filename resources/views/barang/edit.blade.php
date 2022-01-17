@@ -13,19 +13,19 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama" value="{{ $barang->nama_barang }}">
+                        <input type="text" class="form-control" name="nama" value="{{ $data->nama_barang }}">
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis" value="{{ $barang->jenis_barang }}">
+                        <input type="text" class="form-control" name="jenis" value="{{ $data->jenis_barang }}">
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>
-                        <input type="text" class="form-control" name="harga" value="{{ $barang->harga }}">
+                        <input type="text" class="form-control" name="harga" value="{{ $data->harga }}">
                     </div>
                     <div class="form-group">
                         <label for="">Satuan</label>
-                        <input type="text" class="form-control" name="satuan" value="{{ $barang->satusn }}">
+                        <input type="text" class="form-control" name="satuan" value="{{ $data->satusn }}">
                     </div>
                 </div>
                 <div class="modal-footer">

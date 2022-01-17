@@ -8,31 +8,23 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class BarangKeluarController extends Controller
 {
 
     public function index()
     {
-        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
-                           ->pluck('nama_barang', 'id');
-
-        $customer = Customer::orderBy('nama', 'ASC')->get()
-                           ->pluck('nama', 'id');
-
+        $barang = Barang::all();
+        $customer = Customer::all();
         $barangKeluar = Barang_keluar::all();
         return view('barang-keluar.index', compact('barangKeluar', 'barang', 'customer'));
     }
 
     public function laporanBarangKeluarAll()
     {
-        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
-                           ->pluck('nama_barang', 'id');
-
-        $customer = Customer::orderBy('nama', 'ASC')->get()
-                           ->pluck('nama', 'id');
-
+        $barang = Barang::all();
+        $customer = Customer::all();
         $barangKeluar = Barang_keluar::all();
         $no = 1;
         return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang',
@@ -42,12 +34,8 @@ class BarangKeluarController extends Controller
 
     public function laporanBarangKeluar($id)
     {
-        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
-                           ->pluck('nama_barang', 'id');
-
-        $customer = Customer::orderBy('nama', 'ASC')->get()
-                           ->pluck('nama', 'id');
-
+        $barang = Barang::all();
+        $customer = Customer::all();
         $barangKeluar = Barang_keluar::find($id);
         $no = 1;
         return view('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'barang', 'no', 'customer'));
@@ -56,12 +44,8 @@ class BarangKeluarController extends Controller
 
     public function cetakPDF_all()
     {
-        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
-                           ->pluck('nama_barang', 'id');
-
-        $customer = Customer::orderBy('nama', 'ASC')->get()
-                           ->pluck('nama', 'id');
-
+        $barang = Barang::all();
+        $customer = Customer::all();
         $barangMasuk = Barang_keluar::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
@@ -70,12 +54,8 @@ class BarangKeluarController extends Controller
 
     public function cetakPDF($id)
     {
-        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
-                           ->pluck('nama_barang', 'id');
-
-        $customer = Customer::orderBy('nama', 'ASC')->get()
-                           ->pluck('nama', 'id');
-
+        $barang = Barang::all();
+        $customer = Customer::all();
         $barangMasuk = Barang_keluar::find($id);
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
@@ -86,7 +66,7 @@ class BarangKeluarController extends Controller
     {
         $barangKeluar = Barang_keluar::all();
 
-        return Datatables::of($barangKeluar)
+        return DataTables::of($barangKeluar)
             ->addColumn('nama_barang', function ($barangKeluar){
                 return $barangKeluar->barang->nama_barang;
             })
@@ -99,7 +79,7 @@ class BarangKeluarController extends Controller
                     '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             })
             ->rawColumns(['nama_barang', 'nama_customer', 'action'])->make(true);
-           
+
          return view('barang-keluar.index');
     }
 
@@ -113,33 +93,28 @@ class BarangKeluarController extends Controller
             'tujuan' => 'required',
         ]);
 
-        $barangkeluar = new Barang_keluar();
+        $barangkeluar = new Barang_keluar;
         $barangkeluar->id_customer = $request->id_customer;
         $barangkeluar->id_barang = $request->id_barang;
         $barangkeluar->jumlah_pengiriman = $request->jumlah;
 
         $getData = Barang::findOrFail($request->id_barang);
 
-        $barangKeluar->harga_satuan = $getData['harga_jual'];
+        $barangkeluar->harga_satuan = $getData['harga_jual'];
         $barangkeluar->satuan = $getData['satuan'];
         $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangkeluar->tujuan = $request->tujuan;
 
         $getData['stok_barang'] -= $request->jumlah;
-        if ($request->jumlah > $getData['stok_barang']) {
-              return back()->withError('Tidak boleh melebihi batas sisa');
-       } else {
-             $barangKeluar->save();
+       // if ($request->jumlah > $getData['stok_barang']) {
+     //         return back()->withError('Tidak boleh melebihi batas sisa');
+     //  } else {
+             $barangkeluar->save();
              $getData->save();
-      
-             $total = Barang_keluar::find($request->id_barang);
-             $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
-             $total->save();
-       }
 
-        return redirect('barang-keluar')->withSuccess('Barang sedang dikirim ke tempat tujuan!');
+             return redirect('barang-keluar')->withSuccess('Barang sedang dikirim ke tempat tujuan!');
+            }
 
-    }
 
     public function update(Request $request, $id)
     {
@@ -155,9 +130,12 @@ class BarangKeluarController extends Controller
         $reset = Barang::findOrFail($request->id_barang);
         $reset['stok_barang'] += $barangKeluar['jumlah_pengiriman'];
         $reset->save();
-        
+
         $barangKeluar->jumlah_pemasukan = $request->jumlah;
         $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
+
+        $getData = Barang::findOrFail($request->id_barang);
+
 
         $barang = Barang::find($request->id_barang);
         $barang['stok_barang'] -= $request->jumlah;
@@ -166,7 +144,7 @@ class BarangKeluarController extends Controller
         } else {
         $barangKeluar->save();
         $barang->update();
-    
+
         $total = Barang_keluar::find($request->id_barang);
         $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
         $total->update();
@@ -185,10 +163,10 @@ class BarangKeluarController extends Controller
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil dihapus",
-        ]);
+        // Session::flash("flash_notification", [
+        //     "level" => "success",
+        //     "message" => "Data berhasil dihapus",
+        // ]);
         return redirect('barang-keluar')->withSuccess('Data telah dihapus');
     }
 }

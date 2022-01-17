@@ -8,30 +8,23 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
+use Yajra\DataTables\Facades\DataTables;
 
 class BarangMasukController extends Controller
 {
 
     public function index()
     {
-        $supplier = Supplier::orderBy('nama_supplier')->get()
-                               ->pluck('nama_supplier');
-
-        $barang = Barang::orderBy('nama_barang')->get()
-                               ->pluck('nama_barang');
-
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $barangMasuk = Barang_masuk::all();
         return view('barang-masuk.index', compact('barangMasuk', 'supplier', 'barang'));
     }
 
     public function laporanBarangMasukAll()
     {
-        $supplier = Supplier::orderBy('nama_supplier')->get()
-                               ->pluck('nama_supplier');
-
-        $barang = Barang::orderBy('nama_barang')->get()
-                               ->pluck('nama_barang')
-
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $barangMasuk = Barang_masuk::all();
         $no = 1;
         return view('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang',
@@ -40,12 +33,8 @@ class BarangMasukController extends Controller
 
     public function laporanBarangMasuk($id)
     {
-        $supplier = Supplier::orderBy('nama_supplier')->get()
-                               ->pluck('nama_supplier');
-
-        $barang = Barang::orderBy('nama_barang')->get()
-                               ->pluck('nama_barang')
-
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $barangMasuk = Barang_masuk::find($id);
         $no = 1;
         return view('barang-masuk.laporanBarangMasuk', compact('barangMasuk', 'supplier', 'barang', 'no'));
@@ -53,12 +42,8 @@ class BarangMasukController extends Controller
 
     public function cetakPDF_all()
     {
-        $supplier = Supplier::orderBy('nama_supplier')->get()
-                               ->pluck('nama_supplier');
-
-        $barang = Barang::orderBy('nama_barang')->get()
-                               ->pluck('nama_barang')
-
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $barangMasuk = Barang_masuk::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
@@ -67,12 +52,8 @@ class BarangMasukController extends Controller
 
     public function cetakPDF($id)
     {
-        $supplier = Supplier::orderBy('nama_supplier')->get()
-                               ->pluck('nama_supplier');
-
-        $barang = Barang::orderBy('nama_barang')->get()
-                               ->pluck('nama_barang')
-
+        $supplier = Supplier::all();
+        $barang = Barang::all();
         $barangMasuk = Barang_masuk::findOrFail($id);
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
@@ -81,7 +62,7 @@ class BarangMasukController extends Controller
 
     public function ApiIn()
     {
-        $barangKeluar = Barang_masuk::all();
+        $barangMasuk = Barang_masuk::all();
 
         return Datatables::of($barangMasuk)
             ->addColumn('nama_barang', function ($barangMasuk){
@@ -136,7 +117,7 @@ class BarangMasukController extends Controller
         $reset = Barang::findOrFail($request->id_barang);
         $reset['stok_barang'] -= $barangMasuk['jumlah_pemasukan'];
         $reset->save();
-        
+
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
         $barangMasuk->update();
@@ -153,7 +134,7 @@ class BarangMasukController extends Controller
     {
         $barangMasuk = Barang_masuk::find($id);
         $barang = Barang::where('id', $barangMasuk->id_barang)->firstOrFail();
-        $barang->stok_barang -= $barangKeluar->jumlah_pemasukan;
+        $barang->stok_barang -= $barangMasuk->jumlah_pemasukan;
         $barang->save();
 
         if (!Barang_masuk::destroy($id)) {

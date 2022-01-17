@@ -12,15 +12,6 @@ use DataTables;
 class CustomerController extends Controller
 {
 
-    public function __construct()
-    {
-      if (Str::length(Auth::user()) > 0)
-         if (Auth::user()->role = "petugas") {
-            return redirect('home')->withError('Anda tidak memiliki akses pada halaman sebelumnya !');
-         }
-       }
-    }
-
     public function index()
     {
         $customer = Customer::all();

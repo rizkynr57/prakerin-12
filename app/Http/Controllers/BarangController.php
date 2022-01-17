@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Session;
 
 class BarangController extends Controller
 {
-    
+
     public function index()
     {
         $barang = Barang::all();
@@ -17,15 +18,15 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|unique:barangs',
+            'nama' => 'required',
             'jenis' => 'required',
             'harga' => 'required',
             'satuan' => 'required',
         ]);
 
         $barang = new Barang;
-        $barang->nama_barang = $request->nama_barang;
-        $barang->jenis_barang = $request->jenis_barang;
+        $barang->nama_barang = $request->nama;
+        $barang->jenis_barang = $request->jenis;
         $barang->stok_barang = 0;
         $barang->harga = $request->harga;
         if($request->harga >= 100000) {
@@ -36,7 +37,7 @@ class BarangController extends Controller
              $profit = 0.2; // 20%
         } else {
              $profit = 0.1; // 10%
-        }        
+        }
         $addPrice = $request->harga * $profit;
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
@@ -59,6 +60,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama;
         $barang->jenis_barang = $request->jenis;
         $barang->harga = $request->harga;
+        $barang->stock_barang = 0;
         if($request->harga >= 100000) {
              $profit = 0.3; // 30%
         } else if ($request->harga >= 70000) {
@@ -67,10 +69,10 @@ class BarangController extends Controller
              $profit = 0.2; // 20%
         } else {
              $profit = 0.1; // 10%
-        }       
+        }
         $addPrice = $request->harga * $profit;
         $barang->harga_jual = $request->harga + $addPrice;
-        $barang->satuan => $request->satuan;
+        $barang->satuan = $request->satuan;
         $barang->update();
 
         return redirect('barang')->withInfo('Data berhasil diedit!');
@@ -81,10 +83,10 @@ class BarangController extends Controller
         if (!Barang::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil dihapus",
-        ]);
+        // Session::flash("flash_notification", [
+        //     "level" => "success",
+        //     "message" => "Data berhasil dihapus",
+        // ]);
         return redirect('barang')->withSuccess('Data telah dihapus');
     }
 }

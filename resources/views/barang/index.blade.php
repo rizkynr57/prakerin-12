@@ -24,14 +24,14 @@
                             <div class="table-responsive">
                                 <table class="table" id="barang">
                            @foreach ($barang as $item)
-                              @if ($item->stok_barang < 1)                                   
+                              @if ($item->stok_barang < 1)
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
                                         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
                                             aria-label="Warning:">
                                             <use xlink:href="#exclamation-triangle-fill" />
                                         </svg>
                                         <div>
-                                            <strong>PERINGATAN!</strong>stok <b>$item->nama_barang</b> kosong!!!
+                                            <strong>PERINGATAN!</strong> stok <b>{{ $item->nama_barang }}</b> kosong!!!
                                         </div>
                                     </div>
                                 @endif
@@ -61,13 +61,15 @@
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->harga_jual }}</td>
                                                 <td>{{ $data->satuan }}</td>
-                                                <a class="btn btn-outline btn-sm btn-outline-warning" data-toggle="modal"
-                                                    data-target=".barang-edit-{{ $data->id }}"><i
-                                                            class="fas fa-edit">edit
+                                                <td>
+                                                <a class="btn btn-primary" data-toggle="modal"
+                                                    data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>edit
                                                 </a>
-                                                <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
-                                                        data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>show
+                                                <a class="btn btn-warning" data-toggle="modal"
+                                                    data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>show
                                                  </a>
+                                                 </td>
+
                                     </tbody>
 
                                     </td>
@@ -93,7 +95,7 @@
                         <div class="card-header">Data Barang</div>
                         <div class="card-body">
                             @foreach ($barang as $item)
-                              @if ($item->stok_barang < 1)                                   
+                              @if ($item->stok_barang < 1)
                                     <div class="alert alert-warning d-flex align-items-center" role="alert">
                                         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
                                             aria-label="Warning:">
