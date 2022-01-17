@@ -88,6 +88,7 @@
         $(document).ready(function() {
             $('#supplier').DataTable();
         });
+    </script>
     </script type="text/javascript">
           var table = $(#supplier).DataTables({
                  processing = true;
@@ -97,9 +98,9 @@
                            {data: 'id', name, 'id'},
                            {data: 'nama_supplier', name, 'nama'},
                            {data: 'alamat', name, 'alamat'},
-                           {data: 'no_telp, name, 'no_telp'},
-                           {data: 'nama_perusahaan, name, 'perusahaan'},
-                           {data: 'action, name, 'action', orderable: false, searchable: false}
+                           {data: 'no_telp', name, 'no_telp'},
+                           {data: 'nama_perusahaan', name, 'perusahaan'},
+                           {data: 'action', name, 'action', orderable: false, searchable: false}
                           ]
                    });
         
