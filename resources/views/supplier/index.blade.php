@@ -91,7 +91,7 @@
     </script>
 
     <script type="text/javascript">
-          var table = $(#supplier).DataTables({
+          var table = $('#supplier').DataTable({
                  processing = true;
                  serverSide = true;
                  ajax = "{{ route('api.supplier') }}",
