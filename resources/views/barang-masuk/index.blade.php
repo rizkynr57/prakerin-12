@@ -49,7 +49,7 @@
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-outline btn-sm btn-outline-warning"
+                                                    <a class="btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i>Edit</a>

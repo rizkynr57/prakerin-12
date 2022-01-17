@@ -106,14 +106,15 @@ class BarangKeluarController extends Controller
         $barangkeluar->tujuan = $request->tujuan;
 
         $getData['stok_barang'] -= $request->jumlah;
-       // if ($request->jumlah > $getData['stok_barang']) {
-     //         return back()->withError('Tidak boleh melebihi batas sisa');
-     //  } else {
+        if ($request->jumlah > $getData['stok_barang']) {
+             return back()->withError('Tidak boleh melebihi batas sisa');
+       } else {
              $barangkeluar->save();
              $getData->save();
 
              return redirect('barang-keluar')->withSuccess('Barang sedang dikirim ke tempat tujuan!');
-            }
+       }
+    }
 
 
     public function update(Request $request, $id)
@@ -163,10 +164,10 @@ class BarangKeluarController extends Controller
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
-        // Session::flash("flash_notification", [
-        //     "level" => "success",
-        //     "message" => "Data berhasil dihapus",
-        // ]);
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil dihapus",
+        ]);
         return redirect('barang-keluar')->withSuccess('Data telah dihapus');
     }
 }
