@@ -89,7 +89,8 @@
             $('#supplier').DataTable();
         });
     </script>
-    </script type="text/javascript">
+
+    <script type="text/javascript">
           var table = $(#supplier).DataTables({
                  processing = true;
                  serverSide = true;
