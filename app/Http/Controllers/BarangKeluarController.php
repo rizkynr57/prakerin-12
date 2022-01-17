@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
+use DataTables;
 
 class BarangKeluarController extends Controller
 {
@@ -59,6 +60,22 @@ class BarangKeluarController extends Controller
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
+    }
+
+    public function ApiOut()
+    {
+        $barangKeluar = Barang_keluar::all();
+
+        return Datatables::of($barangKeluar)
+            ->addColumn('nama_barang', function ($barangKeluar){
+                return $barangKeluar->barang->nama_barang;
+            })
+            ->addColumn('action', function($barangKeluar){
+                return '<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                    '<a onclick="editForm('. $barangKeluar->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+                    '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            })
+            ->rawColumns(['nama_barang','action'])->make(true);
     }
 
     public function store(Request $request)
