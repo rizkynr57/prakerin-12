@@ -19,7 +19,6 @@ Auth::routes(
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Hak akses admin dan petugas dibatasi melalui controller langsung!!!
 
 Route::group(['middleware' => 'auth'], function () {
 

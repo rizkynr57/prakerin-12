@@ -56,7 +56,7 @@
                                                         data-target=".customer-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>Edit
                                                     </a>
-                                                    <a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
+                                                    <a class="btn btn-warning" data-toggle="modal"
                                                         data-target=".customer-show-{{ $data->id }}">
                                                     <i class="fas fa-id-card"></i>Show</a>
                                                     <button class="btn btn-danger delete"

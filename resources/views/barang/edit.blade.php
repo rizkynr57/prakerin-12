@@ -1,9 +1,9 @@
-<div class="modal fade barang-edit-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade barang-edit-{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Satuan</label>
-                        <input type="text" class="form-control" name="satuan" value="{{ $data->satusn }}">
+                        <input type="text" class="form-control" name="satuan" value="{{ $data->satuan }}">
                     </div>
                 </div>
                 <div class="modal-footer">

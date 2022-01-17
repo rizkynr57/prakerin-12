@@ -3,10 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Show Data Barang</h5>
             </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -23,11 +20,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">Satuan</label>
-                        <input type="text" class="form-control" name="satuan" value="{{ $data->satusn }}" readonly>
+                        <input type="text" class="form-control" name="satuan" value="{{ $data->satuan }}" readonly>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ url('barang') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i>Kembali</a>
+                    <a href="{{ url('barang') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i> Kembali</a>
                 </div>
         </div>
     </div>
