@@ -92,7 +92,7 @@
     </script>
 
     <script type="text/javascript">
-          var table = $(#customer).DataTables({
+          var table = $('#customer').DataTable({
                  processing = true;
                  serverSide = true;
                  ajax = "{{ route('api.customer') }}",
