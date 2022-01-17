@@ -1,4 +1,4 @@
-<div class="modal fade barangKeluar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade barangKeluar" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,10 +7,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('barang-keluar.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form id="form-item" action="{{ route('barang-keluar.store') }}" data-toggle="validator" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }} {{ method_field('POST') }}
                 <div class="modal-body">
                     <div class="form-group">
+                      <input type="hidden" name="id" id="id">
                         <label for="">Nama Customer</label>
                         <select class="form-control" name="id_customer">
                             <option value=""></option>
