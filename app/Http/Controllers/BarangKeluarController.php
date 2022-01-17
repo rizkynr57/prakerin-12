@@ -99,6 +99,8 @@ class BarangKeluarController extends Controller
                     '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             })
             ->rawColumns(['nama_barang', 'nama_customer', 'action'])->make(true);
+           
+         return view('barang-keluar.index');
     }
 
     public function store(Request $request)
