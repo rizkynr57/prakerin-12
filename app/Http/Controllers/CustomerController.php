@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Session;
 use Str;
+use DataTables;
 
 class CustomerController extends Controller
 {
