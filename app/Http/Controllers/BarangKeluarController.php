@@ -15,16 +15,24 @@ class BarangKeluarController extends Controller
 
     public function index()
     {
-        $barang = Barang::all();
-        $customer = Customer::all();
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                           ->pluck('nama_barang', 'id');
+
+        $customer = Customer::orderBy('nama', 'ASC')->get()
+                           ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::all();
         return view('barang-keluar.index', compact('barangKeluar', 'barang', 'customer'));
     }
 
     public function laporanBarangKeluarAll()
     {
-        $barang = Barang::all();
-        $customer = Customer::all();
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                           ->pluck('nama_barang', 'id');
+
+        $customer = Customer::orderBy('nama', 'ASC')->get()
+                           ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::all();
         $no = 1;
         return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang',
@@ -34,8 +42,12 @@ class BarangKeluarController extends Controller
 
     public function laporanBarangKeluar($id)
     {
-        $barang = Barang::all();
-        $customer = Customer::all();
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                           ->pluck('nama_barang', 'id');
+
+        $customer = Customer::orderBy('nama', 'ASC')->get()
+                           ->pluck('nama', 'id');
+
         $barangKeluar = Barang_keluar::find($id);
         $no = 1;
         return view('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'barang', 'no', 'customer'));
@@ -44,8 +56,12 @@ class BarangKeluarController extends Controller
 
     public function cetakPDF_all()
     {
-        $barang = Barang::all();
-        $customer = Customer::all();
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                           ->pluck('nama_barang', 'id');
+
+        $customer = Customer::orderBy('nama', 'ASC')->get()
+                           ->pluck('nama', 'id');
+
         $barangMasuk = Barang_keluar::all();
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
@@ -54,8 +70,12 @@ class BarangKeluarController extends Controller
 
     public function cetakPDF($id)
     {
-        $barang = Barang::all();
-        $customer = Customer::all();
+        $barang = Barang::orderBy('nama_barang', 'ASC')->get()
+                           ->pluck('nama_barang', 'id');
+
+        $customer = Customer::orderBy('nama', 'ASC')->get()
+                           ->pluck('nama', 'id');
+
         $barangMasuk = Barang_keluar::find($id);
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
