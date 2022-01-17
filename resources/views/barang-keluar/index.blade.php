@@ -44,7 +44,7 @@
                                     @foreach ($barangKeluar as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->customer->kode }}
+                                            <td>{{ $data->customer->nama }}
                                             <td>{{ $data->barang->nama_barang }}</td>
                                             <td>{{ $data->harga_satuan }}</td
                                             <td>{{ $data->satuan }}</td>
