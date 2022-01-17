@@ -96,6 +96,8 @@ class BarangMasukController extends Controller
                     '<a onclick="deleteData('. $barangMasuk->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             })
             ->rawColumns(['nama_barang', 'nama_supplier', 'action'])->make(true);
+
+          return view('barang-masuk.index');
     }
 
     public function store(Request $request)
