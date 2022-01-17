@@ -124,16 +124,16 @@ class BarangKeluarController extends Controller
         $barangkeluar->tujuan = $request->tujuan;
 
         $getData['stok_barang'] -= $request->jumlah;
-       // if ($request->jumlah > $getData['stok_barang']) {
-       //       return back()->withError('Tidak boleh melebihi batas sisa');
-       // } else {
+        if ($request->jumlah > $getData['stok_barang']) {
+              return back()->withError('Tidak boleh melebihi batas sisa');
+       } else {
              $barangKeluar->save();
              $getData->save();
       
              $total = Barang_keluar::find($request->id_barang);
              $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
              $total->save();
-       // }
+       }
 
         return redirect('barang-keluar')->withSuccess('Barang sedang dikirim ke tempat tujuan!');
 
@@ -156,15 +156,19 @@ class BarangKeluarController extends Controller
         
         $barangKeluar->jumlah_pemasukan = $request->jumlah;
         $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
-        $barangKeluar->update();
 
         $barang = Barang::find($request->id_barang);
         $barang['stok_barang'] -= $request->jumlah;
+        if ($request->jumlah > $getData['stok_barang']) {
+              return back()->withError('Tidak boleh melebihi batas sisa');
+        } else {
+        $barangKeluar->save();
         $barang->update();
     
         $total = Barang_keluar::find($request->id_barang);
         $total->total_harga = $total['harga_satuan'] * $total['jumlah_pengiriman'];
-        $total->save();
+        $total->update();
+        }
 
         return redirect('barang-keluar')->withInfo('Data telah Diubah');
     }
