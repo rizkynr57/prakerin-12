@@ -7,8 +7,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form id="form-item" data-toggle="validator" action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }} {{ method_field('POST') }}
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kode Supplier</label>
@@ -16,19 +17,19 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama Supplier</label>
-                        <input type="text" class="form-control" name="nama" required>
+                        <input type="text" class="form-control" name="nama" id="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" class="form-control" name="alamat" required>
+                        <input type="text" class="form-control" name="alamat" id="alamat" required>
                     </div>
                     <div class="form-group">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" required>
+                        <input type="text" class="form-control" name="no_telp" id="no_telp" required>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Perusahaan</label>
-                        <input type="text" class="form-control" name="perusahaan" required>
+                        <input type="text" class="form-control" name="perusahaan" id="perusahaan" required>
                     </div>
                 </div>
                 <div class="modal-footer">
