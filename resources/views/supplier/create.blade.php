@@ -7,11 +7,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form-item" data-toggle="validator" action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }} {{ method_field('POST') }}
-
+            <form action="{{ route('supplier.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="modal-body">
-                  <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label for="">Kode Supplier</label>
                         <input type="text" class="form-control" name="kode" value="{{ $code }}" readonly>
