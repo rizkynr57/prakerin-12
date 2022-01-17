@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Session;
 use Str;
-use DataTables;
+use DataTable;
 
 class CustomerController extends Controller
 {
@@ -39,7 +39,7 @@ class CustomerController extends Controller
     public function ApiCustomer() 
     {
         $customer = Customer::all();
-        return DataTables::of($customer)
+        return DataTable::of($customer)
                  ->AddColumn('action' function($customer) {
                   return '<a href="#" class="btn btn-warning"><i class="fas fa-id-card"></i>Show</a>' .
                        '<a onclick="editForm('.$customer->id.')" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>' .
