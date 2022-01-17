@@ -35,6 +35,17 @@ class SupplierController extends Controller
         return $pdf->download('Data-supplier.pdf');
     }
 
+    public function ApiSupplier() 
+    {
+        $supplier = Supplier::all();
+        return DataTables::of($supplier)
+                 ->AddColumn('action' function($supplier) {
+                  return '<a href="#" class="btn btn-warning"><i class="fas fa-id-card"></i>Show</a>' .
+                       '<a onclick="editForm('.$supplier->id.')" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>' .
+                       '<a onclick="deleteData('.$supplier->id.')" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>';
+                });
+                ->rawColumns(['action'])->make(true);
+    }
     public function store(Request $request)
     {
         $request->validate([
