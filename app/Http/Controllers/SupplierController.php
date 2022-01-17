@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Session;
 use Str;
+use DataTables;
 
 class SupplierController extends Controller
 {
@@ -46,6 +47,7 @@ class SupplierController extends Controller
                 });
                 ->rawColumns(['action'])->make(true);
     }
+
     public function store(Request $request)
     {
         $request->validate([
