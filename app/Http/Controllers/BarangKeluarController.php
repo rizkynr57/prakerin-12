@@ -70,12 +70,15 @@ class BarangKeluarController extends Controller
             ->addColumn('nama_barang', function ($barangKeluar){
                 return $barangKeluar->barang->nama_barang;
             })
+            ->addColumn('nama_customer', function ($barangKeluar){
+                return $barangKeluar->customer->nama;
+            })
             ->addColumn('action', function($barangKeluar){
                 return '<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
                     '<a onclick="editForm('. $barangKeluar->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
                     '<a onclick="deleteData('. $barangKeluar->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             })
-            ->rawColumns(['nama_barang','action'])->make(true);
+            ->rawColumns(['nama_barang', 'nama_customer', 'action'])->make(true);
     }
 
     public function store(Request $request)
