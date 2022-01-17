@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use PDF;
 use Session;
 use Str;
-use DataTable;
+use DataTables;
 
 class SupplierController extends Controller
 {
@@ -39,7 +39,7 @@ class SupplierController extends Controller
     public function ApiSupplier() 
     {
         $supplier = Supplier::all();
-        return DataTable::of($supplier)
+        return DataTables::of($supplier)
                  ->AddColumn('action' function($supplier) {
                   return '<a href="#" class="btn btn-warning"><i class="fas fa-id-card"></i>Show</a>' .
                        '<a onclick="editForm('.$supplier->id.')" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>' .
