@@ -13,7 +13,7 @@
                     <div class="form-group">
                       <input type="hidden" name="id" id="id">
                         <label for="">Nama Customer</label>
-                        <select class="form-control" name="id_customer">
+                        <select class="form-control" name="id_customer" id="customer">
                             <option value=""></option>
                             @foreach ($customer as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama }}</option>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <select class="form-control" name="id_barang">
+                        <select class="form-control" name="id_barang" id="id_barang">
                             <option value=""></option>
                             @foreach ($barang as $data)
                                 <option value="{{ $data->id }}">{{ $data->nama_barang }}</option>
@@ -31,16 +31,16 @@
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
-                        <input type="text" class="form-control" name="jumlah" required>
+                        <input type="text" class="form-control" name="jumlah" id="jumlah" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tanggal Pengiriman Barang</label>
-                        <input type="date" name="tgl_pengiriman" class="form-control">
+                        <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="">Tujuan Pengiriman</label>
-                        <input type="text" name="tujuan" class="form-control">
+                        <input type="text" name="tujuan" id="tujuan" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
