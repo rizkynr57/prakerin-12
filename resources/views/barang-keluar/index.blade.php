@@ -56,10 +56,8 @@
                                                     <a class="btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target=".barangKeluar-edit-{{ $data->id }}">
-                                                      <i class="fas fa-edit"></i>Edit</a>
-                                                    <a href="{{ route('laporanBarangKeluar', $data->id) }}"
-                                                     class="btn btn-warning" target="_blank">
-                                                        <i class="fas fa-print"></i> Print</a>
+                                                     <i class="fas fa-edit"></i>Edit</a>
+                                                    </a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirn('Are You Sure ?')">
                                                      <i class="fas fa-trash"></i> Delete</button>
                                                 </form>
@@ -122,7 +120,8 @@
                                             <td>
                                                <a class="btn btn-primary" data-toggle="modal"
                                                    data-target=".barangKeluar-edit-{{ $data->id }}">
-                                                  <i class="fas fa-edit"> Edit</a>                                            </td>
+                                                  <i class="fas fa-edit"></i> Edit</a>
+                                                </td>
                                            </tbody>
                                       </td>
                                 </tr>

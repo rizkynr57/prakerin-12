@@ -49,7 +49,7 @@
     @endforeach
 </table>
 <center>
-    <a class="btn btn-primary" href="{{ route('exportPDF.barangKeluarAll') }}">
+    <a class="btn btn-primary" href="{{ route('exportPDF.barangKeluar') }}">
     <i class="fas fa-file-export"></i>Export PDF</a>
 </center>
 

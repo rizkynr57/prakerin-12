@@ -31,16 +31,7 @@ class BarangMasukController extends Controller
             'no'));
     }
 
-    public function laporanBarangMasuk($id)
-    {
-        $supplier = Supplier::all();
-        $barang = Barang::all();
-        $barangMasuk = Barang_masuk::find($id);
-        $no = 1;
-        return view('barang-masuk.laporanBarangMasuk', compact('barangMasuk', 'supplier', 'barang', 'no'));
-    }
-
-    public function cetakPDF_all()
+    public function cetakPDF()
     {
         $supplier = Supplier::all();
         $barang = Barang::all();
@@ -48,37 +39,6 @@ class BarangMasukController extends Controller
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
-    }
-
-    public function cetakPDF($id)
-    {
-        $supplier = Supplier::all();
-        $barang = Barang::all();
-        $barangMasuk = Barang_masuk::findOrFail($id);
-        $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
-        return $pdf->download('laporan-pemasukan-barang-satuan.pdf');
-    }
-
-    public function ApiIn()
-    {
-        $barangMasuk = Barang_masuk::all();
-
-        return Datatables::of($barangMasuk)
-            ->addColumn('nama_barang', function ($barangMasuk){
-                return $barangMasuk->barang->nama_barang;
-            })
-            ->addColumn('nama_supplier', function ($barangMasuk){
-                return $barangMasuk->supplier->nama_supplier;
-            })
-            ->addColumn('action', function($barangMasuk){
-                return '<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                    '<a onclick="editForm('. $barangMasuk->id .')" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                    '<a onclick="deleteData('. $barangMasuk->id .')" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-            })
-            ->rawColumns(['nama_barang', 'nama_supplier', 'action'])->make(true);
-
-          return view('barang-masuk.index');
     }
 
     public function store(Request $request)

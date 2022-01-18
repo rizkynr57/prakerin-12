@@ -44,6 +44,6 @@
 
 </table>
  <center>
-     <a href="{{ route('exportPDF.barangMasukAll') }}" class="btn btn-danger">
+     <a href="{{ route('exportPDF.barangMasuk') }}" class="btn btn-danger">
      <i class="fas fa-file-export"></i>Export PDF</a>
 </center>
