@@ -20,27 +20,22 @@ Auth::routes(
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware(['auth', 'verified'])->resource('supplier', SupplierController::class)->middleware('role:admin');
+Route::middleware(['auth', 'verified'])->get('/cetak-supplier', [SupplierController::class, 'cetakSupplierPDF'])->middleware('role:admin')->name('exportPDF.suppliersAll');
 
-    Route::resource('supplier', SupplierController::class);
-    Route::get('/cetak-supplier', [SupplierController::class, 'cetakSupplierPDF'])->name('exportPDF.suppliersAll');
+Route::middleware(['auth', 'verified'])->resource('customer', CustomerController::class)->middleware('role:admin');;
+Route::middleware(['auth', 'verified'])->get('/cetak-customer', [CustomerController::class, 'cetakCustomerPDF'])->middleware('role:admin')->name('exportPDF.customersAll');
 
-    Route::resource('customer', CustomerController::class);
-    Route::get('/cetak-customer', [CustomerController::class, 'cetakCustomerPDF'])->name('exportPDF.customersAll');
+Route::middleware(['auth', 'verified'])->resource('barang', BarangController::class);
 
-    Route::resource('barang', BarangController::class);
+Route::middleware(['auth', 'verified'])->resource('barang-keluar', BarangKeluarController::class);
+Route::middleware(['auth', 'verified'])->get('/laporan-barangkeluar-all', [BarangKeluarController::class, 'laporanBarangKeluarAll']);
+Route::middleware(['auth', 'verified'])->get('/laporan-barangkeluar/{id}', [BarangKeluarController::class, 'laporanBarangKeluar'])->name('laporanBarangKeluar');
+Route::middleware(['auth', 'verified'])->get('/cetak-pdf-all', [BarangKeluarController::class, 'cetakPDF_all'])->name('exportPDF.barangKeluarAll');
+Route::middleware(['auth', 'verified'])->get('/cetak-pdf/{id}', [BarangKeluarController::class, 'cetakPDF'])->name('exportPDF.barangKeluar');
 
-    Route::resource('barang-keluar', BarangKeluarController::class);
-    Route::get('/laporan-barangkeluar-all', [BarangKeluarController::class, 'laporanBarangKeluarAll']);
-    Route::get('/laporan-barangkeluar/{id}', [BarangKeluarController::class, 'laporanBarangKeluar'])->name('laporanBarangKeluar');
-    Route::get('/cetak-pdf-all', [BarangKeluarController::class, 'cetakPDF_all'])->name('exportPDF.barangKeluarAll');
-    Route::get('/cetak-pdf/{id}', [BarangKeluarController::class, 'cetakPDF'])->name('exportPDF.barangKeluar');
-    Route::get('/apiBarangKeluar', [BarangKeluarController::class, 'ApiOut'])->name('api.BarangKeluar');
-
-    Route::resource('barang-masuk', BarangMasukController::class);
-    Route::get('/laporan-barangmasuk-all', [BarangMasukController::class, 'laporanBarangMasukAll']);
-    Route::get('/laporan-barangmasuk/{id}', [BarangMasukController::class, 'laporanBarangMasuk'])->name('laporanBarangMasuk');
-    Route::get('/cetak-pdf-all', [BarangMasukController::class, 'cetakPDF_all'])->name('exportPDF.barangMasukAll');
-    Route::get('/cetak-pdf/{id}', [BarangMasukController::class, 'cetakPDF'])->name('exportPDF.barangMasuk');
-    Route::get('/apiBarangMasuk', [BarangMasukController::class, 'ApiIn'])->name('api.BarangMasuk');
-});
+Route::middleware(['auth', 'verified'])->resource('barang-masuk', BarangMasukController::class);
+Route::middleware(['auth', 'verified'])->get('/laporan-barangmasuk-all', [BarangMasukController::class, 'laporanBarangMasukAll']);
+Route::middleware(['auth', 'verified'])->get('/laporan-barangmasuk/{id}', [BarangMasukController::class, 'laporanBarangMasuk'])->name('laporanBarangMasuk');
+Route::middleware(['auth', 'verified'])->get('/cetak-pdf-all', [BarangMasukController::class, 'cetakPDF_all'])->name('exportPDF.barangMasukAll');
+Route::middleware(['auth', 'verified'])->get('/cetak-pdf/{id}', [BarangMasukController::class, 'cetakPDF'])->name('exportPDF.barangMasuk');

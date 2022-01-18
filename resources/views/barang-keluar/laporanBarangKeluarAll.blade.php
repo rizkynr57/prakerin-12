@@ -18,11 +18,10 @@
         color: white;
     }
 </style>
+<h2 align="center">Laporan Penerimaan Barang</h2>
 <table id="barang-keluar" width="100%">
- <a type="button" href="{{ route('exportPDF.barangKeluarAll') }}" class="btn btn-success">
-   <i class="fas fa-file-export">Export PDF</i>
- </a>
-    <thead>
+</a>
+<thead>
     <tr>
         <td>No</td>
         <td>Nama Customer</td>
@@ -33,10 +32,10 @@
         <td>Tujuan</td>
         <td>Tanggal Pengiriman Barang</td>
     </tr>
-    </thead>
-    @foreach($barangKeluar as $data)
-        <tbody>
-        <tr>
+</thead>
+@foreach($barangKeluar as $data)
+<tbody>
+    <tr>
             <td>{{ $no++ }}</td>
             <td>{{ $data->customer->nama }}</td>
             <td>{{ $data->barang->nama_barang }}</td>
@@ -46,6 +45,11 @@
             <td>{{ $data->tujuan }}</td>
             <td>{{ $data->tgl_pengiriman }}</td>
         </tr>
-        </tbody>
+    </tbody>
     @endforeach
 </table>
+<center>
+    <a class="btn btn-primary" href="{{ route('exportPDF.barangKeluarAll') }}">
+    <i class="fas fa-file-export"></i>Export PDF</a>
+</center>
+

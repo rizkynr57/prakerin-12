@@ -57,7 +57,7 @@
                                                     <a href="{{ route('laporanBarangMasuk', $data->id) }}"
                                                         class="btn btn-warning" target="_blank">
                                                       <i class="fas fa-print"></i> Print</a>
-                                                    <button type="submit" class="btn btn-danger">
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirn('Are You Sure ?')">
                                                       <i class="fas fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
@@ -111,8 +111,7 @@
                                             <td>{{ $data->jumlah_pemasukan }}</td>
                                             <td>{{ $data->tgl_masuk }}</td>
                                             <td>
-                                               <a class="btn btn-outline btn-sm btn-outline-warning"
-                                                  data-toggle="modal"
+                                               <a class="btn btn-primary" data-toggle="modal"
                                                   data-target=".barangMasuk-edit-{{ $data->id }}">
                                                   <i class="fas fa-edit"></i> Edit</a>
                                                </a>

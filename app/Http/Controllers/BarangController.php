@@ -50,7 +50,7 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required|unique:barangs',
+            'nama' => 'required',
             'jenis' => 'required',
             'harga' => 'required',
             'satuan' => 'required',
@@ -60,7 +60,6 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama;
         $barang->jenis_barang = $request->jenis;
         $barang->harga = $request->harga;
-        $barang->stock_barang = 0;
         if($request->harga >= 100000) {
              $profit = 0.3; // 30%
         } else if ($request->harga >= 70000) {
@@ -73,7 +72,7 @@ class BarangController extends Controller
         $addPrice = $request->harga * $profit;
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
-        $barang->update();
+        $barang->save();
 
         return redirect('barang')->withInfo('Data berhasil diedit!');
     }
@@ -83,10 +82,10 @@ class BarangController extends Controller
         if (!Barang::destroy($id)) {
             return redirect()->back();
         }
-        // Session::flash("flash_notification", [
-        //     "level" => "success",
-        //     "message" => "Data berhasil dihapus",
-        // ]);
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Data berhasil dihapus",
+        ]);
         return redirect('barang')->withSuccess('Data telah dihapus');
     }
 }

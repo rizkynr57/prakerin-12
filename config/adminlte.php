@@ -273,18 +273,15 @@ return [
             'text' => 'Laporan Barang',
             'url' => '#',
             'icon' => 'fas fa-book',
-            'can' => 'AksesAdmin',
             'submenu' => [
                 [
                     'text' => 'Laporan Pemasukan Barang',
                     'url' => '/laporan-barangmasuk-all',
-                    'can' => 'AksesAdmin',
                     'icon' => 'fas fa-sticky-note',
                 ],
                 [
                     'text' => 'Laporan Pengeluaran Barang',
-                    'url' => '/laporan-barangkeluar-all ',
-                    'can' => 'AksesAdmin',
+                    'url' => '/laporan-barangkeluar-all',
                     'icon' => 'far fa-sticky-note',
                 ],
             ],

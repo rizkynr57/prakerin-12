@@ -18,12 +18,10 @@
         color: white;
     }
 </style>
-
-<table id="barang-masuk" width="100%">
-   <a type="button" href="{{ route('exportPDF.barangMasukAll') }}" class="btn btn-success">
-       <i class="fas fa-file-export">Export PDF</i>
-   </a>
-    <thead>
+<h2 align="center">Laporan Pemasukan Barang</h2>
+<table id="barang-masuk" width="100%" class="table table-striped">
+</a>
+<thead>
     <tr>
         <td>No</td>
         <td>Nama Supplier</td>
@@ -31,17 +29,21 @@
         <td>Jumlah Pemasukan</td>
         <td>Tanggal Pemasukan Barang</td>
     </tr>
-    </thead>
-    @foreach($barangMasuk as $data)
-        <tbody>
-        <tr>
-            <td>{{ $no++ }}</td>
-            <td>{{ $data->supplier->nama_supplier }}</td>
-            <td>{{ $data->barang->nama_barang}}</td>
-            <td>{{ $data->jumlah_pemasukan }}</td>
-            <td>{{ $data->tgl_masuk }}</td>
-        </tr>
-        </tbody>
-    @endforeach
+</thead>
+@foreach($barangMasuk as $data)
+<tbody>
+    <tr>
+        <td>{{ $no++ }}</td>
+        <td>{{ $data->supplier->nama_supplier }}</td>
+        <td>{{ $data->barang->nama_barang}}</td>
+        <td>{{ $data->jumlah_pemasukan }}</td>
+        <td>{{ $data->tgl_masuk }}</td>
+    </tr>
+</tbody>
+@endforeach
 
 </table>
+ <center>
+     <a href="{{ route('exportPDF.barangMasukAll') }}" class="btn btn-danger">
+     <i class="fas fa-file-export"></i>Export PDF</a>
+</center>

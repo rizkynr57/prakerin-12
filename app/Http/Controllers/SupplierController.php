@@ -6,8 +6,7 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
-use Str;
-use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {

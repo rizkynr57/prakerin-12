@@ -132,9 +132,11 @@
                                                 <td>{{ $data->stok_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->satuan }}</td>
-                                                <td><a class="btn btn-outline btn-sm btn-outline-info" data-toggle="modal"
-                                                        data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i> Show
-                                                 </a></td>
+                                                <td>
+                                                    <a class="btn btn-warning" data-toggle="modal"
+                                                        data-target=".barang-show-{{ $data->id }}">
+                                                    <i class="fas fa-id-card"></i>Show</a>
+                                                </td>
                                     </tbody>
                                     </td>
                                     </tr>

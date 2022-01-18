@@ -48,7 +48,7 @@ class BarangKeluarController extends Controller
         $customer = Customer::all();
         $barangMasuk = Barang_keluar::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
+        $pdf = PDF::loadview('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
@@ -58,7 +58,7 @@ class BarangKeluarController extends Controller
         $customer = Customer::all();
         $barangMasuk = Barang_keluar::find($id);
         $no = 1;
-        $pdf = PDF::loadview('barang-masuk.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
+        $pdf = PDF::loadview('barang-keluar.laporanBarangKeluar', compact('barangKeluar', 'customer', 'no', 'barang'));
         return $pdf->download('laporan-pengiriman-barang.pdf');
     }
 
