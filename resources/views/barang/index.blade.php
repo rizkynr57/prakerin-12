@@ -25,16 +25,14 @@
                                 <table class="table" id="barang">
                            @foreach ($barang as $item)
                               @if ($item->stok_barang < 1)
-                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                                            aria-label="Warning:">
-                                            <use xlink:href="#exclamation-triangle-fill" />
-                                        </svg>
-                                        <div>
-                                            <strong>PERINGATAN!</strong> stok <b>{{ $item->nama_barang }}</b> kosong!!!
-                                        </div>
+                                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Peringatan! </strong> stok <b>{{ $item->nama_barang }}</b> kosong!!!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+
+                                    </button>
                                     </div>
-                                @endif
+                                    @endif
                             @endforeach
                                     <thead>
                                         <tr>
@@ -63,10 +61,10 @@
                                                 <td>{{ $data->satuan }}</td>
                                                 <td>
                                                 <a class="btn btn-primary" data-toggle="modal"
-                                                    data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>edit
+                                                    data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-warning" data-toggle="modal"
-                                                    data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>show
+                                                    data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>
                                                  </a>
                                                  </td>
 
@@ -96,16 +94,13 @@
                         <div class="card-body">
                             @foreach ($barang as $item)
                               @if ($item->stok_barang < 1)
-                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                                            aria-label="Warning:">
-                                            <use xlink:href="#exclamation-triangle-fill" />
-                                        </svg>
-                                        <div>
-                                            <strong>PERINGATAN!</strong>stok <b>$item->nama_barang</b> kosong!!!
-                                        </div>
+                                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Peringatan! </strong> stok <b>$item->nama_barang</b> kosong!!!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     </div>
-                                @endif
+                                    @endif
                             @endforeach
                             <div class="table-responsive">
                                 <table class="table" id="barang">

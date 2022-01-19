@@ -80,11 +80,11 @@ class BarangMasukController extends Controller
 
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
-        $barangMasuk->update();
+        $barangMasuk->save();
 
-        $barang = Barang::find($request->id_barang);
+        $barang = Barang::findOrFail($request->id_barang);
         $barang['stok_barang'] += $request->jumlah;
-        $barang->update();
+        $barang->save();
 
         return redirect('barang-masuk')->withInfo('Data telah diubah!');
 

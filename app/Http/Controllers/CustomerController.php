@@ -33,8 +33,8 @@ class CustomerController extends Controller
             'kode' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
-            'email' => 'required|email|unique:customers',
-            'no_telp' => 'required',
+            'email' => 'required|email',
+            'no_telp' => 'required'
         ]);
 
         $customer = new Customer;
@@ -53,8 +53,8 @@ class CustomerController extends Controller
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
-            'email' => 'required|email|unique:customer',
-            'no_telp' => 'required',
+            'email' => 'required|email',
+            'no_telp' => 'required'
         ]);
 
         $customer = Customer::findOrfail($id);

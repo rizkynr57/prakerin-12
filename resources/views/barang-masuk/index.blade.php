@@ -52,10 +52,10 @@
                                                     <a class="btn btn-primary"
                                                         data-toggle="modal"
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">
-                                                     <i class="fas fa-edit"></i>Edit</a>
+                                                     <i class="fas fa-edit"></i></a>
                                                     </a>
                                                     <button type="submit" class="btn btn-danger" onclick="return confirn('Are You Sure ?')">
-                                                      <i class="fas fa-trash"></i> Delete</button>
+                                                      <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                 </tbody>
@@ -110,7 +110,7 @@
                                             <td>
                                                <a class="btn btn-primary" data-toggle="modal"
                                                   data-target=".barangMasuk-edit-{{ $data->id }}">
-                                                  <i class="fas fa-edit"></i> Edit</a>
+                                                  <i class="fas fa-edit"></i></a>
                                                </a>
                                             </td>
                                        </tbody>

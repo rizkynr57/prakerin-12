@@ -53,14 +53,14 @@
                                                     @method('DELETE')
                                                     <a class="btn btn-primary" data-toggle="modal"
                                                         data-target=".supplier-edit-{{ $data->id }}"><i
-                                                            class="fas fa-edit"></i>Edit
+                                                            class="fas fa-edit"></i>
                                                     </a>
                                                     <a class="btn btn-warning" data-toggle="modal"
                                                         data-target=".supplier-show-{{ $data->id }}">
-                                                          <i class="fas fa-id-card"></i> Show</a>
+                                                          <i class="fas fa-id-card"></i></a>
                                                     <button class="btn btn-danger delete"
                                                         onclick="return confirm('Are You Sure ?')"><i
-                                                            class="fas fa-trash"></i>Delete</button>
+                                                            class="fas fa-trash"></i></button>
                                                 </form>
                                         </tbody>
                                     </td>

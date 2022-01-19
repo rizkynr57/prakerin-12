@@ -85,8 +85,9 @@ class BarangKeluarController extends Controller
         $reset['stok_barang'] += $barangKeluar['jumlah_pengiriman'];
         $reset->save();
 
-        $barangKeluar->jumlah_pemasukan = $request->jumlah;
+        $barangKeluar->jumlah_pengiriman = $request->jumlah;
         $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
+        $barangKeluar->tujuan = $request->tujuan;
         $barangKeluar->save();
 
         $barang = Barang::findOrFail($request->id_barang);
