@@ -12,6 +12,9 @@
     <div class="container">
         <div class="'row">
             <div class="col">
+                 <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-info btn-lg">
+                   <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
+                </a>
                 <div class="card">
                     <div class="card-header"><i class="fas fa-user"></i> Data Supplier
                         <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
@@ -21,9 +24,6 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table" id="supplier">
-                                <a type="button" href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-success">
-                                    <i class="fas fa-file-export">Cetak data dan Export PDF</i>
-                                </a>
                                 <thead>
                                     <tr>
                                         <th>No</th>

@@ -8,7 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
-use Yajra\DataTables\Facades\DataTables;
+
 
 class BarangKeluarController extends Controller
 {
@@ -23,23 +23,22 @@ class BarangKeluarController extends Controller
 
     public function laporanBarangKeluarAll()
     {
-        $barang = Barang::all();
         $customer = Customer::all();
+        $barang = Barang::all();
         $barangKeluar = Barang_keluar::all();
         $no = 1;
-        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'barang',
-            'no', 'customer'));
-
+        return view('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'barang',
+            'no'));
     }
 
-    public function cetakPDF()
+    public function cetakPDFBK()
     {
-        $barang = Barang::all();
         $customer = Customer::all();
-        $barangMasuk = Barang_keluar::all();
+        $barang = Barang::all();
+        $barangKeluar = Barang_keluar::all();
         $no = 1;
-        $pdf = PDF::loadview('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'no', 'barang'));
-        return $pdf->download('laporan-pengiriman-barang.pdf');
+        $pdf = PDF::loadview('barang-keluar.laporanBarangKeluarAll', compact('barangKeluar', 'customer', 'barang', 'no'));
+        return $pdf->download('laporan-pengiriman-barang-semua.pdf');
     }
 
     public function store(Request $request)
