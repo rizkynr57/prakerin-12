@@ -16,8 +16,8 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">Data Barang
-                            <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                                data-target=".barang">Tambah Data</a>
+                            <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
+                                data-target=".barang"><i class="fas fa-plus"></i> Tambah Data</a>
                             @include('barang.create')
                         </div>
                          <div class="card-body">

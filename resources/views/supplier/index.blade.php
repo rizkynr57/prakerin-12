@@ -10,15 +10,15 @@
 @section('content')
     @include('layouts._flash')
     <div class="container">
-        <div class="'row">
+        <div class="row">
             <div class="col">
-                 <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-info btn-lg">
+                 <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-primary btn-lg active">
                    <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
                 </a>
                 <div class="card">
                     <div class="card-header"><i class="fas fa-user"></i> Data Supplier
-                        <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target=".supplier">Tambah Data</a>
+                        <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
+                            data-target=".supplier"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('supplier.create')
                     </div>
                     <div class="card-body">

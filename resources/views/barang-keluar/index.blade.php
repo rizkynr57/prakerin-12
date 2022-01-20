@@ -16,8 +16,8 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">Data Barang Keluar
-                        <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target=".barangKeluar" onclick="addForm()">Tambah Data</a>
+                        <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
+                            data-target=".barangKeluar"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('barang-keluar.create')
                     </div>
                     <div class="card-body">
@@ -58,7 +58,7 @@
                                                         data-target=".barangKeluar-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i></a>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirn('Are You Sure ?')">
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure ?')">
                                                      <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>

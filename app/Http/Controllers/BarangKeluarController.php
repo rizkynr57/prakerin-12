@@ -31,7 +31,7 @@ class BarangKeluarController extends Controller
             'no'));
     }
 
-    public function cetakPDFBK()
+    public function cetakBK()
     {
         $customer = Customer::all();
         $barang = Barang::all();
@@ -73,7 +73,7 @@ class BarangKeluarController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_supplier' => 'required',
+            'id_customer' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
             'tgl_pengiriman' => 'required',

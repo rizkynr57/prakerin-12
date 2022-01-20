@@ -55,7 +55,7 @@
 </body>
 </table>
 <center>
-    <a href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-lg btn-success">
+    <a href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-success btn-lg active">
         <i class="fas fa-file-export"></i></i> Export PDF</a>
     </center>
 </html>

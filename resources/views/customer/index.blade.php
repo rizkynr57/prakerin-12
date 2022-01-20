@@ -13,13 +13,13 @@
     <div class="container">
         <div class="'row">
             <div class="col">
-                <a href="{{ route('exportPDF.customersAll') }}" class="btn btn-info btn-lg">
+                <a href="{{ route('exportPDF.customersAll') }}" class="btn btn-primary btn-lg active">
                    <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
                 </a>
                 <div class="card">
                     <div class="card-header"><i class="fas fa-user-circle"></i> Data Customer
-                        <a type="button" style="float: right;" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target=".customer">Tambah Data</a>
+                        <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
+                            data-target=".customer"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('customer.create')
                     </div>
                     <div class="card-body">

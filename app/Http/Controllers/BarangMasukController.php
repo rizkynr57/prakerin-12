@@ -31,7 +31,7 @@ class BarangMasukController extends Controller
             'no'));
     }
 
-    public function cetakPDFBM()
+    public function cetakBM()
     {
         $supplier = Supplier::all();
         $barang = Barang::all();
