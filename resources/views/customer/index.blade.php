@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-    <h2><br></h2>
+    <i class="fas fa-user-circle"></i> Data Customer
 
 @endsection
 
@@ -13,11 +13,17 @@
     <div class="container">
         <div class="'row">
             <div class="col">
-                <a href="{{ route('exportPDF.customersAll') }}" class="btn btn-primary btn-lg active">
-                   <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
-                </a>
+
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-user-circle"></i> Data Customer
+                    <div class="card-header">
+                        <div style="float: left;">
+                            <a href="{{ route('exportExcel.customersAll') }}" class="btn btn-primary active">
+                                <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
+                            </a>
+                            <a href="{{ route('exportPDF.customersAll') }}" class="btn btn-danger active">
+                                <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
+                            </a>
+                        </div>
                         <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
                             data-target=".customer"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('customer.create')
@@ -52,14 +58,14 @@
                                                 <form action="{{ route('customer.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-primary" data-toggle="modal"
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal"
                                                         data-target=".customer-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>
                                                     </a>
-                                                    <a class="btn btn-warning" data-toggle="modal"
+                                                    <a class="btn btn-warning btn-sm" data-toggle="modal"
                                                         data-target=".customer-show-{{ $data->id }}">
                                                     <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger delete"
+                                                    <button class="btn btn-danger btn-sm"
                                                         onclick="return confirm('Are You Sure ?')"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>

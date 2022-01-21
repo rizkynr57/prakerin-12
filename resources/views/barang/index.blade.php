@@ -3,19 +3,26 @@
 @section('title', 'Data Barang')
 
 @section('content_header')
-
-    <h2><br></h2>
-
+   <i class="fas fa-balance-scale"></i> Data Barang
 @endsection
-
 @section('content')
 @include('layouts._flash')
     @role('admin')
         <div class="container">
             <div class="'row">
                 <div class="col">
+
                     <div class="card">
-                        <div class="card-header">Data Barang
+                        <div class="card-header">
+                            <div style="float: left">
+                            <a href="{{ route('exportExcel.barangAll') }}" class="btn btn-primary active">
+                                <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
+                            </a>
+                            <a type="button" class="btn btn-info active" data-toggle="modal"
+                                data-target="#importExcel"><i class="fas fa-file-import"></i> Import Excel
+                                @include('barang.importBarangAll')
+		                    </a>
+                        </div>
                             <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
                                 data-target=".barang"><i class="fas fa-plus"></i> Tambah Data</a>
                             @include('barang.create')
@@ -26,7 +33,7 @@
                            @foreach ($barang as $item)
                               @if ($item->stok_barang < 1)
                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Peringatan! </strong> stok <b>{{ $item->nama_barang }}</b> kosong!!!
+                                    <i class="fas fa-exclamation-triangle"></i> Stok <b>{{ $item->nama_barang }}</b> kosong!
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
 
@@ -60,10 +67,10 @@
                                                 <td>{{ $data->harga_jual }}</td>
                                                 <td>{{ $data->satuan }}</td>
                                                 <td>
-                                                <a class="btn btn-primary" data-toggle="modal"
+                                                <a class="btn btn-primary btn-sm" data-toggle="modal"
                                                     data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>
                                                 </a>
-                                                <a class="btn btn-warning" data-toggle="modal"
+                                                <a class="btn btn-warning btn-sm" data-toggle="modal"
                                                     data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>
                                                  </a>
                                                  </td>
@@ -90,12 +97,22 @@
             <div class="'row">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">Data Barang</div>
+                        <div class="card-header">
+                            <div style="float: left">
+                            <a href="{{ route('exportExcel.barangAll') }}" class="btn btn-primary active">
+                                <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
+                            </a>
+                            <a type="button" class="btn btn-info active" data-toggle="modal"
+                                data-target="#importExcel"><i class="fas fa-file-import"></i> Import Excel
+                                @include('barang.importBarangAll')
+		                    </a>
+                        </div>
+                        </div>
                         <div class="card-body">
                             @foreach ($barang as $item)
                               @if ($item->stok_barang < 1)
                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Peringatan! </strong> stok <b>$item->nama_barang</b> kosong!!!
+                                    <i class="fas fa-exclamation-triangle"></i> Stok <b>{{ $item->nama_barang }}</b> kosong!
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

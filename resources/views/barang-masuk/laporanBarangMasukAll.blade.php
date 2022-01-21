@@ -24,7 +24,8 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
-<h2 align="center">Laporan Pemasukan Barang</h2>
+        <div class="container" style="margin-top: 5%">
+<h2 align="center" style="margin-bottom: 50px;">Laporan Pemasukan Barang</h2>
 <table id="barang-masuk" width="100%" class="table table-striped">
 </a>
 <thead>
@@ -50,8 +51,11 @@
 
 </table>
 <center>
-    <a class="btn btn-success btn-lg active" href="{{ route('exportPDF.barangMasuk') }}">
+    <a class="btn btn-primary btn-lg active" href="{{ route('exportExcel.barangMasuk') }}">
+        <i class="fas fa-file-export"></i>Export Excel</a>
+    <a class="btn btn-danger btn-lg active" href="{{ route('exportPDF.barangMasuk') }}">
         <i class="fas fa-file-export"></i>Export PDF</a>
     </center>
+    </div>
     </body>
 </html>

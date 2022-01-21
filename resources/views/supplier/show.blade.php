@@ -4,6 +4,9 @@
         <div class="modal-content">
             <div class="modal-header bg-warning">
                 <h5 class="modal-title" id="exampleModalLabel">Show Data Supplier</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -31,7 +34,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ url('supplier') }}" class="btn btn-outline-primary"><i class="fas fa-backward"></i> Kembali</a>
+
                 </div>
         </div>
     </div>

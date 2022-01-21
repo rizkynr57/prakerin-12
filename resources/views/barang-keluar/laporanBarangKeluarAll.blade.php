@@ -24,8 +24,9 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
-<h2 align="center">Laporan Yang Telah Terkirim</h2>
-<table id="barang-keluar" width="80%" class="table table-striped">
+        <div class="container" style="margin-top: 5%">
+<h2 align="center" style="margin-bottom: 50px;">Laporan Yang Telah Terkirim</h2>
+<table id="barang-keluar" class="table table-striped">
 </a>
 <thead>
     <tr class="bg-warning">
@@ -51,11 +52,13 @@
     </tr>
 </tbody>
 @endforeach
-
+</div>
 </body>
 </table>
 <center>
-    <a href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-success btn-lg active">
+    <a href="{{ route('exportExcel.barangKeluar') }}" class="btn btn-primary btn-lg active">
+        <i class="fas fa-file-export"></i></i> Export Excel</a>
+    <a href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-danger btn-lg active">
         <i class="fas fa-file-export"></i></i> Export PDF</a>
-    </center>
+</center>
 </html>

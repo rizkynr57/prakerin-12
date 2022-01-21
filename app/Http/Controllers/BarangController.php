@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Exports\BarangExport;
+use App\Imports\BarangImport;
 use Illuminate\Http\Request;
 use Session;
+use Excel;
 
 class BarangController extends Controller
 {
@@ -14,6 +17,30 @@ class BarangController extends Controller
         $barang = Barang::all();
         return view('barang.index', compact('barang'));
     }
+
+    public function cetakBarangExcel()
+    {
+        return Excel::download(new BarangExport, 'Data Barang.xlsx');
+    }
+
+    public function importBarangExcel(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        $nama_file = rand().$file->getClientOriginalName();
+
+        $file->move('file_barang',$nama_file);
+
+        Excel::import(new BarangImport, public_path('/file_barang/'.$nama_file));
+
+        Session::flash('sukses','Data Barang Berhasil Diimport!');
+
+        return redirect()->route('barang.index');
+     }
 
     public function store(Request $request)
     {

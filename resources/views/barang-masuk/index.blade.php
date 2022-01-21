@@ -4,7 +4,7 @@
 
 @section('content_header')
 
-    <h2><br></h2>
+    <i class="fas fa-people-carry"></i> Barang Masuk
 
 @endsection
 
@@ -15,7 +15,7 @@
         <div class="'row">
             <div class="col">
                 <div class="card">
-                    <div class="card-header">Data Barang Masuk
+                    <div class="card-header">
                         <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
                             data-target=".barangMasuk"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('barang-masuk.create')
@@ -49,12 +49,12 @@
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-primary"
+                                                    <a class="btn btn-primary btn-sm"
                                                         data-toggle="modal"
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i></a>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure ?')">
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure ?')">
                                                       <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
@@ -108,7 +108,7 @@
                                             <td>{{ $data->jumlah_pemasukan }}</td>
                                             <td>{{ $data->tgl_masuk }}</td>
                                             <td>
-                                               <a class="btn btn-primary" data-toggle="modal"
+                                               <a class="btn btn-primary btn-sm" data-toggle="modal"
                                                   data-target=".barangMasuk-edit-{{ $data->id }}">
                                                   <i class="fas fa-edit"></i></a>
                                                </a>

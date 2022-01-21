@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Barang_masuk;
+use App\Exports\BarangMasukExport;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use PDF;
 use Session;
-use Yajra\DataTables\Facades\DataTables;
+use Excel;
 
 class BarangMasukController extends Controller
 {
@@ -31,7 +32,7 @@ class BarangMasukController extends Controller
             'no'));
     }
 
-    public function cetakBM()
+    public function cetakBM_PDF()
     {
         $supplier = Supplier::all();
         $barang = Barang::all();
@@ -39,6 +40,11 @@ class BarangMasukController extends Controller
         $no = 1;
         $pdf = PDF::loadview('barang-masuk.laporanBarangMasukAll', compact('barangMasuk', 'supplier', 'barang', 'no'));
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
+    }
+
+    public function cetakBM_Excel()
+    {
+        return Excel::download(new BarangMasukExport, 'Barang masuk.xlsx');
     }
 
     public function store(Request $request)
@@ -92,11 +98,13 @@ class BarangMasukController extends Controller
 
     public function destroy($id)
     {
-        $barangMasuk = Barang_masuk::find($id);
-        $barang = Barang::where('id', $barangMasuk->id_barang)->firstOrFail();
-        $barang->stok_barang -= $barangMasuk->jumlah_pemasukan;
-        $barang->save();
 
+        $detail = Barang_masuk::where('id', $id)->get();
+        foreach ($detail as $data) {
+           $barang = Barang::where('id', $data['id_barang'])->firstOrFail();
+           $barang->stok_barang -= $data['jumlah_pemasukan'];
+           $barang->save();
+        }
         if (!Barang_masuk::destroy($id)) {
             return redirect()->back();
         }

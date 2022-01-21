@@ -3,20 +3,25 @@
 @section('title', 'Data Supplier')
 
 @section('content_header')
-
-    <h2><br></h2>
-
+<i class="fas fa-user"></i> Data Supplier
 @endsection
+
 @section('content')
     @include('layouts._flash')
     <div class="container">
         <div class="row">
             <div class="col">
-                 <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-primary btn-lg active">
-                   <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
-                </a>
+
                 <div class="card">
-                    <div class="card-header"><i class="fas fa-user"></i> Data Supplier
+                    <div class="card-header">
+                        <div style="float: left;">
+                        <a href="{{ route('exportExcel.suppliersAll') }}" class="btn btn-primary active">
+                            <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
+                        </a>
+                         <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-danger active">
+                            <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
+                        </a>
+                    </div>
                         <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
                             data-target=".supplier"><i class="fas fa-plus"></i> Tambah Data</a>
                         @include('supplier.create')
@@ -51,16 +56,15 @@
                                                 <form action="{{ route('supplier.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-primary" data-toggle="modal"
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal"
                                                         data-target=".supplier-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>
                                                     </a>
-                                                    <a class="btn btn-warning" data-toggle="modal"
+                                                    <a class="btn btn-warning btn-sm" data-toggle="modal"
                                                         data-target=".supplier-show-{{ $data->id }}">
                                                           <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger delete"
-                                                        onclick="return confirm('Are You Sure ?')"><i
-                                                            class="fas fa-trash"></i></button>
+                                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure')">
+                                                    <i class="fas fa-trash"></i></button>
                                                 </form>
                                         </tbody>
                                     </td>
