@@ -18,10 +18,6 @@
                             <a href="{{ route('exportExcel.barangAll') }}" class="btn btn-primary active">
                                 <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
                             </a>
-                            <a type="button" class="btn btn-info active" data-toggle="modal"
-                                data-target="#importExcel"><i class="fas fa-file-import"></i> Import Excel
-                                @include('barang.importBarangAll')
-		                    </a>
                         </div>
                             <a type="button" style="float: right;" class="btn btn-primary" data-toggle="modal"
                                 data-target=".barang"><i class="fas fa-plus"></i> Tambah Data</a>
@@ -102,10 +98,6 @@
                             <a href="{{ route('exportExcel.barangAll') }}" class="btn btn-primary active">
                                 <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
                             </a>
-                            <a type="button" class="btn btn-info active" data-toggle="modal"
-                                data-target="#importExcel"><i class="fas fa-file-import"></i> Import Excel
-                                @include('barang.importBarangAll')
-		                    </a>
                         </div>
                         </div>
                         <div class="card-body">

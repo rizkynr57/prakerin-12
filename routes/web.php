@@ -44,9 +44,6 @@ Route::middleware(['auth', 'verified'])->resource('barang', BarangController::cl
 Route::middleware(['auth', 'verified'])->get('cetak-barangExcel', [BarangController::class, 'cetakBarangExcel'])
                     ->middleware('role:admin|petugas')
                     ->name('exportExcel.barangAll');
-Route::middleware(['auth', 'verified'])->get('import-barang', [BarangController::class, 'importBarangExcel'])
-                    ->middleware('role:admin|petugas')
-                    ->name('importExcel.barangAll');
 
 Route::middleware(['auth', 'verified'])->resource('barang-masuk', BarangMasukController::class);
 Route::middleware(['auth', 'verified'])->get('/laporan-barangmasuk-all', [BarangMasukController::class, 'laporanBarangMasukAll'])
