@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Exports\CustomerExport;
 use Illuminate\Http\Request;
 use PDF;
+use Excel;
 use Session;
-use Str;
-use DataTables;
 
 class CustomerController extends Controller
 {
@@ -25,6 +25,11 @@ class CustomerController extends Controller
         $no = 1;
         $pdf = PDF::loadview('customer.cetakcustomer', compact('data', 'no'));
         return $pdf->download('Data-customer.pdf');
+    }
+
+    public function cetakCustomerExcel()
+    {
+        return Excel::download(new CustomerExport, 'Data customer.xlsx');
     }
 
     public function store(Request $request)

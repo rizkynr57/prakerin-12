@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
+use App\Exports\SupplierExport;
 use Illuminate\Http\Request;
 use PDF;
+use Excel;
 use Session;
-use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -24,6 +25,11 @@ class SupplierController extends Controller
         $no = 1;
         $pdf = PDF::loadview('supplier.cetaksupplier', compact('data', 'no'));
         return $pdf->download('Data-supplier.pdf');
+    }
+
+    public function cetakSupplierExcel()
+    {
+        return Excel::download(new SupplierExport, 'Data supplier.xlsx');
     }
 
     public function store(Request $request)
