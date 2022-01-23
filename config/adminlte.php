@@ -127,9 +127,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-info navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -169,7 +169,7 @@ return [
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
-    'right_sidebar_theme' => 'dark',
+    'right_sidebar_theme' => 'light',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -242,126 +242,69 @@ return [
             'text' => 'Beranda',
             'url' => '/home',
             'icon' => 'fas fa-home',
+            'icon_color' => 'blue'
         ],
         [
             'text' => 'Data Supplier',
             'url' => 'supplier',
             'icon' => 'fas fa-address-book',
+            'icon_color' => 'green'
         ],
         [
             'text' => 'Data Customer',
             'url' => 'customer',
             'icon' => 'fas fa-users',
+            'icon_color' => 'cyan'
         ],
         [
             'text' => 'Barang',
             'url' => 'barang',
             'icon' => 'fas fa-balance-scale',
+            'icon_color' => 'orange'
         ],
         [
             'text' => 'Barang Masuk',
             'url' => 'barang-masuk',
-
             'icon' => 'fas fa-people-carry',
+            'icon_color' => 'indigo'
         ],
         [
             'text' => 'Barang Keluar',
             'url' => 'barang-keluar',
             'icon' => 'fas fa-truck',
+            'icon_color' => 'yellow'
         ],
         [
             'text' => 'Laporan Barang',
             'url' => '#',
             'icon' => 'fas fa-book',
+            'icon_color' => 'purple',
             'submenu' => [
                 [
                     'text' => 'Laporan Pemasukan Barang',
                     'url' => '/laporan-barangmasuk-all',
                     'icon' => 'fas fa-sticky-note',
+                    'icon_color' => 'azure'
                 ],
                 [
                     'text' => 'Laporan Pengeluaran Barang',
                     'url' => '/laporan-barangkeluar-all',
                     'icon' => 'far fa-sticky-note',
+                    'icon_color' => 'red'
                 ],
             ],
         ],
     ],
-    'menu' => [
-        [
-            'type' => 'navbar-search',
-            'text' => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        ['header' => 'MENU'],
-        [
-            'text' => 'Beranda',
-            'url' => '/home',
-            'icon' => 'fas fa-home',
-        ],
-        [
-            'text' => 'Data Supplier',
-            'url' => 'supplier',
-            'icon' => 'fas fa-address-book',
-        ],
-        [
-            'text' => 'Data Customer',
-            'url' => 'customer',
-            'icon' => 'fas fa-users',
-        ],
-        [
-            'text' => 'Barang',
-            'url' => 'barang',
-            'icon' => 'fas fa-balance-scale',
-        ],
-        [
-            'text' => 'Barang Masuk',
-            'url' => 'barang-masuk',
-
-            'icon' => 'fas fa-people-carry',
-        ],
-        [
-            'text' => 'Barang Keluar',
-            'url' => 'barang-keluar',
-            'icon' => 'fas fa-truck',
-        ],
-        [
-            'text' => 'Laporan Barang',
-            'url' => '#',
-            'icon' => 'fas fa-book',
-            'submenu' => [
-                [
-                    'text' => 'Laporan Pemasukan Barang',
-                    'url' => '/laporan-barangmasuk-all',
-                    'icon' => 'fas fa-sticky-note',
-                ],
-                [
-                    'text' => 'Laporan Pengeluaran Barang',
-                    'url' => '/laporan-barangkeluar-all ',
-                    'icon' => 'far fa-sticky-note',
-                ],
-            ],
-        ],
-    ],
-    /*
-    |--------------------------------------------------------------------------
-    | Menu Filters
-    |--------------------------------------------------------------------------
-    |
-    | Here we can modify the menu filters of the admin panel.
-    |
-    | For detailed instructions you can look the menu filters section here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
-    |
-     */
+    // |--------------------------------------------------------------------------
+    // | Menu Filters
+    // |--------------------------------------------------------------------------
+    // |
+    // | Here we can modify the menu filters of the admin panel.
+    // |
+    // | For detailed instructions you can look the menu filters section here:
+    // | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
+    // |
+    //  */
 
     'filters' => [
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
