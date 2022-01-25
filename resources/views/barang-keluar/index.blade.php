@@ -53,12 +53,12 @@
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-primary btn-sm"
+                                                    <a class="btn btn-primary btn-sm rounded-circle"
                                                         data-toggle="modal"
                                                         data-target=".barangKeluar-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i></a>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure ?')">
+                                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Are You Sure ?')">
                                                      <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
@@ -116,7 +116,7 @@
                                             <td>{{ $data->tujuan }}</td>
                                             <td>{{ $data->tgl_pengiriman }}</td>
                                             <td>
-                                               <a class="btn btn-primary btn-sm" data-toggle="modal"
+                                               <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
                                                    data-target=".barangKeluar-edit-{{ $data->id }}">
                                                   <i class="fas fa-edit"></i></a>
                                                 </td>

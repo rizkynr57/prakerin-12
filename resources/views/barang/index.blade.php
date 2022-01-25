@@ -63,10 +63,10 @@
                                                 <td>{{ $data->harga_jual }}</td>
                                                 <td>{{ $data->satuan }}</td>
                                                 <td>
-                                                <a class="btn btn-primary btn-sm" data-toggle="modal"
+                                                <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
                                                     data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>
                                                 </a>
-                                                <a class="btn btn-warning btn-sm" data-toggle="modal"
+                                                <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
                                                     data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>
                                                  </a>
                                                  </td>

@@ -58,14 +58,14 @@
                                                 <form action="{{ route('customer.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-primary btn-sm" data-toggle="modal"
+                                                    <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
                                                         data-target=".customer-edit-{{ $data->id }}"><i
                                                             class="fas fa-edit"></i>
                                                     </a>
-                                                    <a class="btn btn-warning btn-sm" data-toggle="modal"
+                                                    <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
                                                         data-target=".customer-show-{{ $data->id }}">
                                                     <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger btn-sm"
+                                                    <button class="btn btn-danger btn-sm rounded-circle"
                                                         onclick="return confirm('Are You Sure ?')"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>
