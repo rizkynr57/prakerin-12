@@ -8,7 +8,7 @@
                 </button>
             </div>
             <form id="form-item" action="{{ route('barang-masuk.store') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }} {{ method_field('POST') }}
+                @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Supplier</label>

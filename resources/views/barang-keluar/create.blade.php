@@ -8,7 +8,7 @@
                 </button>
             </div>
             <form id="form-item" action="{{ route('barang-keluar.store') }}" data-toggle="validator" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }} {{ method_field('POST') }}
+               @csrf
                 <div class="modal-body">
                     <div class="form-group">
                       <input type="hidden" name="id" id="id">

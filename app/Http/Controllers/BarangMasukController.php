@@ -7,9 +7,9 @@ use App\Models\Barang_masuk;
 use App\Exports\BarangMasukExport;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
-use PDF;
-use Session;
-use Excel;
+use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Excel;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BarangMasukController extends Controller
 {

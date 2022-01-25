@@ -7,9 +7,9 @@ use App\Models\Barang_keluar;
 use App\Exports\BarangKeluarExport;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use PDF;
-use Excel;
-use Session;
+use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Excel;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class BarangKeluarController extends Controller
@@ -70,8 +70,21 @@ class BarangKeluarController extends Controller
         $barangkeluar->tujuan = $request->tujuan;
         $barangkeluar->save();
 
+
         $getData['stok_barang'] -= $request->jumlah;
         $getData->save();
+
+        $detail = Barang_keluar::orderBy('created_at', 'DESC')->get()->pluck('id', $barangkeluar['id_barang']);
+        foreach ($detail as $data) {
+            if (!Barang::where('id', $data->id_barang)->get() < 0) {
+                $barang = Barang::where('id', $data['id_barang'])->first();
+                $barang->stok_barang += $data->jumlah_pemasukan;
+                $barang->save();
+                $data->delete();
+
+                return redirect()->back()->withError('Tidak boleh melebihi batas sisa');
+            }
+        }
 
         return redirect('barang-keluar')->withSuccess('Barang telah dikirim');
     }

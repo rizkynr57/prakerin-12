@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Exports\BarangExport;
 use Illuminate\Http\Request;
-use Session;
-use Excel;
+use Maatwebsite\Excel\Excel;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BarangController extends Controller
 {

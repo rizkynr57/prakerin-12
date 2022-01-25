@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Supplier;
 use App\Exports\SupplierExport;
 use Illuminate\Http\Request;
-use PDF;
-use Excel;
-use Session;
+use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Excel;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class SupplierController extends Controller
 {
