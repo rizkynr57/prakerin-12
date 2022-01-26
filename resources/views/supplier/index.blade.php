@@ -53,19 +53,19 @@
                                             <td>{{ $data->no_telp }}</td>
                                             <td>{{ $data->nama_perusahaan }}</td>
                                             <td>
-                                                <form action="{{ route('supplier.destroy', $data->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
-                                                        data-target=".supplier-edit-{{ $data->id }}"><i
-                                                            class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
-                                                        data-target=".supplier-show-{{ $data->id }}">
-                                                          <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Are you sure')">
-                                                    <i class="fas fa-trash"></i></button>
-                                                </form>
+                                            <form action="{{ route('supplier.destroy', $data->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
+                                                    data-target=".supplier-edit-{{ $data->id }}"><i
+                                                        class="fas fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
+                                                    data-target=".supplier-show-{{ $data->id }}">
+                                                        <i class="fas fa-id-card"></i></a>
+                                                <button class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Are you sure')">
+                                                <i class="fas fa-trash"></i></button>
+                                            </form>
                                         </tbody>
                                     </td>
                                 </tr>
