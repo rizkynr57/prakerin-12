@@ -7,7 +7,6 @@ use App\Exports\SupplierExport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use Maatwebsite\Excel\Excel;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class SupplierController extends Controller
 {
@@ -76,10 +75,6 @@ class SupplierController extends Controller
         if (!Supplier::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data Berhasil Dihapus",
-        ]);
         return redirect('supplier')->withSuccess('Data telah dihapus');
     }
 }

@@ -7,7 +7,6 @@ use App\Exports\CustomerExport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use Maatwebsite\Excel\Excel;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class CustomerController extends Controller
 {
@@ -77,10 +76,6 @@ class CustomerController extends Controller
         if (!Customer::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data Berhasil Dihapus",
-        ]);
         return redirect('customer')->withSuccess('Data telah dihapus');
     }
 }

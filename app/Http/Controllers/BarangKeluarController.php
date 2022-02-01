@@ -9,7 +9,6 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use Maatwebsite\Excel\Excel;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class BarangKeluarController extends Controller
@@ -62,29 +61,14 @@ class BarangKeluarController extends Controller
         $barangkeluar->id_customer = $request->id_customer;
         $barangkeluar->id_barang = $request->id_barang;
         $barangkeluar->jumlah_pengiriman = $request->jumlah;
-
         $getData = Barang::findOrFail($request->id_barang);
-
         $barangkeluar->harga_satuan = $getData['harga_jual'];
         $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangkeluar->tujuan = $request->tujuan;
         $barangkeluar->save();
 
-
         $getData['stok_barang'] -= $request->jumlah;
         $getData->save();
-
-        $detail = Barang_keluar::orderBy('created_at', 'DESC')->get()->pluck('id', $barangkeluar['id_barang']);
-        foreach ($detail as $data) {
-            if (!Barang::where('id', $data->id_barang)->get() < 0) {
-                $barang = Barang::where('id', $data['id_barang'])->first();
-                $barang->stok_barang += $data->jumlah_pemasukan;
-                $barang->save();
-                $data->delete();
-
-                return redirect()->back()->withError('Tidak boleh melebihi batas sisa');
-            }
-        }
 
         return redirect('barang-keluar')->withSuccess('Barang telah dikirim');
     }
@@ -114,7 +98,7 @@ class BarangKeluarController extends Controller
         $barang['stok_barang'] -= $request->jumlah;
         $barang->save();
 
-        return redirect('barang-keluar')->withSuccess('Barang telah dikirim');
+        return redirect('barang-keluar')->withSuccess('Data telah diubah');
 
     }
     public function destroy($id)
@@ -128,10 +112,6 @@ class BarangKeluarController extends Controller
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil dihapus",
-        ]);
         return redirect('barang-keluar')->withSuccess('Data telah dihapus');
     }
 }

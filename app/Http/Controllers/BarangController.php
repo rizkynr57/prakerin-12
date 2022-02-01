@@ -6,7 +6,6 @@ use App\Models\Barang;
 use App\Exports\BarangExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class BarangController extends Controller
 {
@@ -81,18 +80,6 @@ class BarangController extends Controller
         $barang->satuan = $request->satuan;
         $barang->save();
 
-        return redirect('barang')->withInfo('Data berhasil diedit!');
-    }
-
-    public function destroy($id)
-    {
-        if (!Barang::destroy($id)) {
-            return redirect()->back();
-        }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil dihapus",
-        ]);
-        return redirect('barang')->withSuccess('Data telah dihapus');
+        return redirect('barang')->withInfo('Data telah diubah!');
     }
 }

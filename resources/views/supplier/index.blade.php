@@ -93,6 +93,4 @@
             $('#supplier').DataTable();
         });
     </script>
-
-
 @endsection

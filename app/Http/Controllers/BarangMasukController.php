@@ -9,8 +9,6 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
 use Maatwebsite\Excel\Excel;
-use Symfony\Component\HttpFoundation\Session\Session;
-
 class BarangMasukController extends Controller
 {
 
@@ -108,10 +106,6 @@ class BarangMasukController extends Controller
         if (!Barang_masuk::destroy($id)) {
             return redirect()->back();
         }
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Data berhasil dihapus",
-        ]);
         return redirect('barang-masuk')->withSuccess('Data telah dihapus');
     }
 }
