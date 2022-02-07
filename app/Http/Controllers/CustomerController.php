@@ -24,11 +24,6 @@ class CustomerController extends Controller
         return $pdf->download('Data-customer.pdf');
     }
 
-    // public function cetakCustomerExcel()
-    // {
-    //     return Excel::download(new CustomerExport, 'Data customer.xlsx');
-    // }
-
     public function store(Request $request)
     {
         $request->validate([
