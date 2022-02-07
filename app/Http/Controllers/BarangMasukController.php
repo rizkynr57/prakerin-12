@@ -39,11 +39,6 @@ class BarangMasukController extends Controller
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
     }
 
-    // public function cetakBM_Excel()
-    // {
-    //     return Excel::download(new BarangMasukExport, 'Barang masuk.xlsx');
-    // }
-
     public function store(Request $request)
     {
         $request->validate([
