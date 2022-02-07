@@ -13,13 +13,9 @@
     <div class="container">
         <div class="'row">
             <div class="col">
-
                 <div class="card">
                     <div class="card-header">
                         <div style="float: left;">
-                            {{-- <a href="{{ route('exportExcel.customersAll') }}" class="btn btn-primary active">
-                                <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
-                            </a> --}}
                             <a href="{{ route('exportPDF.customersAll') }}" class="btn btn-danger active">
                                 <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
                             </a>
