@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Supplier;
-use App\Exports\SupplierExport;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
-use Maatwebsite\Excel\Excel;
+use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
@@ -26,10 +24,10 @@ class SupplierController extends Controller
         return $pdf->download('Data-supplier.pdf');
     }
 
-    public function cetakSupplierExcel()
-    {
-        return Excel::download(new SupplierExport, 'Data supplier.xlsx');
-    }
+    // public function cetakSupplierExcel()
+    // {
+    //     return Excel::download(new SupplierExport, 'Data supplier.xlsx');
+    // }
 
     public function store(Request $request)
     {

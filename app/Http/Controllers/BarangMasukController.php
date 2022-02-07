@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Barang_masuk;
-use App\Exports\BarangMasukExport;
 use App\Models\Supplier;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
-use Maatwebsite\Excel\Excel;
+use Illuminate\Http\Request;
+
 class BarangMasukController extends Controller
 {
 
@@ -40,10 +39,10 @@ class BarangMasukController extends Controller
         return $pdf->download('laporan-pemasukan-barang-semua.pdf');
     }
 
-    public function cetakBM_Excel()
-    {
-        return Excel::download(new BarangMasukExport, 'Barang masuk.xlsx');
-    }
+    // public function cetakBM_Excel()
+    // {
+    //     return Excel::download(new BarangMasukExport, 'Barang masuk.xlsx');
+    // }
 
     public function store(Request $request)
     {
@@ -99,9 +98,9 @@ class BarangMasukController extends Controller
 
         $detail = Barang_masuk::where('id', $id)->get();
         foreach ($detail as $data) {
-           $barang = Barang::where('id', $data['id_barang'])->firstOrFail();
-           $barang->stok_barang -= $data['jumlah_pemasukan'];
-           $barang->save();
+            $barang = Barang::where('id', $data['id_barang'])->firstOrFail();
+            $barang->stok_barang -= $data['jumlah_pemasukan'];
+            $barang->save();
         }
         if (!Barang_masuk::destroy($id)) {
             return redirect()->back();

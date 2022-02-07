@@ -15,9 +15,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="float: left;">
-                        <a href="{{ route('exportExcel.suppliersAll') }}" class="btn btn-primary active">
+                        {{-- <a href="{{ route('exportExcel.suppliersAll') }}" class="btn btn-primary active">
                             <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export Excel
-                        </a>
+                        </a> --}}
                          <a href="{{ route('exportPDF.suppliersAll') }}" class="btn btn-danger active">
                             <i class="fas fa-file-export"></i>  <span class="glyphicon glyphicon-export"></span> Export PDF
                         </a>

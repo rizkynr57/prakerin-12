@@ -56,8 +56,8 @@
 </body>
 </table>
 <center>
-    <a href="{{ route('exportExcel.barangKeluar') }}" class="btn btn-primary btn-lg active">
-        <i class="fas fa-file-export"></i></i> Export Excel</a>
+    {{-- <a href="{{ route('exportExcel.barangKeluar') }}" class="btn btn-primary btn-lg active">
+        <i class="fas fa-file-export"></i></i> Export Excel</a> --}}
     <a href="{{ route('exportPDF.barangKeluar') }}" class="btn btn-danger btn-lg active">
         <i class="fas fa-file-export"></i></i> Export PDF</a>
 </center>

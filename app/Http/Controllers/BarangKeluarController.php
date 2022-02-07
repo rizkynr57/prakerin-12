@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Barang_keluar;
-use App\Exports\BarangKeluarExport;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
-use Maatwebsite\Excel\Excel;
-
+use Illuminate\Http\Request;
 
 class BarangKeluarController extends Controller
 {
@@ -42,10 +39,10 @@ class BarangKeluarController extends Controller
         return $pdf->download('laporan-pengiriman-barang-semua.pdf');
     }
 
-    public function cetakBK_Excel()
-    {
-        return Excel::download(new BarangKeluarExport, 'Barang keluar.xlsx');
-    }
+    // public function cetakBK_Excel()
+    // {
+    //     return Excel::download(new BarangKeluarExport, 'Barang keluar.xlsx');
+    // }
 
     public function store(Request $request)
     {
@@ -72,7 +69,6 @@ class BarangKeluarController extends Controller
 
         return redirect('barang-keluar')->withSuccess('Barang telah dikirim');
     }
-
 
     public function update(Request $request, $id)
     {
@@ -103,11 +99,11 @@ class BarangKeluarController extends Controller
     }
     public function destroy($id)
     {
-         $detail = Barang_keluar::where('id', $id)->get();
+        $detail = Barang_keluar::where('id', $id)->get();
         foreach ($detail as $data) {
-           $barang = Barang::where('id', $data['id_barang'])->firstOrFail();
-           $barang->stok_barang += $data['jumlah_pengiriman'];
-           $barang->save();
+            $barang = Barang::where('id', $data['id_barang'])->firstOrFail();
+            $barang->stok_barang += $data['jumlah_pengiriman'];
+            $barang->save();
         }
         if (!Barang_keluar::destroy($id)) {
             return redirect()->back();

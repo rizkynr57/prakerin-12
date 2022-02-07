@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use App\Exports\CustomerExport;
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
-use Maatwebsite\Excel\Excel;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -26,10 +24,10 @@ class CustomerController extends Controller
         return $pdf->download('Data-customer.pdf');
     }
 
-    public function cetakCustomerExcel()
-    {
-        return Excel::download(new CustomerExport, 'Data customer.xlsx');
-    }
+    // public function cetakCustomerExcel()
+    // {
+    //     return Excel::download(new CustomerExport, 'Data customer.xlsx');
+    // }
 
     public function store(Request $request)
     {
@@ -38,7 +36,7 @@ class CustomerController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'email' => 'required|email',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
         ]);
 
         $customer = new Customer;
@@ -58,7 +56,7 @@ class CustomerController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'email' => 'required|email',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
         ]);
 
         $customer = Customer::findOrfail($id);
