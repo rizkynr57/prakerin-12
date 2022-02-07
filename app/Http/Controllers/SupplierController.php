@@ -24,11 +24,6 @@ class SupplierController extends Controller
         return $pdf->download('Data-supplier.pdf');
     }
 
-    // public function cetakSupplierExcel()
-    // {
-    //     return Excel::download(new SupplierExport, 'Data supplier.xlsx');
-    // }
-
     public function store(Request $request)
     {
         $request->validate([
