@@ -48,20 +48,11 @@ class Supplier extends Model
     public static function boot()
     {
         parent::boot();
-        self::deleting(function ($supplier) {
-            if ($supplier->barangMasuk->count() > 0) {
-                $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
-                $msg .= '<ul>';
-                foreach ($supplier->barangMasuk as $data) {
-                    $msg .= "<li>$data->nama_barang</li>";
-                }
-                $msg .= '</ul>';
-                Session::flash("flash_notification", [
-                    "level" => "danger",
-                    "message" => $msg,
-                ]);
-                return false;
-            }
+        self::deleting(function($barangMasuk) {
+          if ($barangMasuk->barangMasuk->count() > 0) {
+            Alert::error('Gagal menghapus data '. $barangMasuk->nama_barang. ' karena masih memiliki data barang');
+            return false;
+          }
         });
     }
 }
