@@ -48,20 +48,11 @@ class Customer extends Model
     public static function boot()
     {
         parent::boot();
-        self::deleting(function ($customer) {
-            if ($customer->barangKeluar->count() > 0) {
-                $msg = 'Data tidak bisa dihapus karena masih ada barang : ';
-                $msg .= '<ul>';
-                foreach ($customer->barangKeluar as $data) {
-                    $msg .= "<li>$data->nama_barang</li>";
-                }
-                $msg .= '</ul>';
-                Session::flash("flash_notification", [
-                    "level" => "danger",
-                    "message" => $msg,
-                ]);
-                return false;
-            }
+        self::deleting(function($barangKeluar) {
+          if ($barangKeluar->barangKeluar->count() > 0) {
+            Alert::error('Gagal menghapus data '. $barangKeluar->nama_barang. ' karena masih memiliki data barang');
+            return false;
+          }
         });
     }
 }
