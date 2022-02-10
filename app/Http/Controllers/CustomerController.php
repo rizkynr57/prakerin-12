@@ -66,9 +66,10 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
+        $customer = Customer::find($id);
         if (!Customer::destroy($id)) {
             return redirect()->back();
         }
-        return redirect('customer')->withSuccess('Data telah dihapus');
+        return redirect('customer')->withSuccess('Data '.$customer->nama.' telah dihapus');
     }
 }
