@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-    @include('layouts._flash')
     <div class="container">
         <div class="'row">
             <div class="col">
