@@ -65,9 +65,10 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
+        $supplier = Supplier::find($id);
         if (!Supplier::destroy($id)) {
             return redirect()->back();
         }
-        return redirect('supplier')->withSuccess('Data telah dihapus');
+        return redirect('supplier')->withSuccess('Data '.$supplier->nama_supplier. ' telah dihapus');
     }
 }
