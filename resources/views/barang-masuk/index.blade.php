@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-@include('layouts._flash')
 @role('admin')
     <div class="container">
         <div class="'row">
