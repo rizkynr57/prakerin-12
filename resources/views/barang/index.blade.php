@@ -5,13 +5,12 @@
 @section('content_header')
    <i class="fas fa-balance-scale"></i> Data Barang
 @endsection
+
 @section('content')
-@include('layouts._flash')
     @role('admin')
         <div class="container">
             <div class="'row">
                 <div class="col">
-
                     <div class="card">
                         <div class="card-header">
                             <div style="float: left">
@@ -29,7 +28,6 @@
                                     <i class="fas fa-exclamation-triangle"></i> Stok <b>{{ $item->nama_barang }}</b> kosong!
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-
                                     </button>
                                     </div>
                                     @endif
@@ -67,9 +65,7 @@
                                                     data-target=".barang-show-{{ $data->id }}"><i class="fas fa-id-card"></i>
                                                  </a>
                                                  </td>
-
                                     </tbody>
-
                                     </td>
                                     </tr>
                                     @include('barang.edit')
