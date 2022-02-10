@@ -5,7 +5,7 @@ namespace App\Models;
 use DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Supplier extends Model
 {
