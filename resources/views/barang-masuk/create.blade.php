@@ -32,10 +32,6 @@
                         <label for="">Jumlah Pemasukan</label>
                         <input type="text" class="form-control" name="jumlah" id="jumlah" required>
                     </div>
-                    <div class="form-group">
-                        <label for="">Tanggal Barang Masuk</label>
-                        <input type="date" name="tgl_masuk" id="tgl_masuk" class="form-control">
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
