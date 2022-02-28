@@ -34,8 +34,8 @@
                         <input type="text" class="form-control" name="jumlah" id="jumlah" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Tanggal Pengiriman Barang</label>
-                        <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" class="form-control">
+                        <label for="">Tujuan Pengiriman</label>
+                        <input type="text" name="tujuan" id="tujuan" class="form-control">
                     </div>
                 </div>
                 <div class="modal-footer">
