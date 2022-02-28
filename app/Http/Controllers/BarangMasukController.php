@@ -7,6 +7,7 @@ use App\Models\Barang_masuk;
 use App\Models\Supplier;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BarangMasukController extends Controller
 {
@@ -52,7 +53,8 @@ class BarangMasukController extends Controller
         $masuk->id_supplier = $request->id_supplier;
         $masuk->id_barang = $request->id_barang;
         $masuk->jumlah_pemasukan = $request->jumlah;
-        $masuk->tgl_masuk = $request->tgl_masuk;
+        $formatDate = Carbon::now()->isoFormat('dddd, D MMMM Y');
+        $masuk->tgl_masuk = $formatDate;
         $masuk->save();
 
         $barang = Barang::findOrFail($request->id_barang);
