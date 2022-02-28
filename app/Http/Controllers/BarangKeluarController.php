@@ -7,6 +7,7 @@ use App\Models\Barang_keluar;
 use App\Models\Customer;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BarangKeluarController extends Controller
 {
@@ -55,7 +56,7 @@ class BarangKeluarController extends Controller
         $barangkeluar->jumlah_pengiriman = $request->jumlah;
         $getData = Barang::findOrFail($request->id_barang);
         $barangkeluar->harga_satuan = $getData['harga_jual'];
-        $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
+        $barangkeluar->tgl_pengiriman = Carbon::today();
         $barangkeluar->tujuan = $request->tujuan;
         $barangkeluar->save();
 
