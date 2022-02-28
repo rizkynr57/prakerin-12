@@ -46,7 +46,6 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
-            'tgl_masuk' => 'required',
         ]);
 
         $masuk = new Barang_masuk();
@@ -70,7 +69,6 @@ class BarangMasukController extends Controller
             'id_supplier' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
-            'tgl_masuk' => 'required',
         ]);
 
         $barangMasuk = Barang_masuk::findOrFail($id);
@@ -79,7 +77,6 @@ class BarangMasukController extends Controller
         $reset->save();
 
         $barangMasuk->jumlah_pemasukan = $request->jumlah;
-        $barangMasuk->tgl_masuk = $request->tgl_masuk;
         $barangMasuk->save();
 
         $barang = Barang::findOrFail($request->id_barang);
