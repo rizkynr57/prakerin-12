@@ -37,11 +37,6 @@
                         <label for="">Tanggal Pengiriman Barang</label>
                         <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" class="form-control">
                     </div>
-
-                    <div class="form-group">
-                        <label for="">Tujuan Pengiriman</label>
-                        <input type="text" name="tujuan" id="tujuan" class="form-control">
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
