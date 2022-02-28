@@ -46,7 +46,6 @@ class BarangKeluarController extends Controller
             'id_customer' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
-            'tgl_pengiriman' => 'required',
             'tujuan' => 'required',
         ]);
 
@@ -56,7 +55,8 @@ class BarangKeluarController extends Controller
         $barangkeluar->jumlah_pengiriman = $request->jumlah;
         $getData = Barang::findOrFail($request->id_barang);
         $barangkeluar->harga_satuan = $getData['harga_jual'];
-        $barangkeluar->tgl_pengiriman = Carbon::today();
+        $formatDate = Carbon::now()->isoFormat('dddd, D MMMM Y');
+        $barangkeluar->tgl_pengiriman = $formatDate;
         $barangkeluar->tujuan = $request->tujuan;
         $barangkeluar->save();
 
@@ -72,7 +72,6 @@ class BarangKeluarController extends Controller
             'id_customer' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
-            'tgl_pengiriman' => 'required',
             'tujuan' => 'required',
         ]);
 
@@ -82,7 +81,6 @@ class BarangKeluarController extends Controller
         $reset->save();
 
         $barangKeluar->jumlah_pengiriman = $request->jumlah;
-        $barangKeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangKeluar->tujuan = $request->tujuan;
         $barangKeluar->save();
 
