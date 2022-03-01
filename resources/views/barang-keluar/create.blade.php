@@ -37,6 +37,10 @@
                         <label for="">Tujuan Pengiriman</label>
                         <input type="text" name="tujuan" id="tujuan" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Pengiriman</label>
+                        <input type="text" class="form-control" name="tgl_pengiriman" id="tgl_pengiriman" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
