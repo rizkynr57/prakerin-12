@@ -25,10 +25,6 @@
                         <input type="text" class="form-control" name="jumlah" value="{{ $data->jumlah_pengiriman }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="">Tanggal Pengiriman Barang</label>
-                      <input type="date" name="tgl_pengiriman" class="form-control" value="{{ $data->tgl_pengiriman }}" required>
-                    </div>
-                    <div class="form-group">
                         <label for="">Tujuan Pengiriman</label>
                         <input type="text" name="tujuan" class="form-control" value="{{ $data->tujuan }}" required>
                     </div>
