@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Kode Supplier</label>
-                        <input type="text" name="id_supplier" class="form-control" value="{{ $data->kode }}" readonly>
+                        <input type="text" name="id_supplier" class="form-control" value="{{ $data->supplier->kode }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">ID Barang</label>
