@@ -14,11 +14,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Nama Customer</label>
-                        <input type="number" name="id_customer" value="{{ $data->id_customer }}" class="form-control" readonly>
+                        <input type="number" name="id_customer" value="{{ $data->customer->kode }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="number" name="id_barang" value="{{ $data->id_barang }}" class="form-control" readonly>
+                        <input type="number" name="id_barang" value="{{ $data->barang->nama_barang }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
