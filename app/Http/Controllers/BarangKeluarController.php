@@ -7,7 +7,6 @@ use App\Models\Barang_keluar;
 use App\Models\Customer;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class BarangKeluarController extends Controller
 {
@@ -46,6 +45,7 @@ class BarangKeluarController extends Controller
             'id_customer' => 'required',
             'id_barang' => 'required',
             'jumlah' => 'required',
+            'tgl_pengiriman' => 'required',
             'tujuan' => 'required',
         ]);
 
@@ -55,8 +55,7 @@ class BarangKeluarController extends Controller
         $barangkeluar->jumlah_pengiriman = $request->jumlah;
         $getData = Barang::findOrFail($request->id_barang);
         $barangkeluar->harga_satuan = $getData['harga_jual'];
-        $formatDate = Carbon::now()->isoFormat('dddd, D MMMM Y');
-        $barangkeluar->tgl_pengiriman = $formatDate;
+        $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
         $barangkeluar->tujuan = $request->tujuan;
         $barangkeluar->save();
 
