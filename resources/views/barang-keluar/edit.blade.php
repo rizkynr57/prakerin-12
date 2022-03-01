@@ -13,12 +13,12 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Customer</label>
-                        <input type="number" name="id_customer" value="{{ $data->customer->kode }}" class="form-control" readonly>
+                        <label for="">Kode Customer</label>
+                        <input type="text" name="id_customer" value="{{ $data->customer->kode }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
-                        <input type="number" name="id_barang" value="{{ $data->barang->nama_barang }}" class="form-control" readonly>
+                        <input type="text" name="id_barang" value="{{ $data->barang->nama_barang }}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
                         <label for="">Jumlah Pengiriman</label>
