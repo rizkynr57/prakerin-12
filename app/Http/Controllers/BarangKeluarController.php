@@ -48,19 +48,22 @@ class BarangKeluarController extends Controller
             'tgl_pengiriman' => 'required',
             'tujuan' => 'required',
         ]);
-
-        $barangkeluar = new Barang_keluar;
-        $barangkeluar->id_customer = $request->id_customer;
-        $barangkeluar->id_barang = $request->id_barang;
-        $barangkeluar->jumlah_pengiriman = $request->jumlah;
+        
         $getData = Barang::findOrFail($request->id_barang);
-        $barangkeluar->harga_satuan = $getData['harga_jual'];
-        $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
-        $barangkeluar->tujuan = $request->tujuan;
-        $barangkeluar->save();
-
-        $getData['stok_barang'] -= $request->jumlah;
-        $getData->save();
+        if ($request->jumlah > $getData['stok_barang']) {
+          return redirect('barang-keluar')->withError('Stok barang tidak mencukupi');
+        } else {
+          $barangkeluar = new Barang_keluar();
+          $barangkeluar->id_customer = $request->id_customer;
+          $barangkeluar->id_barang = $request->id_barang;
+          $barangkeluar->jumlah_pengiriman = $request->jumlah;
+          $barangkeluar->harga_satuan = $getData['harga_jual'];
+          $barangkeluar->tgl_pengiriman = $request->tgl_pengiriman;
+          $barangkeluar->tujuan = $request->tujuan;
+          $barangkeluar->save();
+          $getData->stok_barang -= $request->jumlah;
+          $getData->save();
+        }
 
         return redirect('barang-keluar')->withSuccess('Barang telah dikirim');
     }
