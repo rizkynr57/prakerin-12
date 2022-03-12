@@ -60,7 +60,7 @@
                                                     <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
                                                         data-target=".customer-show-{{ $data->id }}">
                                                     <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger btn-sm rounded-circle" id="delete-confirm"><i
+                                                    <button class="btn btn-danger btn-sm rounded-circle"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>
                                 </tbody>
@@ -90,26 +90,4 @@
             $('#customer').DataTable();
         });
     </script>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $("#delete-confirm").click(function (event) {
-        var form = $(this).closest("form");
-        var name = $(this).data("name");
-        event.preventDefault();
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        });
-    });
-</script>
 @endsection

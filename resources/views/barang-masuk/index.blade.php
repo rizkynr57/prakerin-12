@@ -53,7 +53,7 @@
                                                         data-target=".barangMasuk-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i></a>
                                                     </a>
-                                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle" id="delete-confirm">
+                                                    <button class="btn btn-danger btn-sm rounded-circle">
                                                       <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
@@ -139,26 +139,4 @@
             $('#barangMasuk').DataTable();
         });
     </script>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $("#delete-confirm").click(function (event) {
-        var form = $(this).closest("form");
-        var name = $(this).data("name");
-        event.preventDefault();
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        });
-    });
-</script>
 @endsection
