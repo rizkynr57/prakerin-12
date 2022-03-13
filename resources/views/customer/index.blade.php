@@ -60,7 +60,7 @@
                                                     <a class="btn btn-info btn-sm rounded-circle" data-toggle="modal"
                                                         data-target=".customer-show-{{ $data->id }}">
                                                     <i class="fas fa-id-card"></i></a>
-                                                    <button class="btn btn-danger btn-sm rounded-circle"><i
+                                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Are you sure?');"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>
                                 </tbody>
