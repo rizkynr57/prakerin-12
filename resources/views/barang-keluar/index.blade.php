@@ -57,7 +57,7 @@
                                                         data-target=".barangKeluar-edit-{{ $data->id }}">
                                                      <i class="fas fa-edit"></i></a>
                                                     </a>
-                                                    <button class="btn btn-danger btn-sm rounded-circle">
+                                                    <button type="submit" class="btn btn-danger btn-sm rounded-circle" onclick="return confirm('Are you sure?');">
                                                      <i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
