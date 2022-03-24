@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\ApiSupplierController;
 use App\Http\Controllers\API\ApiCustomerController;
-App\Http\Controllers\API\ApiBarangController
+use App\Http\Controllers\API\ApiBarangController
 use App\Http\Controllers\API\ApiBarangMasukController;
 use App\Http\Controllers\API\ApiBarangKeluarController;
 use Illuminate\Http\Request;
