@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\ApiSupplierController;
 use App\Http\Controllers\API\ApiCustomerController;
+App\Http\Controllers\API\ApiBarangController
 use App\Http\Controllers\API\ApiBarangMasukController;
 use App\Http\Controllers\API\ApiBarangKeluarController;
 use Illuminate\Http\Request;
@@ -15,5 +16,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('supplier', ApiSupplierController::class);
 Route::resource('customer', ApiCustomerController::class);
+Route::resource('barang', ApiBarangController::class);
 Route::resource('barang-masuk', ApiBarangMasukController::class);
 Route::resource('barang-keluar', ApiBarangKeluarController::class);
