@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class ApiCustomerController extends Controller
 {
 
     public function index()
@@ -27,17 +27,16 @@ class CustomerController extends Controller
         $customer->email = $request->email;
         $customer->telepon = $request->no_telp;
         $customer->save();
+
         return response()->json([
             'success' => true,
             'message' => 'Data Customer',
             'data' => $customer,
         ], 201);
-
     }
 
     public function show($id)
     {
-
         $customer = Customer::find($id);
         if ($customer) {
             return response()->json([
@@ -53,7 +52,6 @@ class CustomerController extends Controller
             ], 404);
 
         }
-
     }
 
     public function update(Request $request, $id)
@@ -66,9 +64,10 @@ class CustomerController extends Controller
         $customer->save();
         return response()->json([
             'success' => true,
-            'message' => 'Data Kategori Berhasil diedit',
-            'data' => $kategori,
+            'message' => 'Data Customer Berhasil diedit',
+            'data' => $customer,
         ], 201);
+
     }
 
     public function destroy($id)
@@ -77,9 +76,8 @@ class CustomerController extends Controller
         $customer->delete();
         return response()->json([
             'success' => true,
-            'message' => 'Data customer Berhasil hapus',
+            'message' => 'Data Customer Berhasil hapus',
             'data' => $customer,
         ], 200);
-
     }
 }
