@@ -12,7 +12,10 @@ class ApiController extends Controller
 
     public function JoinBarangMasuk()
     {
-        $barangMasuk = Barang_masuk::all();
+        $barangMasuk = DB::table('barang_masuks')
+        ->join('barangs', 'barang_masuks.id_barang', '=', 'barang_masuk.id_barang')
+        ->select('barangs.nama_barang as barang', 'barang_masuks.jumlah_pemasukan', 'barang_masuks.tgl_masuk')
+        ->get();
         return response()->json([
             'success' => true,
             'message' => 'Data Barang Masuk',
