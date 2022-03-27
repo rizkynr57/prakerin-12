@@ -18,7 +18,7 @@ class ApiController extends Controller
         $supplier = Supplier::all();
         return response()->json([
             'success' => true,
-            'message' => 'Data Barang Keluar',
+            'message' => 'Data Supplier',
             'data' => $supplier,
         ], 200);
     }
@@ -28,7 +28,7 @@ class ApiController extends Controller
         $customer = Customer::all();
         return response()->json([
             'success' => true,
-            'message' => 'Data Barang Keluar',
+            'message' => 'Data Customer',
             'data' => $customer,
         ], 200);
     }
