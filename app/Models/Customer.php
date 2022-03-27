@@ -16,7 +16,7 @@ class Customer extends Model
         'nama',
         'alamat',
         'email',
-        'no_telp',
+        'telepon',
     ];
 
     public $timestamps = true;
