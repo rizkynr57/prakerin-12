@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\ApiBarangKeluarController;
 use App\Http\Controllers\ApiBarangMasukController;
