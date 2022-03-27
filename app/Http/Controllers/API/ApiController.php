@@ -3,12 +3,37 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Supplier;
+use App\Models\Customer;
+use App\Models\Barang_masuk;
+use App\Models\Barang_keluar;
 use DB;
 
 class ApiController extends Controller
 {
 
-    public function JoinBarangMasuk()
+    public function supplier()
+    {
+        $supplier = Supplier::all();
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Barang Keluar',
+            'data' => $supplier,
+        ], 200);
+    }
+
+    public function customer()
+    {
+        $customer = Customer::all();
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Barang Keluar',
+            'data' => $customer,
+        ], 200);
+    }
+
+    public function barang_masuk()
     {
         $barangMasuk = DB::table('barang_masuks')
         ->join('suppliers', 'barang_masuks.id_supplier', '=', 'barang_masuk.id_supplier')
@@ -19,10 +44,10 @@ class ApiController extends Controller
             'success' => true,
             'message' => 'Data Barang Masuk',
             'data' => $barangMasuk,
-        ], 201);
+        ], 200);
     }
 
-    public function JoinBarangKeluar()
+    public function barang_keluar()
     {
         $barangKeluar = DB::table('barang_keluars')
         ->join('customers', 'barang_keluars.id_customer', 'barang_keluar.id_customer')
@@ -33,6 +58,6 @@ class ApiController extends Controller
             'success' => true,
             'message' => 'Data Barang Keluar',
             'data' => $barangKeluar,
-        ], 201);
+        ], 200);
     }
 }
