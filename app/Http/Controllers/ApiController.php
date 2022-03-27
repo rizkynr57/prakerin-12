@@ -2,13 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Barang_masuk;
-use App\Models\Barang_keluar;
-use App\Models\Barang;
-use App\Models\Supplier;
-use App\Models\Customer;
 use DB;
-use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
@@ -24,7 +18,7 @@ class ApiController extends Controller
             'success' => true,
             'message' => 'Data Barang Masuk',
             'data' => $barangMasuk,
-        ], 201);
+        ], 200);
     }
 
     public function JoinBarangKeluar()
@@ -38,6 +32,6 @@ class ApiController extends Controller
             'success' => true,
             'message' => 'Data Barang Keluar',
             'data' => $barangKeluar,
-        ], 201);
+        ], 200);
     }
 }
