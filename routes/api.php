@@ -16,6 +16,7 @@ Route::resource('supplier', ApiSupplierController::class);
 Route::resource('customer', ApiCustomerController::class);
 Route::resource('barang-masuk', ApiBarangMasukController::class);
 Route::resource('barang-keluar', ApiBarangKeluarController::class);
-Route::get('barang-masuk-join', [ApiController::class, 'JoinBarangMasuk']);
-Route::get('barang-keluar-join', [ApiController::class, 'JoinBarangKeluar']);
-
+Route::get('supplier1', [ApiController::class, 'supplier']);
+Route::get('customer2', [ApiController::class, 'customer']);
+Route::get('barang-masuk3', [ApiController::class, 'barang_masuk']);
+Route::get('barang_keluar4', [ApiController::class, 'barang_keluar']);
