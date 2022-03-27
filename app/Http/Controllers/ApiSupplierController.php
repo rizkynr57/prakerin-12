@@ -15,7 +15,7 @@ class ApiSupplierController extends Controller
             'success' => true,
             'message' => 'Data Supplier',
             'data' => $supplier,
-        ], 201);
+        ], 200);
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class ApiSupplierController extends Controller
                 'success' => true,
                 'message' => 'Show Data Supplier',
                 'data' => $supplier,
-            ], 200);
+            ], 201);
         } else {
             return response()->json([
                 'success' => false,
