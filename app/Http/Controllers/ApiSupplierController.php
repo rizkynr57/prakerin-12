@@ -15,7 +15,7 @@ class ApiSupplierController extends Controller
             'success' => true,
             'message' => 'Data Supplier',
             'data' => $supplier,
-        ], 200);
+        ], 201);
     }
 
     public function store(Request $request)
