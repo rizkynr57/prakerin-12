@@ -6,7 +6,7 @@ use App\Http\Controllers\ApiBarangKeluarController;
 use App\Http\Controllers\ApiBarangMasukController;
 use App\Http\Controllers\ApiCustomerController;
 use App\Http\Controllers\ApiSupplierController;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiController;;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
