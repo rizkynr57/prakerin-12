@@ -16,7 +16,3 @@ Route::resource('supplier', ApiSupplierController::class);
 Route::resource('customer', ApiCustomerController::class);
 Route::resource('barang-masuk', ApiBarangMasukController::class);
 Route::resource('barang-keluar', ApiBarangKeluarController::class);
-Route::get('supplier1', [ApiController::class, 'supplier']);
-Route::get('customer1', [ApiController::class, 'customer']);
-Route::get('barang-masuk1', [ApiController::class, 'barang_masuk']);
-Route::get('barang-keluar1', [ApiController::class, 'barang_keluar']);
