@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use App\Models\customer;
-use App\Models\barang_masuk;
-use App\Models\barang_keluar;
+use App\Models\Customer;
+use App\Models\Barang_masuk;
+use App\Models\Barang_keluar;
 
 class ApiController extends Controller
 {
