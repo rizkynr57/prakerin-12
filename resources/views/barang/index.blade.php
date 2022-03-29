@@ -35,6 +35,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Kode Barang</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis Barang</th>
                                             <th>Stok Barang</th>
@@ -51,6 +52,7 @@
                                         @foreach ($barang as $data)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
+                                                <td>{{ $data->kode }}</td>
                                                 <td>{{ $data->nama_barang }}</td>
                                                 <td>{{ $data->jenis->nama_jenis }}</td>
                                                 <td>{{ $data->stok_barang }}</td>
@@ -106,6 +108,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Kode Barang</th>
                                             <th>Nama Barang</th>
                                             <th>Jenis Barang</th>
                                             <th>Stok Barang</th>
@@ -120,6 +123,7 @@
                                         @foreach ($barang as $data)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
+                                                <td>{{ $data->kode }}</td>
                                                 <td>{{ $data->nama_barang }}</td>
                                                 <td>{{ $data->jenis->nama_jenis }}</td>
                                                 <td>{{ $data->stok_barang }}</td>
