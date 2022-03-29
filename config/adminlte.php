@@ -257,10 +257,30 @@ return [
             'icon_color' => 'cyan'
         ],
         [
-            'text' => 'Barang',
-            'url' => 'barang',
-            'icon' => 'fas fa-balance-scale',
-            'icon_color' => 'orange'
+            'text' => 'Data Barang',
+            'url' => '#',
+            'icon' => 'fas fa-book',
+            'icon_color' => 'purple',
+            'submenu' => [
+                [
+                    'text' => 'Jenis Barang',
+                    'url' => '/jenis',
+                    'icon' => '',
+                    'icon_color' => 'yellow'
+                ],
+                [
+                    'text' => 'Satuan Barang',
+                    'url' => '/satuan',
+                    'icon' => '',
+                    'icon_color' => 'lightgreen'
+                ],
+                [
+                    'text' => 'Barang',
+                    'url' => 'barang',
+                    'icon' => 'fas fa-balance-scale',
+                    'icon_color' => 'orange'
+                ],
+            ],
         ],
         [
             'text' => 'Barang Masuk',
