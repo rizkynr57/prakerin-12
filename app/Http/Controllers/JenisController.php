@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jenis;
 use Illuminate\Http\Request;
 
-class SupplierController extends Controller
+class JenisController extends Controller
 {
 
     public function index()
@@ -35,6 +35,12 @@ class SupplierController extends Controller
         $jenis->update();
 
         return redirect('jenis')->withInfo('Data berhasil diubah!');
+    }
+
+    public function show($id)
+    {
+        $jenis = Jenis::find($id);
+        return view('jenis.show', compact('jenis'));
     }
 
     public function destroy($id)
