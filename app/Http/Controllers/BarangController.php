@@ -17,7 +17,8 @@ class BarangController extends Controller
         $jenis = Jenis::all();
         $satuan = Satuan::all();
         $barang = Barang::all();
-        return view('barang.index', compact('barang', 'jenis', 'satuan'));
+        $code = Barang::code();
+        return view('barang.index', compact('barang', 'jenis', 'satuan', 'code'));
     }
 
     public function store(Request $request)
