@@ -15,6 +15,7 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
+            $table->string('kode');
             $table->string('nama_barang');
             $table->unsignedBigInteger('id_jenis');
             $table->foreign('id_jenis')->references('id')->on('jenis');
