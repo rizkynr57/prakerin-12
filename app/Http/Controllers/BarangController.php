@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Jenis;
+use App\Models\Satuan;
 use App\Exports\BarangExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
@@ -12,13 +14,10 @@ class BarangController extends Controller
 
     public function index()
     {
+        $jenis = Jenis::all();
+        $satuan = Satuan::all();
         $barang = Barang::all();
-        return view('barang.index', compact('barang'));
-    }
-
-    public function cetakBarangExcel()
-    {
-        return Excel::download(new BarangExport, 'Data Barang.xlsx');
+        return view('barang.index', compact('barang', 'jenis', 'satuan'));
     }
 
     public function store(Request $request)
@@ -48,9 +47,7 @@ class BarangController extends Controller
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
         $barang->save();
-
         return redirect('barang')->withSuccess('Data disimpan');
-
     }
 
     public function update(Request $request, $id)
@@ -79,7 +76,6 @@ class BarangController extends Controller
         $barang->harga_jual = $request->harga + $addPrice;
         $barang->satuan = $request->satuan;
         $barang->save();
-
         return redirect('barang')->withInfo('Data telah diubah!');
     }
 }
