@@ -52,11 +52,11 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->jenis_barang }}</td>
+                                                <td>{{ $data->jenis->nama_jenis }}</td>
                                                 <td>{{ $data->stok_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->harga_jual }}</td>
-                                                <td>{{ $data->satuan }}</td>
+                                                <td>{{ $data->satuan->nama_satuan }}</td>
                                                 <td>
                                                 <a class="btn btn-primary btn-sm rounded-circle" data-toggle="modal"
                                                     data-target=".barang-edit-{{ $data->id }}"><i class="fas fa-edit"></i>
@@ -121,10 +121,10 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $data->nama_barang }}</td>
-                                                <td>{{ $data->jenis_barang }}</td>
+                                                <td>{{ $data->jenis->nama_jenis }}</td>
                                                 <td>{{ $data->stok_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
-                                                <td>{{ $data->satuan }}</td>
+                                                <td>{{ $data->satuan->nama_satuan }}</td>
                                                 <td>
                                             </td>
                                     </tbody>
