@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Supplier</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Jenis</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,9 +13,9 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Satuan</label>
-                        <input type="text" class="form-control" name="satuan"
-                            value="{{ $data->nama_satuan }}" required>
+                        <label for="">Nama Jenis</label>
+                        <input type="text" class="form-control" name="jenis"
+                            value="{{ $data->nama_jenis }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
