@@ -16,7 +16,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">Jenis Barang</label>
-                        <input type="text" class="form-control" name="jenis">
+                        <select name="jenis" class="form-control">
+                         @foreach($jenis as $data)
+                            <option value="{{ $data->id }}">{{ $data->nama_jenis }}</option>
+                         @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Harga</label>
@@ -24,7 +28,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">Satuan</label>
-                        <input type="text" class="form-control" name="satuan">
+                        <select name="satuan" class="form-control">
+                         @foreach($satuan as $data)
+                            <option value="{{ $data->id}}">{{ $data->nama_satuan }}</option>
+                         @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
