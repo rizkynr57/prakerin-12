@@ -5,6 +5,8 @@ use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\JenisController;
+use App\Http\Controllers\SatuanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +34,12 @@ Route::middleware(['auth', 'verified'])->resource('customer', CustomerController
 Route::middleware(['auth', 'verified'])->get('/cetak-customerPDF', [CustomerController::class, 'cetakCustomerPDF'])
                     ->middleware('role:admin')
                     ->name('exportPDF.customersAll');
+
+Route::middleware(['auth', 'verified'])->resource('jenis', JenisController::class)
+                    ->middleware('role:admin|petugas');
+
+Route::middleware(['auth', 'verified'])->resource('satuan', SatuanController::class)
+                    ->middleware('role:admin|petugas');
 
 Route::middleware(['auth', 'verified'])->resource('barang', BarangController::class)
                     ->middleware('role:admin|petugas');
