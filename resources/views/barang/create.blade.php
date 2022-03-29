@@ -10,6 +10,10 @@
             <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
+                <div class="form-group">
+                        <label for="">Kode Barang</label>
+                        <input type="text" class="form-control" name="kode" value="{{ $code }}" readonly>
+                    </div>
                     <div class="form-group">
                         <label for="">Nama Barang</label>
                         <input type="text" class="form-control" name="nama">
