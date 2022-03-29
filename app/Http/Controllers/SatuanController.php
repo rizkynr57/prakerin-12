@@ -24,12 +24,6 @@ class SatuanController extends Controller
         return redirect('satuan')->withSuccess('Data Berhasil Disimpan!');
     }
 
-    public function index($id)
-    {
-        $satuan = Satuan::find($id);
-        return view('satuan.show', compact('satuan'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -41,6 +35,12 @@ class SatuanController extends Controller
         $satuab->update();
 
         return redirect('jenis')->withInfo('Data berhasil diubah!');
+    }
+
+    public function show($id)
+    {
+        $satuan = Satuan::find($id);
+        return view('satuan.show', compact('satuan'));
     }
 
     public function destroy($id)
