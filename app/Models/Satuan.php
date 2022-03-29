@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class Jenis extends Model
+class Satuan extends Model
 {
     use HasFactory;
 
