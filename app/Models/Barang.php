@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Session;
+use DB;
 
 class Barang extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'kode',
         'nama_barang',
-        'jenis_barang',
+        'id_barang',
         'jumlah_barang',
-        'satuan'
+        'id_satuan'
     ];
 
     public $timestamps = true;
