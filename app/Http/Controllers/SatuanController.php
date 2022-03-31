@@ -34,7 +34,7 @@ class SatuanController extends Controller
         $satuan->nama_satuan = $request->satuan;
         $satuab->update();
 
-        return redirect('jenis')->withInfo('Data berhasil diubah!');
+        return redirect('satuan')->withInfo('Data berhasil diubah!');
     }
 
     public function show($id)
