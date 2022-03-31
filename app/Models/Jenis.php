@@ -24,8 +24,8 @@ class Jenis extends Model
     public static function boot()
     {
         parent::boot();
-        self::deleting(function($barangMasuk) {
-          if ($barangMasuk->barang->count() > 0) {
+        self::deleting(function($barang) {
+          if ($barang->barang->count() > 0) {
             Alert::error('Gagal menghapus data '. $barang->nama_jenis. ' karena masih memiliki data barang');
             return false;
           }
